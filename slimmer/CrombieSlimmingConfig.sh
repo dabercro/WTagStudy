@@ -5,12 +5,13 @@ export CrombieQueue=8nh
 export CrombieNLocalProcs=`getconf _NPROCESSORS_ONLN`
 
 export CrombieFileBase=wscale
-export CrombieEosDir=/store/user/dabercro
-export CrombieRegDir=/Users/dabercro/GradSchool/Summer16/Sample
-export CrombieTempDir=/Users/dabercro/GradSchool/Summer16/Temp
-export CrombieFullDir=/Users/dabercro/GradSchool/Summer16/Full_TopMass
-export CrombieSkimDir=/Users/dabercro/GradSchool/Summer16/Skim_TopMass
-export CrombieDirList=
+export CrombieEosDir=/store/user/zdemirag/V0005
+#export CrombieEosDir=/store/user/amarini/Nero/v1.4
+export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eos/cms$CrombieEosDir
+export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Temp
+export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_$CROMBIEDATE
+export CrombieSkimDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_$CROMBIEDATE
+export CrombieDirList=SingleTops.txt
 
 export CrombieSlimmerScript=runSlimmer.py
 export CrombieJobScriptList=CrombieJobScriptList.txt
