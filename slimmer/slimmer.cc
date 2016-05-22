@@ -525,12 +525,20 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
                                             outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
         outTree->topMass_12 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1Mass,
                                             outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
+        outTree->topPrunedM_11 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1PrunedM,
+                                               outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
+        outTree->topPrunedM_12 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1PrunedM,
+                                               outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
       }
       if (outTree->fatjet2Pt > 0) {
         outTree->topMass_21 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2Mass,
                                             outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
         outTree->topMass_22 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2Mass,
                                             outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
+        outTree->topPrunedM_21 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2PrunedM,
+                                               outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
+        outTree->topPrunedM_22 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2PrunedM,
+                                               outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
       }
     }
 
