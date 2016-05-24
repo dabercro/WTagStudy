@@ -5,9 +5,9 @@ Wlv_ht600          wscale_WJetsToLNu_HT-600To800.root                           
 Wlv_ht800          wscale_WJetsToLNu_HT-800To1200.root                                        5.501            .                  .
 Wlv_ht1200         wscale_WJetsToLNu_HT-1200To2500.root                                       1.329            .                  .
 Wlv_ht2500         wscale_WJetsToLNu_HT-2500ToInf.root                                        0.03216          .                  .
-others             res/wscale_TTJets.root                                                   831.76        Resonant_top           857
-others             probtop/wscale_TTJets.root                                                831.76       Off-resonant_top       856
-others             nonres/wscale_TTJets.root                                                831.76        Non-resonant_top       855
+others             res/wscale_TTJets.root                                                   831.76        W-matched_(tt)           857
+others             probtop/wscale_TTJets.root                                                831.76       Pulled_off_W_(tt)       855
+others             nonres/wscale_TTJets.root                                                831.76        Recoiling_Jet_(tt)       856
 antitop            wscale_ST_t-channel_antitop_4f_leptonDecays_13TeV-powheg-pythia8.root     26.22        Single_top             808
 top                wscale_ST_t-channel_top_4f_leptonDecays_13TeV-powheg-pythia8.root         44.07             .                  .
 antitop_5f         wscale_ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8.root         35.6              .                  .

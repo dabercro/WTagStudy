@@ -1,6 +1,6 @@
 skip             res/wscale_TTJets.root
 skip             probtop/wscale_TTJets.root
 skip             nonres/wscale_TTJets.root
-others             res2/wscale_TTJets.root                                                   831.76        Resonant_top           857
-others             probtop2/wscale_TTJets.root                                                831.76       Off-resonant_top       856
-others             nonres2/wscale_TTJets.root                                                831.76        Non-resonant_top       855
+others             res2/wscale_TTJets.root                                                   831.76        W-matched_(tt)           857
+others             probtop2/wscale_TTJets.root                                                831.76       Pulled_off_W_(tt)        855
+others             nonres2/wscale_TTJets.root                                                831.76        Recoiling_Jet_(tt)       856

@@ -95,6 +95,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
   outFile->WriteTObject(allHist,allHist->GetName());
 
   for (Int_t iEntry = 0; iEntry < nentries; iEntry++) {
+
+    outTree->Reset();
     
     //// Clear out the saved vectors for cleaning ////
 
@@ -196,7 +198,10 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         }
       }
     }
-    
+
+    if (outTree->n_looselep > 1)
+      continue;
+
     //// If there are identified leptons, we will define our recoil using them ////
 
     if (outTree->n_looselep > 0)
@@ -314,6 +319,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
           outTree->bjet2BTag = (*(inTree->jetBdiscr))[iJet];
       }
     }
+
+    if (outTree->n_bjetsLoose < 1)
+      continue;
     
     //// Now check number of non-overlapping taus ////
 
@@ -356,8 +364,13 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     
     //// Fat Jet Selection ////
 
-    for (Int_t iFatJet = 0; iFatJet < inTree->fatjetak8P4->GetEntries(); iFatJet++) {
-      TLorentzVector* tempFatJet = (TLorentzVector*) inTree->fatjetak8P4->At(iFatJet);
+    // Count jets that don't overlap with W jets
+    
+    Float_t overlapjetDR = 0.6;
+    Int_t overlapping = 0;
+
+    for (Int_t iFatJet = 0; iFatJet < inTree->fatjetAK8CHSP4->GetEntries(); iFatJet++) {
+      TLorentzVector* tempFatJet = (TLorentzVector*) inTree->fatjetAK8CHSP4->At(iFatJet);
 
       // Clean the fat jets
 
@@ -380,30 +393,25 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       if (match)
         continue;
 
-//       float top1 = vectorSumMass(tempFatJet->Pt(), tempFatJet->Eta(), tempFatJet->Phi(), (*(inTree->fatjetak8PrunedMass))[iFatJet], 
-//                                  outTree->bjet1Pt, outTree->bjet1Eta, outTree->bjet1Phi, outTree->bjet1M);
-//       float top2 = vectorSumMass(tempFatJet->Pt(), tempFatJet->Eta(), tempFatJet->Phi(), (*(inTree->fatjetak8PrunedMass))[iFatJet], 
-//                                  outTree->bjet2Pt, outTree->bjet2Eta, outTree->bjet2Phi, outTree->bjet2M);
-      
-//       if ((top1 > 250) && (top2 > 250))
-//         continue;
-
       if (outTree->fatjet1Pt < 0) {
         outTree->fatjet1Pt   = tempFatJet->Pt();
         outTree->fatjet1Eta  = tempFatJet->Eta();
         outTree->fatjet1Phi  = tempFatJet->Phi();
         outTree->fatjet1Mass = tempFatJet->M();
-        outTree->fatjet1TrimmedM  = (*(inTree->fatjetak8TrimmedMass))[iFatJet];
-        outTree->fatjet1PrunedM   = (*(inTree->fatjetak8PrunedMass))[iFatJet];
-        outTree->fatjet1FilteredM = (*(inTree->fatjetak8FilteredMass))[iFatJet];
-        outTree->fatjet1SoftDropM = (*(inTree->fatjetak8SoftdropMass))[iFatJet];
-        outTree->fatjet1tau1  = (*(inTree->fatjetak8Tau1))[iFatJet];
-        outTree->fatjet1tau2  = (*(inTree->fatjetak8Tau2))[iFatJet];
+        outTree->fatjet1TrimmedM  = (*(inTree->fatjetAK8CHSTrimmedMass))[iFatJet];
+        outTree->fatjet1PrunedM   = (*(inTree->fatjetAK8CHSPrunedMass))[iFatJet];
+        outTree->fatjet1FilteredM = (*(inTree->fatjetAK8CHSFilteredMass))[iFatJet];
+        outTree->fatjet1SoftDropM = (*(inTree->fatjetAK8CHSSoftdropMass))[iFatJet];
+        outTree->fatjet1tau1  = (*(inTree->fatjetAK8CHSTau1))[iFatJet];
+        outTree->fatjet1tau2  = (*(inTree->fatjetAK8CHSTau2))[iFatJet];
         outTree->fatjet1tau21 = outTree->fatjet1tau2/outTree->fatjet1tau1;
 
         for (Int_t iJet = 0; iJet < inTree->jetP4->GetEntries(); iJet++) {
           TLorentzVector* tempJet = (TLorentzVector*) inTree->jetP4->At(iJet);
           checkDR = deltaR(outTree->fatjet1Phi,outTree->fatjet1Eta,tempJet->Phi(),tempJet->Eta());
+
+          if (tempJet->Pt() > 30 && checkDR < overlapjetDR)
+            ++overlapping;
 
           // Check loose distance
           if ((*(inTree->jetBdiscr))[iJet] > bCutLoose) {
@@ -449,17 +457,20 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet2Eta  = tempFatJet->Eta();
         outTree->fatjet2Phi  = tempFatJet->Phi();
         outTree->fatjet2Mass = tempFatJet->M();
-        outTree->fatjet2TrimmedM  = (*(inTree->fatjetak8TrimmedMass))[iFatJet];
-        outTree->fatjet2PrunedM   = (*(inTree->fatjetak8PrunedMass))[iFatJet];
-        outTree->fatjet2FilteredM = (*(inTree->fatjetak8FilteredMass))[iFatJet];
-        outTree->fatjet2SoftDropM = (*(inTree->fatjetak8SoftdropMass))[iFatJet];
-        outTree->fatjet2tau1  = (*(inTree->fatjetak8Tau1))[iFatJet];
-        outTree->fatjet2tau2  = (*(inTree->fatjetak8Tau2))[iFatJet];
+        outTree->fatjet2TrimmedM  = (*(inTree->fatjetAK8CHSTrimmedMass))[iFatJet];
+        outTree->fatjet2PrunedM   = (*(inTree->fatjetAK8CHSPrunedMass))[iFatJet];
+        outTree->fatjet2FilteredM = (*(inTree->fatjetAK8CHSFilteredMass))[iFatJet];
+        outTree->fatjet2SoftDropM = (*(inTree->fatjetAK8CHSSoftdropMass))[iFatJet];
+        outTree->fatjet2tau1  = (*(inTree->fatjetAK8CHSTau1))[iFatJet];
+        outTree->fatjet2tau2  = (*(inTree->fatjetAK8CHSTau2))[iFatJet];
         outTree->fatjet2tau21 = outTree->fatjet2tau2/outTree->fatjet2tau1;
 
         for (Int_t iJet = 0; iJet < inTree->jetP4->GetEntries(); iJet++) {
           TLorentzVector* tempJet = (TLorentzVector*) inTree->jetP4->At(iJet);
           checkDR = deltaR(outTree->fatjet2Phi,outTree->fatjet2Eta,tempJet->Phi(),tempJet->Eta());
+
+          if (tempJet->Pt() > 30 && checkDR < overlapjetDR)
+            ++overlapping;
 
           // Check loose distance
           if ((*(inTree->jetBdiscr))[iJet] > bCutLoose) {
@@ -499,7 +510,12 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
           }
         }
       }
+      else
+        outTree->hasThirdFat = 1;
     }
+
+    if (outTree->fatjet1Pt < 0)
+      continue;
 
     float pt1 = -0.5;
     float pt2 = -0.5;
@@ -541,6 +557,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
                                                outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
       }
     }
+
+    outTree->n_jetsSmall = outTree->n_jets - overlapping;
 
     outTree->Fill();
 

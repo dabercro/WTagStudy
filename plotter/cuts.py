@@ -14,14 +14,17 @@ base = 'fatjet1Pt > 0'
 bwindow = 'fatjet1DRTightB > 0.7 && fatjet1DRTightB < 1.5'
 dphilep = 'fatjet1DPhiLep1 > 2.0'
 topmass = 'topMass_11 > 120 && topMass_12 > 120'
-toppruned = 'topPrunedM_11 > 100 && topPrunedM_21 > 100'
+toppruned = 'topPrunedM_11 > 70 && topPrunedM_12 > 70'
 
 regionCuts = {
     'nocut' : '1',
     'bwindow' : bwindow,
     'dphilep' : dphilep,
     'topmass' : topmass,
-    'toppruned' : toppruned
+    'toppruned' : toppruned,
+    'full' : ' && '.join(['n_tightlep == 1','n_bjetsTight == 2','n_bjetsLoose == 2','hasThirdFat == 0',
+                          '((n_jetsSmall == 3 && fatjet2Pt < 0))',# || (n_jetsSmall == 2 && fatjet2Pt > 0))',
+                          'fatjet1DRTightB > 0.6 && fatjet1DRTightB < 1.2',dphilep])
     }
 
 # A weight applied to all MC
@@ -31,7 +34,7 @@ defaultMCWeight = 'mcWeight'
 # Additional weights applied to certain control regions
 
 additions    = { # key : [Data,MC]
-    'default' : ['0',defaultMCWeight]
+    'default' : ['1',defaultMCWeight]
     }
 
 # Do not change the names of these functions or required parameters
