@@ -23,7 +23,7 @@ regionCuts = {
     'topmass' : topmass,
     'toppruned' : toppruned,
     'full' : ' && '.join(['n_tightlep == 1','n_bjetsTight == 2','n_bjetsLoose == 2','hasThirdFat == 0',
-                          '((n_jetsSmall == 3 && fatjet2Pt < 0))',# || (n_jetsSmall == 2 && fatjet2Pt > 0))',
+                          '((n_jetsNotFat == 3 && fatjet2Pt < 0))',# || (n_jetsNotFat == 2 && fatjet2Pt > 0))',
                           'fatjet1DRTightB > 0.6 && fatjet1DRTightB < 1.2',dphilep])
     }
 

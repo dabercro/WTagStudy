@@ -11,6 +11,11 @@ fi
 
 CrombieFlatSkimmer --cut 'n_looselep == 1 && bjet2Pt > 0 && fatjet1Pt > 0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir $CrombieFullDir --outdir $CrombieSkimDir --json $CrombieGoodRuns
 
+if [ "$fresh" = "fast" ]
+then
+    exit 0
+fi
+
 ## Data
 
 hadd -f /afs/cern.ch/work/d/dabercro/public/Summer16/Data/wscale_Data.root $CrombieSkimDir/wscale_Single*.root
@@ -19,7 +24,7 @@ CrombieFlatSkimmer  --cut '1' --tree 'events' --copy 'htotal' --run 'runNum' --l
 
 ## tt stuff
 
-cp $CrombieSkimDir/wscale_TTJets.root /afs/cern.ch/work/d/dabercro/public/Summer16/TTJets/.
+cp $CrombieSkimDir/wscale_TTJets*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TTJets/.
 
 CrombieFlatSkimmer --cut 'n_looselep == 1 && bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TTJets --outdir $CrombieSkimDir/res --json $CrombieGoodRuns
 

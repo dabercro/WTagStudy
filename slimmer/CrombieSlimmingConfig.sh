@@ -1,6 +1,6 @@
-export CrombieFilesPerJob=10
+export CrombieFilesPerJob=5
 export CrombieNBatchProcs=1
-export CrombieQueue=8nh
+export CrombieQueue=1nd
 
 export CrombieNLocalProcs=5
 
