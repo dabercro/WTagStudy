@@ -50,6 +50,16 @@ Bool_t PassIso(Float_t lepPt, Float_t lepEta, Float_t lepIso, Int_t lepPdgId, Is
   return (lepIso/lepPt) < isoCut;
 }
 
+float GetMaxBTag(Int_t iFatjet, NeroTree *inTree) {
+  Int_t nSubjets = (*(inTree->fatjetAK8CHSnSubjets))[iFatjet];
+  Int_t firstSubjet = (*(inTree->fatjetAK8CHSfirstSubjet))[iFatjet];
+  float maxsjbtag = -1.0;
+  for (int iSJ=firstSubjet; iSJ!=nSubjets+firstSubjet; ++iSJ)
+    maxsjbtag = TMath::Max(maxsjbtag,(*(inTree->fatjetAK8CHSsubjet_btag))[iSJ]);
+
+  return maxsjbtag;
+}
+
 void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
 
   Float_t dROverlap  = 0.4;
@@ -404,7 +414,11 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet1SoftDropM = (*(inTree->fatjetAK8CHSSoftdropMass))[iFatJet];
         outTree->fatjet1tau1  = (*(inTree->fatjetAK8CHSTau1))[iFatJet];
         outTree->fatjet1tau2  = (*(inTree->fatjetAK8CHSTau2))[iFatJet];
+        outTree->fatjet1tau3  = (*(inTree->fatjetAK8CHSTau3))[iFatJet];
         outTree->fatjet1tau21 = outTree->fatjet1tau2/outTree->fatjet1tau1;
+        outTree->fatjet1tau32 = outTree->fatjet1tau3/outTree->fatjet1tau2;
+
+        outTree->fatjet1MaxBTag = GetMaxBTag(iFatJet,inTree);
 
         for (Int_t iJet = 0; iJet < inTree->jetP4->GetEntries(); iJet++) {
           TLorentzVector* tempJet = (TLorentzVector*) inTree->jetP4->At(iJet);
@@ -463,7 +477,11 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet2SoftDropM = (*(inTree->fatjetAK8CHSSoftdropMass))[iFatJet];
         outTree->fatjet2tau1  = (*(inTree->fatjetAK8CHSTau1))[iFatJet];
         outTree->fatjet2tau2  = (*(inTree->fatjetAK8CHSTau2))[iFatJet];
+        outTree->fatjet2tau3  = (*(inTree->fatjetAK8CHSTau3))[iFatJet];
         outTree->fatjet2tau21 = outTree->fatjet2tau2/outTree->fatjet2tau1;
+        outTree->fatjet2tau32 = outTree->fatjet2tau3/outTree->fatjet2tau2;
+
+        outTree->fatjet2MaxBTag = GetMaxBTag(iFatJet,inTree);
 
         for (Int_t iJet = 0; iJet < inTree->jetP4->GetEntries(); iJet++) {
           TLorentzVector* tempJet = (TLorentzVector*) inTree->jetP4->At(iJet);

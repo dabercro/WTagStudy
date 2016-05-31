@@ -16,8 +16,11 @@ ROOT.gROOT.LoadMacro('slimmer.cc+')
 if len(sys.argv) == 1:
     exit()
 if sys.argv[1] == 'test':
-    ROOT.slimmer('root://eoscms//eos/cms/store/user/dabercro/Nero/v1.4/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/TTJets_HT-2500toInf_TuneCUETP8M1/160523_184609/0000/NeroNtuples_2.root',
+    ROOT.slimmer('root://eosuser//eos/user/d/dabercro/SingleLeptonData_76X_V001/SingleMuon/SingleMuon-Run2015D/160523_184442/0000/NeroNtuples_66.root',
                  'test.root')
+
+if len(sys.argv) < 3:
+    exit()
 else:
     if not os.path.isfile(sys.argv[2]):
         ROOT.slimmer(sys.argv[1],

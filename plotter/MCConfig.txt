@@ -18,3 +18,6 @@ top_5f              wscale_ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8.roo
 TTJets              res/wscale_TTJets.root                                                     670.3          W-matched_(tt)           857
 TTJets              probtop/wscale_TTJets.root                                                 670.3          Pulled_off_W_(tt)       855
 TTJets              nonres/wscale_TTJets.root                                                  670.3          Recoiling_Jet_(tt)       856
+#diboson             wscale_WZ.root                                                             22.82          Di-boson               420
+#diboson             wscale_WW.root                                                             63.21             .                    .
+#diboson             wscale_ZZ.root                                                             10.32             .                    .
