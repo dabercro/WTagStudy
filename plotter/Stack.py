@@ -55,7 +55,8 @@ def SetupArgs():
 
 def RunPlots(categories):
     cutList = ['nocut','full']
-#    MakePlots(categories,cutList,SetupArgs())
+    MakePlots(categories,cutList,SetupArgs())
+    return
     for region in regions:
         cutList.append(region)
         tempList1 = regions[:regions.index(region)]

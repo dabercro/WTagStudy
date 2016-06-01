@@ -6,12 +6,12 @@ export CrombieNLocalProcs=5
 
 export CrombieFileBase=wscale
 #export CrombieEosDir=/store/user/zdemirag/V0005
-#export CrombieEosDir=/store/user/dabercro/Nero/v1.4
-export CrombieUseCernBox=1
-export CrombieEosDir=/eos/user/d/dabercro/SingleLeptonData_76X_V001
+export CrombieEosDir=/store/user/dabercro/Nero/v1.4
+#export CrombieUseCernBox=1
+#export CrombieEosDir=/eos/user/d/dabercro/SingleLeptonData_76X_V001
 export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eos/cms$CrombieEosDir
 export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Temp
-export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_$CROMBIEDATE
+export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_160531
 export CrombieSkimDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_$CROMBIEDATE
 #export CrombieDirList=SingleTops.txt
 #export CrombieDirList=TTJets.txt

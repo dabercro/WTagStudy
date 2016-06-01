@@ -6,3 +6,5 @@ out.*
 *.log
 *.root
 *.pyc
+OutTree.h
+OutTree.cc
