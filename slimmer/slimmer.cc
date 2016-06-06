@@ -261,6 +261,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
 
     for (Int_t iJet = 0; iJet < inTree->jetP4->GetEntries(); iJet++) {
       TLorentzVector* tempJet = (TLorentzVector*) inTree->jetP4->At(iJet);
+
+      outTree->jet_ht += tempJet->Pt();
       
       //// Ignore jets that are not in this region ////
       if (fabs(tempJet->Eta()) > 2.4 || (*(inTree->jetPuId))[iJet] < -0.62 || tempJet->Pt() < 30.0)

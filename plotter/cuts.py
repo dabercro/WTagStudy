@@ -1,8 +1,8 @@
 # These are just for the users to loop over
 
 categories = ['leading','trailing','mass']
-#regions    = ['bwindow','dphilep','topmass','toppruned']
-regions    = ['bwindow','dphilep','nsmalljets','topmass','fatjetPt']
+regions    = ['bwindow','dphilep','nsmalljets']
+#regions    = ['bwindow','nsmalljets','fullhadronic']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
@@ -11,18 +11,23 @@ regions    = ['bwindow','dphilep','nsmalljets','topmass','fatjetPt']
 #     'trailing' : 'fatjet2Pt > 0'
 #     }
 
-bwindow = 'fatjet1DRTightB > 0.6 && fatjet1DRTightB < 1.2'
+bwindow = 'fatjet1DRLooseB > 0.8 && fatjet1DRLooseB < 1.2'
 dphilep = 'fatjet1DPhiLep1 > 2.0'
 topmass = '(topMass_11 > 120 || topMass_12 > 120)'
 toppruned = '(topPrunedM_11 > 70 || topPrunedM_12 > 70)'
 nbtags = 'n_bjetsLoose == 2'
 semilep = 'n_tightlep == 1'
-nsmalljets = '(n_jetsNotFat == 3 && fatjet2Pt < 0)'
-fatjetPt = 'fatjet1Pt > 250'
+nsmalljets = 'n_jetsNotFat == 3'
+fatjetPt = 'fatjet1Pt > 100'
+fullhadronic = 'fatjet2Pt > 100 && fatjet2DRMediumB < 1.2 && n_looselep == 0'
+
+tau21 = 'fatjet1tau21 < 0.6'
+massp = 'fatjet1PrunedM > 60 && fatjet1PrunedM < 110'
 
 base = ' && '.join([
-        'fatjet1Pt > 0 && hasThirdFat == 0',
+        'fatjet1Pt > 250 && hasThirdFat == 0',
         semilep,
+        nbtags,
         ])
 
 regionCuts = {
@@ -34,13 +39,16 @@ regionCuts = {
     'nbtags' : nbtags,
     'nsmalljets' : nsmalljets,
     'fatjetPt' : fatjetPt,
+    'fullhadronic' : fullhadronic,
+    'tau21' : tau21,
+    'massp' : massp,
     'full' : ' && '.join([
             nsmalljets,
             bwindow,
             dphilep,
-            nbtags,
+#            nbtags,
 #            topmass,
-            fatjetPt,
+#            fatjetPt,
             ])
     }
 
@@ -69,7 +77,6 @@ def cut(category,inRegions):
         theCut = theCut.replace('fatjet1','fatjet2').replace('_1','_2')
         
     return theCut
-#    return '((' + categoryCuts[category] + ') && (' + regionCuts[region] + '))'
 
 def dataMCCuts(region, isData):
     key = 'default'

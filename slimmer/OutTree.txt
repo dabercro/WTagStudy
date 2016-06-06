@@ -105,3 +105,4 @@ topPrunedM_21/F=-5.0
 topPrunedM_22/F=-5.0
 hasThirdFat/I=0
 fatjet1DPhiMet/F=5
+jet_ht/F=0
