@@ -7,7 +7,7 @@ source CrombiePlotterConfig.sh
 mkdir -p $CrombieOutPlotDir 2> /dev/null
 
 ./Stack.py &
-#./StackTrailing.py &
+./StackTrailing.py &
 #./StackMass.py &
 
 wait

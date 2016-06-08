@@ -1,8 +1,6 @@
-# These are just for the users to loop over
+# Used in full region
 
-categories = ['leading','trailing','mass']
 regions    = ['bwindow','dphilep','nsmalljets']
-#regions    = ['bwindow','nsmalljets','fullhadronic']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
@@ -10,19 +8,6 @@ regions    = ['bwindow','dphilep','nsmalljets']
 #     'leading' : 'fatjet1Pt > 0',
 #     'trailing' : 'fatjet2Pt > 0'
 #     }
-
-bwindow = 'fatjet1DRLooseB > 0.8 && fatjet1DRLooseB < 1.2'
-dphilep = 'fatjet1DPhiLep1 > 2.0'
-topmass = '(topMass_11 > 120 || topMass_12 > 120)'
-toppruned = '(topPrunedM_11 > 70 || topPrunedM_12 > 70)'
-nbtags = 'n_bjetsLoose == 2'
-semilep = 'n_tightlep == 1'
-nsmalljets = 'n_jetsNotFat == 3'
-fatjetPt = 'fatjet1Pt > 100'
-fullhadronic = 'fatjet2Pt > 100 && fatjet2DRMediumB < 1.2 && n_looselep == 0'
-
-tau21 = 'fatjet1tau21 < 0.6'
-massp = 'fatjet1PrunedM > 60 && fatjet1PrunedM < 110'
 
 base = ' && '.join([
         'fatjet1Pt > 250 && hasThirdFat == 0',
@@ -32,24 +17,34 @@ base = ' && '.join([
 
 regionCuts = {
     'nocut' : '1',
-    'bwindow' : bwindow,
-    'dphilep' : dphilep,
-    'topmass' : topmass,
-    'toppruned' : toppruned,
-    'nbtags' : nbtags,
-    'nsmalljets' : nsmalljets,
-    'fatjetPt' : fatjetPt,
-    'fullhadronic' : fullhadronic,
-    'tau21' : tau21,
-    'massp' : massp,
-    'full' : ' && '.join([
-            nsmalljets,
-            bwindow,
-            dphilep,
-#            nbtags,
-#            topmass,
-#            fatjetPt,
-            ])
+    'bwindow' : 'fatjet1DRLooseB > 0.8 && fatjet1DRLooseB < 1.2',
+    'dphilep' : 'fatjet1DPhiLep1 > 2.0',
+    'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
+    'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
+    'nbtags' : 'n_bjetsLoose == 2',
+    'nsmalljets' : 'n_jetsNotFat == 3',
+    'fatjetPt' : 'fatjet1Pt > 100',
+    'fullhadronic' : 'fatjet2Pt > 100 && fatjet2DRMediumB < 1.2 && n_looselep == 0',
+    'tau21' : 'fatjet1tau21 < 0.6',
+    'massp' : 'fatjet1PrunedM > 60 && fatjet1PrunedM < 110',
+    }
+
+def JoinCuts(toJoin, cuts=regionCuts):
+    return ' && '.join([cuts[cut] for cut in toJoin])
+
+base = ' && '.join([
+        'fatjet1Pt > 250 && hasThirdFat == 0',
+        JoinCuts([
+                'semilep',
+                'nbtags',
+                ]),
+        ])
+
+regionCuts['full'] = JoinCuts(regions)
+
+fullhadCuts = {
+    'boostedt' : 'fatjet1tau32 < 0.5',
+    'ht' : 'jet_ht > 800',
     }
 
 # A weight applied to all MC
@@ -73,10 +68,15 @@ def cut(category,inRegions):
 
     theCut = ' && '.join(theCuts)
 
-    if category == 'trailing':
+    if category == 'fullhad':
         theCut = theCut.replace('fatjet1','fatjet2').replace('_1','_2')
+        theCut = ' && '.join([
+                theCut,
+                JoinCuts(cuts=fullhadCuts,toJoin=fullhadCuts.keys())
+                ])
         
     return theCut
+
 
 def dataMCCuts(region, isData):
     key = 'default'
