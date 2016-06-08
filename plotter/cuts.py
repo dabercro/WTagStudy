@@ -9,14 +9,9 @@ regions    = ['bwindow','dphilep','nsmalljets']
 #     'trailing' : 'fatjet2Pt > 0'
 #     }
 
-base = ' && '.join([
-        'fatjet1Pt > 250 && hasThirdFat == 0',
-        semilep,
-        nbtags,
-        ])
-
 regionCuts = {
     'nocut' : '1',
+    'semilep' : 'n_tightlep == 1',
     'bwindow' : 'fatjet1DRLooseB > 0.8 && fatjet1DRLooseB < 1.2',
     'dphilep' : 'fatjet1DPhiLep1 > 2.0',
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
@@ -40,7 +35,7 @@ base = ' && '.join([
                 ]),
         ])
 
-regionCuts['full'] = JoinCuts(regions)
+regionCuts['full'] = JoinCuts(regions,regionCuts)
 
 fullhadCuts = {
     'boostedt' : 'fatjet1tau32 < 0.5',
