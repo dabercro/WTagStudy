@@ -9,6 +9,8 @@ env = os.environ
 import ROOT
 from ROOT import TFile
 
+import sqlite3
+
 data = TFile(env.get('CrombieInFilesDir') + '/wscale_Data.root')
 mc   = TFile(env.get('CrombieInFilesDir') + '/res/wscale_TTJets.root')
 
@@ -30,10 +32,32 @@ plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_tau21_massp') + '
 
 hists = plotter.MakeHists(1,0,10)
 
+listOfInt = []
+
 for hist in hists:
     error = ROOT.Double()
-    print('\nIntegral:    ' + str(hist.IntegralAndError(1,1,error)))
+    integral = hist.IntegralAndError(1,1,error)
+    print('\nIntegral:    ' + str(integral))
     print('Uncertainty: ' + str(error))
+
+    listOfInt.append({'integral' : float(integral), 'error' : float(error)})
 
 data.Close()
 mc.Close()
+
+conn = sqlite3.connect('test.db')
+cur  = conn.cursor()
+
+cuts = ['none','mass','nsub','full']
+cur.execute('create table yields (IsData, Cut, Yeild, Error)')
+
+for index in range(len(listOfInt)):
+    IsData = True
+    if index % 2 == 1:
+        IsData = False
+
+    result = listOfInt[index]
+    cur.execute('insert into yields values (?,?,?,?)', (IsData, cuts[index/2], result['integral'], result['error']))
+
+conn.commit()
+conn.close()

@@ -19,7 +19,7 @@ regionCuts = {
     'nbtags' : 'n_bjetsLoose == 2',
     'nsmalljets' : 'n_jetsNotFat == 3',
     'fatjetPt' : 'fatjet1Pt > 100',
-    'fullhadronic' : 'fatjet2Pt > 100 && fatjet2DRMediumB < 1.2 && n_looselep == 0',
+    'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
     'tau21' : 'fatjet1tau21 < 0.6',
     'massp' : 'fatjet1PrunedM > 60 && fatjet1PrunedM < 110',
     }
@@ -30,7 +30,7 @@ def JoinCuts(toJoin, cuts=regionCuts):
 base = ' && '.join([
         'fatjet1Pt > 250 && hasThirdFat == 0',
         JoinCuts([
-                'semilep',
+#                'semilep',
                 'nbtags',
                 ]),
         ])
@@ -69,6 +69,12 @@ def cut(category,inRegions):
                 theCut,
                 JoinCuts(cuts=fullhadCuts,toJoin=fullhadCuts.keys())
                 ])
+    else:
+        theCut = ' && '.join([
+                theCut,
+                regionCuts['semilep']
+                ])
+                
         
     return theCut
 

@@ -141,7 +141,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
 
     outTree->triggerFired = inTree->triggerFired;
     
-    //// Here is the lepton filling ////
+    // std::cout << "//// Here is the lepton filling ////" << std::endl;
 
     for (Int_t iLepton = 0; iLepton < inTree->lepP4->GetEntries(); iLepton++) {
       TLorentzVector* tempLepton = (TLorentzVector*) inTree->lepP4->At(iLepton);
@@ -217,7 +217,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     if (outTree->n_looselep > 0)
       outTree->mt = transverseMass(outTree->lep1Pt, outTree->lep1Phi, outTree->met, outTree->metPhi);
     
-    //// Now we go on to look at photons ////
+    // std::cout << "//// Now we go on to look at photons ////" << std::endl;
     
     for (Int_t iPhoton = 0; iPhoton < inTree->photonP4->GetEntries(); iPhoton++) {
       TLorentzVector* tempPhoton = (TLorentzVector*) inTree->photonP4->At(iPhoton);
@@ -335,7 +335,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     if (outTree->n_bjetsLoose < 1)
       continue;
     
-    //// Now check number of non-overlapping taus ////
+    // std::cout << "//// Now check number of non-overlapping taus ////" << std::endl;
 
     for (Int_t iTau = 0; iTau < inTree->tauP4->GetEntries(); iTau++) {
       TLorentzVector* tempTau = (TLorentzVector*) inTree->tauP4->At(iTau);
@@ -374,7 +374,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->n_tau++;
     }
     
-    //// Fat Jet Selection ////
+    // std::cout << "//// Fat Jet Selection ////" << std::endl;
 
     // Count jets that don't overlap with W jets
     
@@ -384,7 +384,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     for (Int_t iFatJet = 0; iFatJet < inTree->fatjetAK8CHSP4->GetEntries(); iFatJet++) {
       TLorentzVector* tempFatJet = (TLorentzVector*) inTree->fatjetAK8CHSP4->At(iFatJet);
 
-      // Clean the fat jets
+      // std::cout << "// Clean the fat jets" << std::endl;
 
       Bool_t match = false;
 
@@ -402,17 +402,25 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         }
       }
 
+      // std::cout << "Done checking" << std::endl;
+
       if (match)
         continue;
 
+      // std::cout << "No matches" << std::endl;
+      // std::cout << tempFatJet << std::endl;
+
       if (outTree->fatjet1Pt < 0) {
+        // std::cout << "test" << std::endl;
         outTree->fatjet1Pt   = tempFatJet->Pt();
         outTree->fatjet1Eta  = tempFatJet->Eta();
+        // std::cout << "test" << std::endl;
         outTree->fatjet1Phi  = tempFatJet->Phi();
         outTree->fatjet1Mass = tempFatJet->M();
-        outTree->fatjet1TrimmedM  = (*(inTree->fatjetAK8CHSTrimmedMass))[iFatJet];
+        // std::cout << "test" << std::endl;
+        // outTree->fatjet1TrimmedM  = (*(inTree->fatjetAK8CHSTrimmedMass))[iFatJet];
         outTree->fatjet1PrunedM   = (*(inTree->fatjetAK8CHSPrunedMass))[iFatJet];
-        outTree->fatjet1FilteredM = (*(inTree->fatjetAK8CHSFilteredMass))[iFatJet];
+        // std::cout << "// outTree->fatjet1FilteredM = (*(inTree->fatjetAK8CHSFilteredMass))[iFatJet];" << std::endl;
         outTree->fatjet1SoftDropM = (*(inTree->fatjetAK8CHSSoftdropMass))[iFatJet];
         outTree->fatjet1tau1  = (*(inTree->fatjetAK8CHSTau1))[iFatJet];
         outTree->fatjet1tau2  = (*(inTree->fatjetAK8CHSTau2))[iFatJet];
@@ -429,7 +437,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
           if (tempJet->Pt() > 30 && checkDR < overlapjetDR)
             ++overlapping;
 
-          // Check loose distance
+          // std::cout << "// Check loose distance" << std::endl;
           if ((*(inTree->jetBdiscr))[iJet] > bCutLoose) {
             if (checkDR < outTree->fatjet1DRLooseB)
                 outTree->fatjet1DRLooseB = checkDR;
@@ -439,7 +447,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
               if (checkDR < outTree->fatjet1DRMediumB)
                 outTree->fatjet1DRMediumB = checkDR;
 
-              // Check tight distance
+              // std::cout << "// Check tight distance" << std::endl;
               if ((*(inTree->jetBdiscr))[iJet] > bCutTight) {
                 if (checkDR < outTree->fatjet1DRTightB)
                   outTree->fatjet1DRTightB = checkDR;
@@ -452,6 +460,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
           outTree->fatjet1DPhiLep1 = deltaPhi(outTree->fatjet1Phi, outTree->lep1Phi);
 
         if (inTree->metP4_GEN->GetEntries() > 0) {
+
+          // std::cout << "Gen Checking" << std::endl;
+
           for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
             Int_t checkPdgId = abs((*(inTree->genPdgId))[iGen]);
             if (checkPdgId != 23 && checkPdgId != 24)
@@ -465,6 +476,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
               outTree->fatjet1GenWMass = tempGen->M();
             }
           }
+          // std::cout << "Gen Checking Done" << std::endl;
         }
       }
 
@@ -473,9 +485,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet2Eta  = tempFatJet->Eta();
         outTree->fatjet2Phi  = tempFatJet->Phi();
         outTree->fatjet2Mass = tempFatJet->M();
-        outTree->fatjet2TrimmedM  = (*(inTree->fatjetAK8CHSTrimmedMass))[iFatJet];
+        // outTree->fatjet2TrimmedM  = (*(inTree->fatjetAK8CHSTrimmedMass))[iFatJet];
         outTree->fatjet2PrunedM   = (*(inTree->fatjetAK8CHSPrunedMass))[iFatJet];
-        outTree->fatjet2FilteredM = (*(inTree->fatjetAK8CHSFilteredMass))[iFatJet];
+        // outTree->fatjet2FilteredM = (*(inTree->fatjetAK8CHSFilteredMass))[iFatJet];
         outTree->fatjet2SoftDropM = (*(inTree->fatjetAK8CHSSoftdropMass))[iFatJet];
         outTree->fatjet2tau1  = (*(inTree->fatjetAK8CHSTau1))[iFatJet];
         outTree->fatjet2tau2  = (*(inTree->fatjetAK8CHSTau2))[iFatJet];
