@@ -8,3 +8,4 @@ out.*
 *.pyc
 OutTree.h
 OutTree.cc
+*plots*
