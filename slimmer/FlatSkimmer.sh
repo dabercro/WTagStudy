@@ -27,22 +27,22 @@ CrombieFlatSkimmer  --cut '1' --tree 'events' --copy 'htotal' --run 'runNum' --l
 
 ## tt stuff
 
-cp $CrombieSkimDir/wscale_TT*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT/.
+cp $CrombieSkimDir/wscale_TTJets*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X/.
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/res --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/res --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW > 0.2 && fatjet1DRGenW < 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/probtop --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW > 0.2 && fatjet1DRGenW < 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/probtop --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW > 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/nonres --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW > 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/nonres --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet2Pt > 0 && fatjet2DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/res2 --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet2Pt > 0 && fatjet2DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/res2 --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet2Pt > 0 && fatjet2DRGenW > 0.2 && fatjet2DRGenW < 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/probtop2 --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet2Pt > 0 && fatjet2DRGenW > 0.2 && fatjet2DRGenW < 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/probtop2 --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet2Pt > 0 && fatjet2DRGenW > 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/nonres2 --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet2Pt > 0 && fatjet2DRGenW > 1.0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/nonres2 --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1PrunedM > 125' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/highmass --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1PrunedM > 125' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/highmass --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1PrunedM < 125 && fatjet1PrunedM > 35' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/goodmass --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1PrunedM < 125 && fatjet1PrunedM > 35' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/goodmass --json $CrombieGoodRuns -d
 
-CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1PrunedM < 35' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT --outdir $CrombieSkimDir/lowmass --json $CrombieGoodRuns -d
+CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1PrunedM < 35' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/lowmass --json $CrombieGoodRuns -d
