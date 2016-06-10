@@ -67,6 +67,9 @@ def SetupArgs():
 
 def RunPlots(categories):
     cutList = ['nocut','full']
+    cutList.append('full_tau21')
+    cutList.append('full_massp')
+    cutList.append('full_massp_tau21')
     MakePlots(categories,cutList,SetupArgs())
     return
     for region in regions:
