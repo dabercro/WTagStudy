@@ -448,8 +448,10 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
           }
         }
 
-        if (outTree->lep1Pt > 0)
+        if (outTree->lep1Pt > 0) {
           outTree->fatjet1DPhiLep1 = deltaPhi(outTree->fatjet1Phi, outTree->lep1Phi);
+          outTree->fatjet1DRLep1 = deltaR(outTree->fatjet1Eta, outTree->fatjet1Phi, outTree->lep1Eta, outTree->lep1Phi);
+        }
 
         if (inTree->metP4_GEN->GetEntries() > 0) {
           for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
@@ -511,8 +513,10 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
           }
         }
 
-        if (outTree->lep1Pt > 0)
+        if (outTree->lep1Pt > 0) {
           outTree->fatjet2DPhiLep1 = deltaPhi(outTree->fatjet2Phi, outTree->lep1Phi);
+          outTree->fatjet2DRLep1 = deltaR(outTree->fatjet2Eta, outTree->fatjet2Phi, outTree->lep1Eta, outTree->lep1Phi);
+        }
 
         if (inTree->metP4_GEN->GetEntries() > 0) {
           for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
@@ -531,7 +535,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         }
       }
       else
-        outTree->hasThirdFat = 1;
+        outTree->thirdFatMass = TMath::Max(outTree->thirdFatMass, (*(inTree->fatjetAK8CHSPrunedMass))[iFatJet]);
     }
 
     if (outTree->fatjet1Pt < 0)
@@ -581,6 +585,103 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     }
 
     outTree->n_jetsNotFat = outTree->n_jetsTot - overlapping;
+
+    float prunedCheck = 50.0;
+
+    if (outTree->thirdFatMass < prunedCheck) {
+
+      if (outTree->fatjet2PrunedM < prunedCheck) {
+        outTree->fatjetPt = outTree->fatjet1Pt;
+        outTree->fatjetEta = outTree->fatjet1Eta;
+        outTree->fatjetPhi = outTree->fatjet1Phi;
+        outTree->fatjetMass = outTree->fatjet1Mass;
+        outTree->fatjetTrimmedM = outTree->fatjet1TrimmedM;
+        outTree->fatjetPrunedM = outTree->fatjet1PrunedM;
+        outTree->fatjetFilteredM = outTree->fatjet1FilteredM;
+        outTree->fatjetSoftDropM = outTree->fatjet1SoftDropM;
+        outTree->fatjettau3 = outTree->fatjet1tau3;
+        outTree->fatjettau2 = outTree->fatjet1tau2;
+        outTree->fatjettau1 = outTree->fatjet1tau1;
+        outTree->fatjettau21 = outTree->fatjet1tau21;
+        outTree->fatjettau32 = outTree->fatjet1tau32;
+        outTree->fatjetDRGenW = outTree->fatjet1DRGenW;
+        outTree->fatjetGenWPt = outTree->fatjet1GenWPt;
+        outTree->fatjetGenWMass = outTree->fatjet1GenWMass;
+        outTree->fatjetDRLooseB = outTree->fatjet1DRLooseB;
+        outTree->fatjetDRMediumB = outTree->fatjet1DRMediumB;
+        outTree->fatjetDRTightB = outTree->fatjet1DRTightB;
+        outTree->fatjetDPhiLep1 = outTree->fatjet1DPhiLep1;
+        outTree->fatjetDRLep1 = outTree->fatjet1DRLep1;
+        outTree->fatjetMaxBTag = outTree->fatjet1MaxBTag;
+        outTree->fatjetEta = outTree->fatjet1Eta;
+        outTree->fatjetPhi = outTree->fatjet1Phi;
+        outTree->fatjetMass = outTree->fatjet1Mass;
+        outTree->fatjetTrimmedM = outTree->fatjet1TrimmedM;
+        outTree->fatjetPrunedM = outTree->fatjet1PrunedM;
+        outTree->fatjetFilteredM = outTree->fatjet1FilteredM;
+        outTree->fatjetSoftDropM = outTree->fatjet1SoftDropM;
+        outTree->fatjettau3 = outTree->fatjet1tau3;
+        outTree->fatjettau2 = outTree->fatjet1tau2;
+        outTree->fatjettau1 = outTree->fatjet1tau1;
+        outTree->fatjettau21 = outTree->fatjet1tau21;
+        outTree->fatjettau32 = outTree->fatjet1tau32;
+        outTree->fatjetDRGenW = outTree->fatjet1DRGenW;
+        outTree->fatjetGenWPt = outTree->fatjet1GenWPt;
+        outTree->fatjetGenWMass = outTree->fatjet1GenWMass;
+        outTree->fatjetDRLooseB = outTree->fatjet1DRLooseB;
+        outTree->fatjetDRMediumB = outTree->fatjet1DRMediumB;
+        outTree->fatjetDRTightB = outTree->fatjet1DRTightB;
+        outTree->fatjetDPhiLep1 = outTree->fatjet1DPhiLep1;
+        outTree->fatjetDRLep1 = outTree->fatjet1DRLep1;
+        outTree->fatjetMaxBTag = outTree->fatjet1MaxBTag;
+      }
+
+      else if (outTree->fatjet2PrunedM < prunedCheck) {
+        outTree->fatjetPt = outTree->fatjet2Pt;
+        outTree->fatjetEta = outTree->fatjet2Eta;
+        outTree->fatjetPhi = outTree->fatjet2Phi;
+        outTree->fatjetMass = outTree->fatjet2Mass;
+        outTree->fatjetTrimmedM = outTree->fatjet2TrimmedM;
+        outTree->fatjetPrunedM = outTree->fatjet2PrunedM;
+        outTree->fatjetFilteredM = outTree->fatjet2FilteredM;
+        outTree->fatjetSoftDropM = outTree->fatjet2SoftDropM;
+        outTree->fatjettau3 = outTree->fatjet2tau3;
+        outTree->fatjettau2 = outTree->fatjet2tau2;
+        outTree->fatjettau1 = outTree->fatjet2tau1;
+        outTree->fatjettau21 = outTree->fatjet2tau21;
+        outTree->fatjettau32 = outTree->fatjet2tau32;
+        outTree->fatjetDRGenW = outTree->fatjet2DRGenW;
+        outTree->fatjetGenWPt = outTree->fatjet2GenWPt;
+        outTree->fatjetGenWMass = outTree->fatjet2GenWMass;
+        outTree->fatjetDRLooseB = outTree->fatjet2DRLooseB;
+        outTree->fatjetDRMediumB = outTree->fatjet2DRMediumB;
+        outTree->fatjetDRTightB = outTree->fatjet2DRTightB;
+        outTree->fatjetDPhiLep1 = outTree->fatjet2DPhiLep1;
+        outTree->fatjetDRLep1 = outTree->fatjet2DRLep1;
+        outTree->fatjetMaxBTag = outTree->fatjet2MaxBTag;
+        outTree->fatjetEta = outTree->fatjet2Eta;
+        outTree->fatjetPhi = outTree->fatjet2Phi;
+        outTree->fatjetMass = outTree->fatjet2Mass;
+        outTree->fatjetTrimmedM = outTree->fatjet2TrimmedM;
+        outTree->fatjetPrunedM = outTree->fatjet2PrunedM;
+        outTree->fatjetFilteredM = outTree->fatjet2FilteredM;
+        outTree->fatjetSoftDropM = outTree->fatjet2SoftDropM;
+        outTree->fatjettau3 = outTree->fatjet2tau3;
+        outTree->fatjettau2 = outTree->fatjet2tau2;
+        outTree->fatjettau1 = outTree->fatjet2tau1;
+        outTree->fatjettau21 = outTree->fatjet2tau21;
+        outTree->fatjettau32 = outTree->fatjet2tau32;
+        outTree->fatjetDRGenW = outTree->fatjet2DRGenW;
+        outTree->fatjetGenWPt = outTree->fatjet2GenWPt;
+        outTree->fatjetGenWMass = outTree->fatjet2GenWMass;
+        outTree->fatjetDRLooseB = outTree->fatjet2DRLooseB;
+        outTree->fatjetDRMediumB = outTree->fatjet2DRMediumB;
+        outTree->fatjetDRTightB = outTree->fatjet2DRTightB;
+        outTree->fatjetDPhiLep1 = outTree->fatjet2DPhiLep1;
+        outTree->fatjetDRLep1 = outTree->fatjet2DRLep1;
+        outTree->fatjetMaxBTag = outTree->fatjet2MaxBTag;
+      }
+    }
 
     outTree->Fill();
 
