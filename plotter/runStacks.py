@@ -12,5 +12,5 @@ mkdir -p $CrombieOutPlotDir 2> /dev/null
 wait
 
 cd ~/www
-makePage.sh $CrombieOutPlotDir 3
+./makePage.sh $CrombieOutPlotDir 3
 cd - 1> /dev/null
