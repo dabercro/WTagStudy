@@ -9,3 +9,6 @@ out.*
 OutTree.h
 OutTree.cc
 *plots*
+*.pdf
+*.aux
+*.toc
