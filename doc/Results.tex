@@ -1,0 +1,114 @@
+\documentclass{article}
+
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{siunitx}
+\usepackage{graphicx}
+
+\graphicspath{{figs/}}
+
+\begin{document}
+
+\section{Hadronic Vector Boson Tagging Scale Factors} \label{sec:wscale}
+
+The goal of this study was to determine the scale factors that should
+be applied to MC when tagging for hadronic vector bosons is applied.
+We did this by studying hadronic W bosons in a tight $t\bar{t}$ selection.
+The result has larger uncertainties due to relatively low yields,
+but this will be decreased significantly as more data is gathered.
+
+\subsection{Selection for $t\bar{t}$} \label{sec:wscale_selection}
+
+To match the selection used in the Mono-V category of the analysis,
+all events require one anti-$k_T$, $R = 0.8$ ``fat'' jet with $p_T > \SI{250}{GeV}$.
+To select semi-leptonic $t\bar{t}$ events, two loose b-tagged anti-$k_T$, $R = 0.4$
+jets with $csv > 0.605$ and one tight muon (electron) with
+$p_T > \SI{20}{GeV} (\SI{40}{GeV})$ are also required.
+Finally, we only allow for one additional anti-$k_T$, $R = 0.4$ jet from ISR, \emph{etc.}
+in the event to ensure a clean $t\bar{t}$ selection.
+
+To evaluate the combinatoric backgrounds, we split the TTJets sample into three regions
+as shown in Figure~\ref{fig:wscale_DRGen}.
+\begin{itemize}
+\item W-matched: in these events, the generator W is within $\Delta R < 0.2$ from the
+  reconstructed fat jet. These are our signal events.
+\item Pulled off W: In these events, the jet is pulled away from initial W direction.
+  From Figure~\ref{fig:wscale_DRb}, we can guess that this is most likely from the jet from
+  the W is merged with the b jet from the top decay.
+  This is not considered signal.
+\item Recoiling Jet: For jets very far from the nearest generator W, we assume the selected
+  jet is actually a jet from an additional radiated gluon or pileup.
+\end{itemize}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{semilep_nocut_fatjetDRGenW.pdf}
+  \caption{The TTJets sample is split based on the distance of the reconstructed fat jet
+  from the nearest generator W. Jets close to the W are considered to be signal.}
+  \label{fig:wscale_DRGen}
+\end{figure}
+
+Additional cuts from the obvious Mono-V and $t\bar{t}$ selection are 
+justified by Figures~\ref{fig:wscale_DRb} and \ref{fig:wscale_DPhiLep}.
+We use the selection $0.8 < \Delta R(j_b,j_\text{fat}) < 1.2$ 
+and $\Delta\phi(\ell,j_\text{fat})$ to cut out the two combinatoric backgrounds.
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{semilep_nocut_fatjetDRLooseB.pdf}
+    \caption{$\Delta R$ between the reconstructed fat jet and the closest loose
+    b-tagged jet is shown. When too close to the b-jet, the fat jet is pulled from
+    the W. Recoiling jets are more likely to be far away.}
+    \label{fig:wscale_DRb}
+  \end{minipage}
+  ~
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{semilep_nocut_fatjetDPhiLep1.pdf}
+    \caption{$\Delta\phi$ between the reconstructed fat jet and the tight lepton
+      is shown. While not as discriminating as $\Delta R$, this can clean up the selection
+      as well.}
+    \label{fig:wscale_DPhiLep}
+  \end{minipage}
+\end{figure}
+  
+\subsection{Vector Tagging Variables and Scale Factor} \label{sec:wscale_tagging}
+
+We use the loose cut-based tagger of $\SI{60}{GeV} < m_\text{pruned} < \SI{110}{GeV}$
+and $\tau_2/\tau_1 < 0.6$.
+The distributions of the two variables after the selection described
+in the previous section is applied are shown in
+Figures~\ref{fig:wscale_massp} and \ref{fig:wscale_tau21}.
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{semilep_full_fatjetPrunedM.pdf}
+    \caption{The distribution of the pruned mass is shown above.}
+    \label{fig:wscale_massp}
+  \end{minipage}
+  ~
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{semilep_nocut_fatjetDPhiLep1.pdf}
+    \caption{The distribution of $\tau_2/\tau_1$ is shown above.}
+    \label{fig:wscale_tau21}
+  \end{minipage}
+\end{figure}
+  
+The scale factor is determined by counting the W-matched MC and the background-subtracted data.
+An uncertainty factor of 100\% is applied to this background subtraction.
+All other uncertainty results from statistical uncertainties.
+Table~\ref{tab:wscale_res} shows resulting scale factors from this.
+
+
+
+Historically, the low pruned mass peak is ignored in scale factor measurements. 
+Table~\ref{tab:wscale_hmm} shows the results from this approach, though it is not recommended
+since the scale factors between MC and Data are different in this region.
+
+
+  
+\end{document}
