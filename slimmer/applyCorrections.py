@@ -11,9 +11,10 @@ applicator = Corrector.MakeApplicator('mcFactors',True,'events','events',100000)
 def addCorr(name,expr,cut,fileName,histName):
     applicator.AddCorrector(Corrector.MakeCorrector(name,expr,cut,fileName,histName))
 
-addCorr('puWeight','npv','1','files/new_puWeights_13TeV_25ns.root','puWeights')
+addCorr('puWeight','npv','1','files/puWeight.root','puWeight')
 
 applicator.AddFactorToMerge('mcWeight')
+applicator.AddFactorToMerge('topPtReweighting')
 
 applicator.SetInDirectory(directory)
 

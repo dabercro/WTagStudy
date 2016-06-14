@@ -1,0 +1,3 @@
+/store/user/dabercro/Nero/76X
+eoshost=eosuser
+/eos/user/d/dabercro/Nero/76X

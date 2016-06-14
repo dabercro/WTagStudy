@@ -13,25 +13,25 @@ regionCuts = {
     'nocut' : '1',
 #    'nocut' : 'vectorSumPt(lep1Pt,lep1Phi,met,metPhi) > 100',
     'semilep' : 'n_tightlep == 1',
-    'bwindow' : 'fatjet1DRLooseB > 0.8 && fatjet1DRLooseB < 1.2',
-    'dphilep' : 'fatjet1DPhiLep1 > 2.0',
+    'bwindow' : 'fatjetDRLooseB > 0.8 && fatjetDRLooseB < 1.2',
+    'dphilep' : 'fatjetDPhiLep1 > 2.0',
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
     'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
     'nbtags' : 'n_bjetsLoose == 2',
     'nsmalljets' : 'n_jetsNotFat == 3',
-    'fatjetPt' : 'fatjet1Pt > 100',
+    'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
-    'tau21' : 'fatjet1tau21 < 0.6',
-    'massp' : 'fatjet1PrunedM > 60 && fatjet1PrunedM < 110',
+    'tau21' : 'fatjettau21 < 0.6',
+    'massp' : 'fatjetPrunedM > 60 && fatjetPrunedM < 110',
     }
 
 def JoinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
-        'fatjet1Pt > 250 && hasThirdFat == 0',
+        'fatjetPt > 250 && thirdFatMass < 50',
         JoinCuts([
-#                'semilep',
+                'semilep',
                 'nbtags',
                 ]),
         ])
