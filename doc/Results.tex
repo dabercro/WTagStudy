@@ -25,6 +25,9 @@ jets with $csv > 0.605$ and one tight muon (electron) with
 $p_T > \SI{20}{GeV} (\SI{40}{GeV})$ are also required.
 Finally, we only allow for one additional anti-$k_T$, $R = 0.4$ jet from ISR, \emph{etc.}
 in the event to ensure a clean $t\bar{t}$ selection.
+If the other jet is boosted enough to create another fat jet, we use the requirement 
+of all other fat jets that is not the selection jet has $m_\text{pruned} < \SI{50}{GeV}$.
+Note that this is not a direct cut on the jet being selected.
 
 To evaluate the combinatoric backgrounds, we split the TTJets sample into three regions
 as shown in Figure~\ref{fig:wscale_DRGen}.
@@ -92,7 +95,7 @@ Figures~\ref{fig:wscale_massp} and \ref{fig:wscale_tau21}.
   ~
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{semilep_nocut_fatjetDPhiLep1.pdf}
+    \includegraphics[width=\linewidth]{semilep_full_fatjettau21.pdf}
     \caption{The distribution of $\tau_2/\tau_1$ is shown above.}
     \label{fig:wscale_tau21}
   \end{minipage}
@@ -103,12 +106,40 @@ An uncertainty factor of 100\% is applied to this background subtraction.
 All other uncertainty results from statistical uncertainties.
 Table~\ref{tab:wscale_res} shows resulting scale factors from this.
 
-
+\begin{table}[h]
+  \caption{Scale factors from using all of the data from the previous selection are given.}
+  \begin{tabular}{c | c | c | c | c}
+    \hline
+    & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ cut & Full V-tag cut \\
+    \hline
+    Background Subtracted Data & 60.33 \pm 23.58 & 36.69 \pm 9.75 & 
+    43.69 \pm 14.60 & 35.26 \pm 9.00 \\
+    W-matched MC & 55.68 \pm 3.92 & 41.79 \pm 3.36 & 44.21 \pm 3.48 & 39.17 \pm 3.26 \\
+    \hline
+    Normalized Ratio & 1.00 \pm 0.40 & 0.81 \pm 0.23 & 0.91 \pm 0.31 & 0.83 \pm 0.22 \\
+    \hline
+  \end{tabular}
+  \label{tab:wscale_res}
+\end{table}
 
 Historically, the low pruned mass peak is ignored in scale factor measurements. 
 Table~\ref{tab:wscale_hmm} shows the results from this approach, though it is not recommended
 since the scale factors between MC and Data are different in this region.
 
-
+\begin{table}[h]
+  \caption{Scale factors from adding a $m_\text{pruned} > \SI{25}{GeV}$ cut.}
+  \begin{tabular}{c | c | c | c | c}
+    \hline
+    & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ cut & Full V-tag cut \\
+    \hline
+    Background Subtracted Data & 49.27 \pm 16.51 & 37.00 \pm 9.42 & 44.61 \pm 13.65 & 
+    35.52 \pm 8.73 \\
+    W-matched MC & 50.22 \pm 3.69 & 41.79 \pm 3.36 & 43.92 \pm 3.46 & 39.17 \pm 3.26 \\
+    \hline
+    Normalized Ratio & 1.00 \pm 0.34 & 0.90 \pm 0.24 & 1.04 \pm 0.33 & 0.92 \pm 0.24 \\
+    \hline
+  \end{tabular}
+  \label{tab:wscale_hmm}
+\end{table}
   
 \end{document}

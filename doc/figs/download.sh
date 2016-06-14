@@ -6,6 +6,6 @@ files="semilep_full_fatjetPrunedM.pdf semilep_full_fatjettau21.pdf semilep_nocut
 
 for f in $files
 do
-    wget http://dabercro.web.cern.ch/dabercro/plots/160614_80X_fin/useful/$f
+    wget http://dabercro.web.cern.ch/dabercro/plots/160614_80X_fin/$f
     pdfcrop $f $f
 done
