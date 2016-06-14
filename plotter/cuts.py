@@ -76,6 +76,8 @@ def cut(category,inRegions):
                 regionCuts['semilep']
                 ])
                 
+    if category == 'nolowmass':
+        theCut += ' && fatjetPrunedM > 25'
         
     return theCut
 
