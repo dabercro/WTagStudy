@@ -2,6 +2,7 @@
 
 from CrombieTools.PlotTools.PlotHists import plotter
 from CrombieTools.LoadConfig import cuts
+import math as m
 import os
 
 env = os.environ
@@ -9,55 +10,61 @@ env = os.environ
 import ROOT
 from ROOT import TFile
 
-import sqlite3
-
 data = TFile(env.get('CrombieInFilesDir') + '/wscale_Data.root')
 mc   = TFile(env.get('CrombieInFilesDir') + '/res/wscale_TTJets.root')
+back = TFile(env.get('CrombieInFilesDir') + '/nonres/wscale_TTJets.root')
+
+factor = str(670.3 / mc.htotal.GetBinContent(1) * float(os.environ['CrombieLuminosity']))
 
 dataTree = data.events
 mcTree = mc.events
+backTree = back.events
 
 plotter.SetDefaultExpr('fatjet1DRLooseB')
 plotter.AddTreeWeight(dataTree,cuts.cut('semilep','full'))
-plotter.AddTreeWeight(mcTree,'(' + cuts.cut('semilep','full') + ') * (mcFactors)')
+plotter.AddTreeWeight(mcTree,'(' + cuts.cut('semilep','full') + ') * (mcFactors * '+ factor +')')
 
 plotter.AddTreeWeight(data.events,cuts.cut('semilep','full_massp'))
-plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_massp') + ') * (mcFactors)')
+plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_massp') + ') * (mcFactors * '+ factor +')')
 
 plotter.AddTreeWeight(data.events,cuts.cut('semilep','full_tau21'))
-plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_tau21') + ') * (mcFactors)')
+plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_tau21') + ') * (mcFactors * '+ factor +')')
 
 plotter.AddTreeWeight(data.events,cuts.cut('semilep','full_tau21_massp'))
-plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_tau21_massp') + ') * (mcFactors)')
+plotter.AddTreeWeight(mc.events,'(' + cuts.cut('semilep','full_tau21_massp') + ') * (mcFactors * '+ factor +')')
+
+plotter.AddTreeWeight(backTree,'(' + cuts.cut('semilep','full') + ') * (mcFactors * '+ factor +')')
+plotter.AddTreeWeight(backTree,'(' + cuts.cut('semilep','full_massp') + ') * (mcFactors * '+ factor +')')
+plotter.AddTreeWeight(backTree,'(' + cuts.cut('semilep','full_tau21') + ') * (mcFactors * '+ factor +')')
+plotter.AddTreeWeight(backTree,'(' + cuts.cut('semilep','full_tau21_massp') + ') * (mcFactors * '+ factor +')')
+
 
 hists = plotter.MakeHists(1,0,10)
 
-listOfInt = []
+ints = []
+errs = []
 
 for hist in hists:
     error = ROOT.Double()
-    integral = hist.IntegralAndError(1,1,error)
-    print('\nIntegral:    ' + str(integral))
+    inte = hist.IntegralAndError(1,1,error)
+    print('\nIntegral:    ' + str(inte))
     print('Uncertainty: ' + str(error))
 
-    listOfInt.append({'integral' : float(integral), 'error' : float(error)})
+    ints.append(inte)
+    errs.append(error)
 
 data.Close()
 mc.Close()
 
-conn = sqlite3.connect('test.db')
-cur  = conn.cursor()
+for index in range(4):
+    data  = ints[index*2] - ints[index + 8]
+    dataE = m.sqrt(m.pow(errs[index*2],2) + m.pow(errs[index + 8],2))
 
-cuts = ['none','mass','nsub','full']
-cur.execute('create table yields (IsData, Cut, Yeild, Error)')
+    mc  = ints[index*2 + 1]
+    mcE = errs[index*2 + 1]
 
-for index in range(len(listOfInt)):
-    IsData = True
-    if index % 2 == 1:
-        IsData = False
+    print ('Norm ratio:')
+    print (data/mc * ints[1]/(ints[0] - ints[8]))
 
-    result = listOfInt[index]
-    cur.execute('insert into yields values (?,?,?,?)', (IsData, cuts[index/2], result['integral'], result['error']))
-
-conn.commit()
-conn.close()
+    print ('Norm uncertainty:')
+    print (m.sqrt(m.pow(dataE/mc,2) + m.pow(data/mc/mc*mcE,2)) * ints[1]/(ints[0] - ints[8]))
