@@ -1,0 +1,203 @@
+\documentclass{beamer}
+
+\author[D. Abercrombie]{
+  Daniel Abercrombie
+}
+
+\title{\bf \sffamily First Pass at W-Tag Scale Factors}
+\date{\today}
+
+\usecolortheme{dove}
+
+\usepackage[absolute,overlay]{textpos}
+\usefonttheme{serif}
+\usepackage{appendixnumberbeamer}
+\usepackage{isotope}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\setbeamerfont{frametitle}{size=\Large,series=\bf\sffamily}
+\setbeamertemplate{frametitle}[default][center]
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{makecell}
+
+\setbeamertemplate{navigation symbols}{}
+\usepackage{graphicx}
+\usepackage{color}
+\setbeamertemplate{footline}[text line]{\parbox{1.083\linewidth}{\footnotesize \hfill \insertshortauthor \hfill \insertpagenumber /\inserttotalframenumber}}
+\setbeamertemplate{headline}[text line]{\parbox{1.083\linewidth}{\footnotesize \hspace{-0.083\linewidth} \textcolor{blue}{\sffamily \insertsection \hfill \insertsubsection}}}
+
+\usepackage{changepage}
+
+\newcommand{\beginbackup}{
+  \newcounter{framenumbervorappendix}
+  \setcounter{framenumbervorappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+}
+
+\graphicspath{{figs/}}
+
+\logo{\includegraphics[height=0.35in]{../MIT-logo.pdf}}
+
+\begin{document}
+
+\begin{frame}[nonumbering]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Introduction}
+  The goal of this study was to determine the scale factors that should
+  be applied to MC when tagging for hadronic vector bosons is applied.
+  We did this by studying hadronic W bosons in a tight $t\bar{t}$ selection.
+  The result has larger uncertainties due to relatively low yields,
+  but this will be decreased significantly as more data is gathered.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Selection}
+  \begin{itemize}
+  \item one anti-$k_T$, $R = 0.8$ ``fat'' jet with $p_T > \SI{250}{GeV}$ \\
+    (to match Mono-V analysis)
+  \item two loose b-tagged anti-$k_T$, $R = 0.4$ jets with $csv > 0.605$ and 
+    one tight muon (electron) with $p_T > \SI{20}{GeV} (\SI{40}{GeV})$ \\
+    (to selection $t\bar{t}$)
+  \item allow only one additional anti-$k_T$, $R = 0.4$ jet from ISR, \emph{etc.}
+    (clean $t\bar{t}$ selection)
+  \item all other fat jets that is not the selection jet has $m_\text{pruned} < \SI{50}{GeV}$
+    (to reduce confusion between fat jets)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Classifying MC Events}
+  Classify TTJets events based off distance between the reconstructed jet and the
+  generator W boson
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \vspace{20pt}
+      \includegraphics[width=\linewidth]{semilep_nocut_fatjetDRGenW.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \begin{itemize}
+      \item W-matched: These are our signal events.
+      \item Pulled off W: most likely from the jet from
+        the W is merged with the b jet from the top decay.
+      \item Recoiling Jet: we assume the selected
+        jet is from an additional radiated gluon or pileup.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Additional Cuts for Cleaning}
+  From looking at these plots, two more cuts were picked for cleaning
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{$\Delta R$(fat jet and closest b-tag)}
+      \includegraphics[width=\linewidth]{semilep_nocut_fatjetDRLooseB.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{$\Delta \phi$(fat jet and lepton)}
+      \includegraphics[width=\linewidth]{semilep_nocut_fatjetDPhiLep1.pdf}
+    \end{column}
+  \end{columns}
+  \begin{itemize}
+  \item $0.8 < \Delta R(j_b,j_\text{fat}) < 1.2$ 
+  \item $\Delta\phi(\ell,j_\text{fat})$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vector Tagging Variables}
+  After all cuts are applied, $m_\text{pruned}$ and $\tau_2/\tau_1$ look like this
+  \vspace{10pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Pruned Mass}
+      \includegraphics[width=\linewidth]{semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{N-subjettiness}
+      \includegraphics[width=\linewidth]{semilep_full_fatjettau21.pdf}
+    \end{column}
+  \end{columns}
+  \vspace{10pt}
+  \textcolor{red}{Low mass pruned mass is not well modelled \\ at the moment}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors}
+  Apply cuts $\SI{60}{GeV} < m_\text{pruned} < \SI{110}{GeV}$ and $\tau_2/\tau_1 < 0.6$
+
+  Background is subtracted from data with a 100\% uncertainty
+
+  \vspace{10pt}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ cut & Full V-tag cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 60.33 \pm 23.58 & 36.69 \pm 9.75 & 
+      43.69 \pm 14.60 & 35.26 \pm 9.00 \\
+      \makecell{W-matched \\ MC} & 55.68 \pm 3.92 & 41.79 \pm 3.36 & 44.21 \pm 3.48 & 39.17 \pm 3.26 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.40 & 0.81 \pm 0.23 & 0.91 \pm 0.31 & 0.83 \pm 0.22 \\
+      \hline
+    \end{tabular}
+  }
+
+  \vspace{10pt}
+  This is without ignoring the low pruned mass disagreement (which many people ignore)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors}
+  Apply cuts $\SI{60}{GeV} < m_\text{pruned} < \SI{110}{GeV}$ and $\tau_2/\tau_1 < 0.6$
+
+  Background is subtracted from data with a 100\% uncertainty
+
+  \vspace{10pt}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ cut & Full V-tag cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 49.27 \pm 16.51 & 37.00 \pm 9.42 & 44.61 \pm 13.65 & 
+      35.52 \pm 8.73 \\
+      \makecell{W-matched \\ MC} & 50.22 \pm 3.69 & 41.79 \pm 3.36 & 43.92 \pm 3.46 & 39.17 \pm 3.26 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.34 & 0.90 \pm 0.24 & 1.04 \pm 0.33 & 0.92 \pm 0.24 \\
+      \hline
+    \end{tabular}
+  }
+
+  \vspace{10pt}
+  Cutting on $m_\text{pruned} > \SI{25}{GeV}$ to ignore the region where there is disagreement
+  gives a result consistent with 1
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+  \begin{itemize}
+  \item Ignoring where the pruning algorithm fails, we get a scale factor close to 1
+  \item Should try to determine if there are other backgrounds there
+  \item Background subtraction is a large source of uncertainty \\
+    better understanding or optimized cuts will lower this
+  \item Can also reduce uncertainty using other samples \\
+    this was amc@NLO, running over madgraph samples now
+  \item Using more data will also decrease uncertainties
+  \end{itemize}
+\end{frame}
+
+\end{document}

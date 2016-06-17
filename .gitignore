@@ -12,3 +12,8 @@ OutTree.cc
 *.pdf
 *.aux
 *.toc
+*.bbl
+*.blg
+*.nav
+*.out
+*.snm
