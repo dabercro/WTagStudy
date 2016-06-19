@@ -18,4 +18,4 @@ applicator.AddFactorToMerge('topPtReweighting')
 
 applicator.SetInDirectory(directory)
 
-RunOnDirectory(applicator)
+RunOnDirectory(applicator,procs=1)
