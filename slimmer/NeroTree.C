@@ -1,4 +1,3 @@
-#define NeroTree_cxx
 #include "NeroTree.h"
 #include <TH2.h>
 #include <TStyle.h>
@@ -47,11 +46,11 @@ NeroTree::NeroTree(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/afs/cern.ch/work/d/dabercro/eos/cms/store/user/dabercro/Nero/v1.4/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/TTJets_HT-2500toInf_TuneCUETP8M1/160523_184609/0000/NeroNtuples_2.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("root://eoscms.cern.ch//store/user/zdemirag/setup80x/Nero/zey_base/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/160611_193847/0000/NeroNtuples_70.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/afs/cern.ch/work/d/dabercro/eos/cms/store/user/dabercro/Nero/v1.4/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/TTJets_HT-2500toInf_TuneCUETP8M1/160523_184609/0000/NeroNtuples_2.root");
+         f = new TFile("root://eoscms.cern.ch//store/user/zdemirag/setup80x/Nero/zey_base/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/160611_193847/0000/NeroNtuples_70.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/afs/cern.ch/work/d/dabercro/eos/cms/store/user/dabercro/Nero/v1.4/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/TTJets_HT-2500toInf_TuneCUETP8M1/160523_184609/0000/NeroNtuples_2.root:/nero");
+      TDirectory * dir = (TDirectory*)f->Get("root://eoscms.cern.ch//store/user/zdemirag/setup80x/Nero/zey_base/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/160611_193847/0000/NeroNtuples_70.root:/nero");
       dir->GetObject("events",tree);
 
    }
@@ -113,6 +112,7 @@ void NeroTree::Init(TTree *tree)
    jetSelBits = 0;
    jetQ = 0;
    jetQnoPU = 0;
+   jetPtResUncCentral = 0;
    jetPtResUncUp = 0;
    jetPtResUncDown = 0;
    jetpuppiP4 = 0;
@@ -128,7 +128,7 @@ void NeroTree::Init(TTree *tree)
    fatjetAK8CHSTau3 = 0;
    fatjetAK8CHSTrimmedMass = 0;
    fatjetAK8CHSPrunedMass = 0;
-   fatjetAK8CHSFilteredMass = 0;
+   fatjetAK8CHSCorrectedPrunedMass = 0;
    fatjetAK8CHSSoftdropMass = 0;
    fatjetAK8CHSsubjet = 0;
    fatjetAK8CHSnSubjets = 0;
@@ -158,6 +158,7 @@ void NeroTree::Init(TTree *tree)
    lepNhIso = 0;
    lepPhoIso = 0;
    lepPuIso = 0;
+   lepEtaSC = 0;
    metP4 = 0;
    metPtJESUP = 0;
    metPtJESDOWN = 0;
@@ -169,18 +170,31 @@ void NeroTree::Init(TTree *tree)
    metNoHF = 0;
    pfMet_e3p0 = 0;
    trackMet = 0;
+   neutralMet = 0;
+   photonMet = 0;
+   HFMet = 0;
    photonP4 = 0;
    photonIso = 0;
    photonSieie = 0;
    photonSelBits = 0;
    photonChIso = 0;
-   photonChIsoRC = 0;
    photonNhIso = 0;
-   photonNhIsoRC = 0;
    photonPhoIso = 0;
-   photonPhoIsoRC = 0;
    photonPuIso = 0;
-   photonPuIsoRC = 0;
+   photonRawPt = 0;
+   photonE55 = 0;
+   photonHOverE = 0;
+   photonChWorstIso = 0;
+   photonChIsoMax = 0;
+   photonSipip = 0;
+   photonSieip = 0;
+   photonR9 = 0;
+   photonEtaSC = 0;
+   photonS4 = 0;
+   photonMipEnergy = 0;
+   photonTime = 0;
+   photonTimeSpan = 0;
+   photonGenMatched = 0;
    genP4 = 0;
    genjetP4 = 0;
    genPdgId = 0;
@@ -188,6 +202,7 @@ void NeroTree::Init(TTree *tree)
    pdfRwgt = 0;
    genIso = 0;
    genIsoFrixione = 0;
+   genParent = 0;
    triggerFired = 0;
    triggerPrescale = 0;
    triggerLeps = 0;
@@ -227,6 +242,7 @@ void NeroTree::Init(TTree *tree)
    fChain->SetBranchAddress("jetSelBits", &jetSelBits, &b_jetSelBits);
    fChain->SetBranchAddress("jetQ", &jetQ, &b_jetQ);
    fChain->SetBranchAddress("jetQnoPU", &jetQnoPU, &b_jetQnoPU);
+   fChain->SetBranchAddress("jetPtResUncCentral", &jetPtResUncCentral, &b_jetPtResUncCentral);
    fChain->SetBranchAddress("jetPtResUncUp", &jetPtResUncUp, &b_jetPtResUncUp);
    fChain->SetBranchAddress("jetPtResUncDown", &jetPtResUncDown, &b_jetPtResUncDown);
    fChain->SetBranchAddress("jetpuppiP4", &jetpuppiP4, &b_jetpuppiP4);
@@ -242,7 +258,7 @@ void NeroTree::Init(TTree *tree)
    fChain->SetBranchAddress("fatjetAK8CHSTau3", &fatjetAK8CHSTau3, &b_fatjetAK8CHSTau3);
    fChain->SetBranchAddress("fatjetAK8CHSTrimmedMass", &fatjetAK8CHSTrimmedMass, &b_fatjetAK8CHSTrimmedMass);
    fChain->SetBranchAddress("fatjetAK8CHSPrunedMass", &fatjetAK8CHSPrunedMass, &b_fatjetAK8CHSPrunedMass);
-   fChain->SetBranchAddress("fatjetAK8CHSFilteredMass", &fatjetAK8CHSFilteredMass, &b_fatjetAK8CHSFilteredMass);
+   fChain->SetBranchAddress("fatjetAK8CHSCorrectedPrunedMass", &fatjetAK8CHSCorrectedPrunedMass, &b_fatjetAK8CHSCorrectedPrunedMass);
    fChain->SetBranchAddress("fatjetAK8CHSSoftdropMass", &fatjetAK8CHSSoftdropMass, &b_fatjetAK8CHSSoftdropMass);
    fChain->SetBranchAddress("fatjetAK8CHSsubjet", &fatjetAK8CHSsubjet, &b_fatjetAK8CHSsubjet);
    fChain->SetBranchAddress("fatjetAK8CHSnSubjets", &fatjetAK8CHSnSubjets, &b_fatjetAK8CHSnSubjets);
@@ -272,6 +288,7 @@ void NeroTree::Init(TTree *tree)
    fChain->SetBranchAddress("lepNhIso", &lepNhIso, &b_lepNhIso);
    fChain->SetBranchAddress("lepPhoIso", &lepPhoIso, &b_lepPhoIso);
    fChain->SetBranchAddress("lepPuIso", &lepPuIso, &b_lepPuIso);
+   fChain->SetBranchAddress("lepEtaSC", &lepEtaSC, &b_lepEtaSC);
    fChain->SetBranchAddress("metP4", &metP4, &b_metP4);
    fChain->SetBranchAddress("metSumEtRaw", &metSumEtRaw, &b_metSumEtRaw);
    fChain->SetBranchAddress("metPtJESUP", &metPtJESUP, &b_metPtJESUP);
@@ -286,6 +303,9 @@ void NeroTree::Init(TTree *tree)
    fChain->SetBranchAddress("metSumEtRawNoHF", &metSumEtRawNoHF, &b_metSumEtRawNoHF);
    fChain->SetBranchAddress("pfMet_e3p0", &pfMet_e3p0, &b_pfMet_e3p0);
    fChain->SetBranchAddress("trackMet", &trackMet, &b_trackMet);
+   fChain->SetBranchAddress("neutralMet", &neutralMet, &b_neutralMet);
+   fChain->SetBranchAddress("photonMet", &photonMet, &b_photonMet);
+   fChain->SetBranchAddress("HFMet", &HFMet, &b_HFMet);
    fChain->SetBranchAddress("caloMet_Pt", &caloMet_Pt, &b_caloMet_Pt);
    fChain->SetBranchAddress("caloMet_Phi", &caloMet_Phi, &b_caloMet_Phi);
    fChain->SetBranchAddress("caloMet_SumEt", &caloMet_SumEt, &b_caloMet_SumEt);
@@ -296,13 +316,23 @@ void NeroTree::Init(TTree *tree)
    fChain->SetBranchAddress("photonSieie", &photonSieie, &b_photonSieie);
    fChain->SetBranchAddress("photonSelBits", &photonSelBits, &b_photonSelBits);
    fChain->SetBranchAddress("photonChIso", &photonChIso, &b_photonChIso);
-   fChain->SetBranchAddress("photonChIsoRC", &photonChIsoRC, &b_photonChIsoRC);
    fChain->SetBranchAddress("photonNhIso", &photonNhIso, &b_photonNhIso);
-   fChain->SetBranchAddress("photonNhIsoRC", &photonNhIsoRC, &b_photonNhIsoRC);
    fChain->SetBranchAddress("photonPhoIso", &photonPhoIso, &b_photonPhoIso);
-   fChain->SetBranchAddress("photonPhoIsoRC", &photonPhoIsoRC, &b_photonPhoIsoRC);
    fChain->SetBranchAddress("photonPuIso", &photonPuIso, &b_photonPuIso);
-   fChain->SetBranchAddress("photonPuIsoRC", &photonPuIsoRC, &b_photonPuIsoRC);
+   fChain->SetBranchAddress("photonRawPt", &photonRawPt, &b_photonRawPt);
+   fChain->SetBranchAddress("photonE55", &photonE55, &b_photonE55);
+   fChain->SetBranchAddress("photonHOverE", &photonHOverE, &b_photonHOverE);
+   fChain->SetBranchAddress("photonChWorstIso", &photonChWorstIso, &b_photonChWorstIso);
+   fChain->SetBranchAddress("photonChIsoMax", &photonChIsoMax, &b_photonChIsoMax);
+   fChain->SetBranchAddress("photonSipip", &photonSipip, &b_photonSipip);
+   fChain->SetBranchAddress("photonSieip", &photonSieip, &b_photonSieip);
+   fChain->SetBranchAddress("photonR9", &photonR9, &b_photonR9);
+   fChain->SetBranchAddress("photonEtaSC", &photonEtaSC, &b_photonEtaSC);
+   fChain->SetBranchAddress("photonS4", &photonS4, &b_photonS4);
+   fChain->SetBranchAddress("photonMipEnergy", &photonMipEnergy, &b_photonMipEnergy);
+   fChain->SetBranchAddress("photonTime", &photonTime, &b_photonTime);
+   fChain->SetBranchAddress("photonTimeSpan", &photonTimeSpan, &b_photonTimeSpan);
+   fChain->SetBranchAddress("photonGenMatched", &photonGenMatched, &b_photonGenMatched);
    fChain->SetBranchAddress("genP4", &genP4, &b_genP4);
    fChain->SetBranchAddress("genjetP4", &genjetP4, &b_genjetP4);
    fChain->SetBranchAddress("genPdgId", &genPdgId, &b_genPdgId);
@@ -326,6 +356,7 @@ void NeroTree::Init(TTree *tree)
    fChain->SetBranchAddress("pdfRwgt", &pdfRwgt, &b_pdfRwgt);
    fChain->SetBranchAddress("genIso", &genIso, &b_genIso);
    fChain->SetBranchAddress("genIsoFrixione", &genIsoFrixione, &b_genIsoFrixione);
+   fChain->SetBranchAddress("genParent", &genParent, &b_genParent);
    fChain->SetBranchAddress("triggerFired", &triggerFired, &b_triggerFired);
    fChain->SetBranchAddress("triggerPrescale", &triggerPrescale, &b_triggerPrescale);
    fChain->SetBranchAddress("triggerLeps", &triggerLeps, &b_triggerLeps);

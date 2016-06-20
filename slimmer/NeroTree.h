@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Tue May 24 15:28:17 2016 by ROOT version 6.02/13
+// Mon Jun 20 15:51:28 2016 by ROOT version 6.06/01
 // from TTree events/events
-// found on file: /afs/cern.ch/work/d/dabercro/eos/cms/store/user/dabercro/Nero/v1.4/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/TTJets_HT-2500toInf_TuneCUETP8M1/160523_184609/0000/NeroNtuples_2.root
+// found on file: root://eoscms.cern.ch//store/user/zdemirag/setup80x/Nero/zey_base/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/160611_193847/0000/NeroNtuples_70.root
 //////////////////////////////////////////////////////////
 
 #ifndef NeroTree_h
@@ -18,6 +18,7 @@
 #include "vector"
 #include "vector"
 #include "TLorentzVector.h"
+#include "vector"
 
 class NeroTree {
 public :
@@ -53,6 +54,7 @@ public :
    vector<unsigned int> *jetSelBits;
    vector<float>   *jetQ;
    vector<float>   *jetQnoPU;
+   vector<float>   *jetPtResUncCentral;
    vector<float>   *jetPtResUncUp;
    vector<float>   *jetPtResUncDown;
    TClonesArray    *jetpuppiP4;
@@ -68,7 +70,7 @@ public :
    vector<float>   *fatjetAK8CHSTau3;
    vector<float>   *fatjetAK8CHSTrimmedMass;
    vector<float>   *fatjetAK8CHSPrunedMass;
-   vector<float>   *fatjetAK8CHSFilteredMass;
+   vector<float>   *fatjetAK8CHSCorrectedPrunedMass;
    vector<float>   *fatjetAK8CHSSoftdropMass;
    TClonesArray    *fatjetAK8CHSsubjet;
    vector<int>     *fatjetAK8CHSnSubjets;
@@ -98,6 +100,7 @@ public :
    vector<float>   *lepNhIso;
    vector<float>   *lepPhoIso;
    vector<float>   *lepPuIso;
+   vector<float>   *lepEtaSC;
    TClonesArray    *metP4;
    Float_t         metSumEtRaw;
    vector<float>   *metPtJESUP;
@@ -112,6 +115,9 @@ public :
    Float_t         metSumEtRawNoHF;
    TLorentzVector  *pfMet_e3p0;
    TLorentzVector  *trackMet;
+   TLorentzVector  *neutralMet;
+   TLorentzVector  *photonMet;
+   TLorentzVector  *HFMet;
    Float_t         caloMet_Pt;
    Float_t         caloMet_Phi;
    Float_t         caloMet_SumEt;
@@ -122,13 +128,23 @@ public :
    vector<float>   *photonSieie;
    vector<unsigned int> *photonSelBits;
    vector<float>   *photonChIso;
-   vector<float>   *photonChIsoRC;
    vector<float>   *photonNhIso;
-   vector<float>   *photonNhIsoRC;
    vector<float>   *photonPhoIso;
-   vector<float>   *photonPhoIsoRC;
    vector<float>   *photonPuIso;
-   vector<float>   *photonPuIsoRC;
+   vector<float>   *photonRawPt;
+   vector<float>   *photonE55;
+   vector<float>   *photonHOverE;
+   vector<float>   *photonChWorstIso;
+   vector<float>   *photonChIsoMax;
+   vector<float>   *photonSipip;
+   vector<float>   *photonSieip;
+   vector<float>   *photonR9;
+   vector<float>   *photonEtaSC;
+   vector<float>   *photonS4;
+   vector<float>   *photonMipEnergy;
+   vector<float>   *photonTime;
+   vector<float>   *photonTimeSpan;
+   vector<short>   *photonGenMatched;
    TClonesArray    *genP4;
    TClonesArray    *genjetP4;
    vector<int>     *genPdgId;
@@ -152,6 +168,7 @@ public :
    vector<float>   *pdfRwgt;
    vector<float>   *genIso;
    vector<float>   *genIsoFrixione;
+   vector<int>     *genParent;
    vector<int>     *triggerFired;
    vector<float>   *triggerPrescale;
    vector<int>     *triggerLeps;
@@ -187,6 +204,7 @@ public :
    TBranch        *b_jetSelBits;   //!
    TBranch        *b_jetQ;   //!
    TBranch        *b_jetQnoPU;   //!
+   TBranch        *b_jetPtResUncCentral;   //!
    TBranch        *b_jetPtResUncUp;   //!
    TBranch        *b_jetPtResUncDown;   //!
    TBranch        *b_jetpuppiP4;   //!
@@ -202,7 +220,7 @@ public :
    TBranch        *b_fatjetAK8CHSTau3;   //!
    TBranch        *b_fatjetAK8CHSTrimmedMass;   //!
    TBranch        *b_fatjetAK8CHSPrunedMass;   //!
-   TBranch        *b_fatjetAK8CHSFilteredMass;   //!
+   TBranch        *b_fatjetAK8CHSCorrectedPrunedMass;   //!
    TBranch        *b_fatjetAK8CHSSoftdropMass;   //!
    TBranch        *b_fatjetAK8CHSsubjet;   //!
    TBranch        *b_fatjetAK8CHSnSubjets;   //!
@@ -232,6 +250,7 @@ public :
    TBranch        *b_lepNhIso;   //!
    TBranch        *b_lepPhoIso;   //!
    TBranch        *b_lepPuIso;   //!
+   TBranch        *b_lepEtaSC;   //!
    TBranch        *b_metP4;   //!
    TBranch        *b_metSumEtRaw;   //!
    TBranch        *b_metPtJESUP;   //!
@@ -246,6 +265,9 @@ public :
    TBranch        *b_metSumEtRawNoHF;   //!
    TBranch        *b_pfMet_e3p0;   //!
    TBranch        *b_trackMet;   //!
+   TBranch        *b_neutralMet;   //!
+   TBranch        *b_photonMet;   //!
+   TBranch        *b_HFMet;   //!
    TBranch        *b_caloMet_Pt;   //!
    TBranch        *b_caloMet_Phi;   //!
    TBranch        *b_caloMet_SumEt;   //!
@@ -256,13 +278,23 @@ public :
    TBranch        *b_photonSieie;   //!
    TBranch        *b_photonSelBits;   //!
    TBranch        *b_photonChIso;   //!
-   TBranch        *b_photonChIsoRC;   //!
    TBranch        *b_photonNhIso;   //!
-   TBranch        *b_photonNhIsoRC;   //!
    TBranch        *b_photonPhoIso;   //!
-   TBranch        *b_photonPhoIsoRC;   //!
    TBranch        *b_photonPuIso;   //!
-   TBranch        *b_photonPuIsoRC;   //!
+   TBranch        *b_photonRawPt;   //!
+   TBranch        *b_photonE55;   //!
+   TBranch        *b_photonHOverE;   //!
+   TBranch        *b_photonChWorstIso;   //!
+   TBranch        *b_photonChIsoMax;   //!
+   TBranch        *b_photonSipip;   //!
+   TBranch        *b_photonSieip;   //!
+   TBranch        *b_photonR9;   //!
+   TBranch        *b_photonEtaSC;   //!
+   TBranch        *b_photonS4;   //!
+   TBranch        *b_photonMipEnergy;   //!
+   TBranch        *b_photonTime;   //!
+   TBranch        *b_photonTimeSpan;   //!
+   TBranch        *b_photonGenMatched;   //!
    TBranch        *b_genP4;   //!
    TBranch        *b_genjetP4;   //!
    TBranch        *b_genPdgId;   //!
@@ -286,6 +318,7 @@ public :
    TBranch        *b_pdfRwgt;   //!
    TBranch        *b_genIso;   //!
    TBranch        *b_genIsoFrixione;   //!
+   TBranch        *b_genParent;   //!
    TBranch        *b_triggerFired;   //!
    TBranch        *b_triggerPrescale;   //!
    TBranch        *b_triggerLeps;   //!
