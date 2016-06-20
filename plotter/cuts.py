@@ -45,7 +45,7 @@ fullhadCuts = {
 
 # A weight applied to all MC
 
-defaultMCWeight = 'mcFactors'
+defaultMCWeight = 'mcFactors * topPtReweighting'
 
 # Additional weights applied to certain control regions
 

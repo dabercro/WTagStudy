@@ -9,8 +9,8 @@ export CrombieEosDir=80X.txt
 export CrombieFileBase=wscale
 #export CrombieEosDir=/store/user/zdemirag/setup80x/Nero/zey_base
 #export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eoscms/cms$CrombieEosDir
-export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Temp_160618
-export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_160619
+export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Temp_test
+export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_$CROMBIEDATE
 export CrombieSkimDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_$CROMBIEDATE
 export CrombieDirList=TopStudy.txt
 
