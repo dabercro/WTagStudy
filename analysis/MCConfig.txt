@@ -1,0 +1,14 @@
+TTres              res/wscale_TTJets_SingleLeptFromT.root                                        181.5        W-matched_(tt)          857
+TTres              res/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .
+TT              probtop/wscale_TTJets_SingleLeptFromT.root                                    181.5        Pulled_off_W_(tt)       855
+TT              probtop/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
+TT              nonres/wscale_TTJets_SingleLeptFromT.root                                     181.5        Recoiling_Jet_(tt)      856
+TT              nonres/wscale_TTJets_SingleLeptFromTbar.root                                  181.5              .                  .
+TT              wscale_TTJets_DiLept.root                                                      85.4              .                  .
+antitop             wscale_ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8.root     26.22           Single_Top             920
+antitop_5f           wscale_ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8.root         35.6              .                  .
+top_5f               wscale_ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8.root             35.6              .                  .
+wln_100               wscale_WJetsToLNu_Pt-100To250.root                                       676.3      W_#rightarrow_l#nu       633
+wln_250               wscale_WJetsToLNu_Pt-250To400.root                                        23.94            .                  .
+wln_400               wscale_WJetsToLNu_Pt-400To600.root                                         3.031           .                  .
+wln_600               wscale_WJetsToLNu_Pt-600ToInf.root                                         0.4524          .                  .
