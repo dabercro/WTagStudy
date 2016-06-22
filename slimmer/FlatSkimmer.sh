@@ -23,13 +23,13 @@ rm /afs/cern.ch/work/d/dabercro/public/Summer16/Data/* /afs/cern.ch/work/d/daber
 
 ## Data
 
-hadd -f /afs/cern.ch/work/d/dabercro/public/Summer16/Data/wscale_Data.root $CrombieSkimDir/wscale_Single*.root $CrombieSkimDir/wscale_JetHT.root # $CrombieSkimDir/wscale_MET.root
+hadd -f /afs/cern.ch/work/d/dabercro/public/Summer16/Data/wscale_Data.root $CrombieSkimDir/wscale_Single*.root $CrombieSkimDir/wscale_JetHT.root $CrombieSkimDir/wscale_MET.root
 
 CrombieFlatSkimmer  --cut '1' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc 1 --indir /afs/cern.ch/work/d/dabercro/public/Summer16/Data --outdir $CrombieSkimDir --json $CrombieGoodRuns -d
 
 ## tt stuff
 
-cp $CrombieSkimDir/wscale_TTJets_SingleLept*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X/.
+cp $CrombieSkimDir/wscale_TTJets*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X/.
 
 CrombieFlatSkimmer --cut 'bjet2Pt > 0 && fatjet1Pt > 0 && fatjet1DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/res --json $CrombieGoodRuns -d
 

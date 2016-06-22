@@ -1,3 +1,4 @@
+/store/user/zdemirag/setup80x/Nero/Data/zey_base
 /store/user/zdemirag/setup80x/Nero/zey_base
 /store/user/dabercro/Nero/80X
 /store/user/dabercro/Nero/zey_base
