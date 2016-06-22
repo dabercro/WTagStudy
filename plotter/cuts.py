@@ -18,7 +18,7 @@ regionCuts = {
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
     'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
     'nbtags' : 'n_bjetsLoose == 2',
-    'nsmalljets' : 'n_jetsNotFat == 3',
+    'nsmalljets' : '((n_jetsNotFat == 3 && fatjet2Pt < 0) || (n_jetsNotFat == 2))',
     'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
     'tau21' : 'fatjettau21 < 0.6',
@@ -45,7 +45,7 @@ fullhadCuts = {
 
 # A weight applied to all MC
 
-defaultMCWeight = 'mcWeight * puWeight'
+defaultMCWeight = 'mcFactors * topPtReweighting'
 
 # Additional weights applied to certain control regions
 
