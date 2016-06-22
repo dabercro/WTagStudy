@@ -1,2 +1,2 @@
-http://dabercro.web.cern.ch/dabercro/slimmerfiles_160218/new_puWeights_13TeV_25ns.root
-http://dabercro.web.cern.ch/dabercro/slimmerfiles_160614/puWeight890pb.root
+http://dabercro.web.cern.ch/dabercro/slimmerfiles_160218/uncertainties_EWK_24bins.root
+http://dabercro.web.cern.ch/dabercro/slimmerfiles_160621/puWeight_2fb_2016.root

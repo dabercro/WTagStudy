@@ -19,4 +19,5 @@ applicator.AddFactorToMerge('topPtReweighting')
 
 applicator.SetInDirectory(directory)
 
-RunOnDirectory(applicator)
+if __name__ == "__main__":
+    RunOnDirectory(applicator)

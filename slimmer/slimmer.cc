@@ -473,6 +473,12 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
               continue;
 
             TLorentzVector *tempGen = (TLorentzVector*) inTree->genP4->At(iGen);
+
+            if (outTree->genBosPt < tempGen->Pt()) {
+              outTree->genBosPt = tempGen->Pt();
+              outTree->genBosPdgId = (*(inTree->genPdgId))[iGen];
+            }
+            
             checkDR = deltaR(outTree->fatjet1Phi,outTree->fatjet1Eta,tempGen->Phi(),tempGen->Eta());
             if (checkDR < outTree->fatjet1DRGenW) {
               outTree->fatjet1DRGenW   = checkDR;

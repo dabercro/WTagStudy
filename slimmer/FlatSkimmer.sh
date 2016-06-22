@@ -12,7 +12,14 @@ fi
 
 CrombieFlatSkimmer --cut 'n_looselep < 2 && bjet2Pt > 0 && fatjet1Pt > 0' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir $CrombieFullDir --outdir $CrombieSkimDir --json $CrombieGoodRuns
 
+mkdir $CrombieSkimDir/wln
+mv $CrombieSkimDir/wscale_WJetsToLNu_Pt* $CrombieSkimDir/wln/.
+
 ./applyCorrections.py $CrombieSkimDir
+./applyCorrectionsW.py $CrombieSkimDir/wln
+
+mv $CrombieSkimDir/wln/* $CrombieSkimDir/.
+rmdir $CrombieSkimDir/wln
 
 if [ "$fresh" = "fast" ]
 then

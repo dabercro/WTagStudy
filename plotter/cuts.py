@@ -10,7 +10,7 @@ regions    = ['bwindow','dphilep','nsmalljets']
 #     }
 
 regionCuts = {
-    'nocut' : 'fatjetPt > 280',
+    'nocut' : '1',
     'semilep' : 'n_tightlep == 1 && n_looselep == 1', # && abs(lep1PdgId) == 13',
     'bwindow' : 'fatjetDRLooseB > 0.8 && fatjetDRLooseB < 1.2',
     'dphilep' : 'fatjetDPhiLep1 > 2.0',
@@ -28,7 +28,7 @@ def JoinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
-        'fatjetPt > 250 && thirdFatMass < 50',
+        'fatjetPt > 280 && thirdFatMass < 50',
         JoinCuts([
                 'semilep',
                 'nbtags',

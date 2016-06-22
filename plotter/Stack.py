@@ -23,14 +23,14 @@ plotter.SetAxisTitleOffset(1.2)
 plotter.SetRatioMinMax(0,2)
 
 plotter.SetForceTop('W-matched (tt)')
-plotter.SetMakeRatio(False)
+#plotter.SetMakeRatio(False)
 
 def SetupArgs():
     return [
         ['npv',50,0,50,'NPV','Events/1.0'],
         ['fatjetDRGenW',20,0,4,'#Delta R from Gen W','Events/1.0'],
         ['fatjetMaxBTag',25,0,1.25,'#Delta #phi from MET','Events/1.0'],
-        ['jet_ht',40,0,800,'Jet HT (jet p_{T} > 30 GeV)','Events/1.0'],
+        ['jet_ht',40,0,2000,'Jet HT (jet p_{T} > 30 GeV)','Events/1.0'],
 #        ['fatjetDPhiMet',25,0,5,'#Delta #phi from MET','Events/1.0'],
 #        ['met',20,0,400,'MET [GeV]','Events/1.0'],
         ['mt',20,0,200,'m_{T}','Events/1.0'],

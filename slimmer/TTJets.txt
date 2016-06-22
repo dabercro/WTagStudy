@@ -1,2 +1,0 @@
-TTJets_SingleLeptFromT_TuneCUETP8M1_13TeV-madgraphMLM-pythia8
-TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8

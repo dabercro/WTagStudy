@@ -136,3 +136,5 @@ fatjetDRTightB/F=5
 fatjetDPhiLep1/F=-5
 fatjetDRLep1/F=-5
 fatjetMaxBTag/F=-1
+genBosPt/F=-1
+genBosPdgId/I=0
