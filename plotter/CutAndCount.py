@@ -9,7 +9,7 @@ SetupFromEnv()
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('W-matched (tt)')
 histAnalysis.SetBaseCut(cuts.cut('nolowmass','full'))
-histAnalysis.SetMCWeight('(mcWeight * XSecWeight * ' + os.environ.get('CrombieLuminosity') + ')')
+histAnalysis.SetMCWeight('(mcWeight * xsec_v2 * ' + os.environ.get('CrombieLuminosity') + ')')
 
 for cut, name in [('fatjetPrunedM > 60 && fatjetPrunedM < 110','Pruned Mass Cut'),
                   ('fatjettau21 < 0.6','\\tau_2/\\tau_1 Cut'),
