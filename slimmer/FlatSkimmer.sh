@@ -23,7 +23,7 @@ rm /Users/dabercro/GradSchool/Summer16/Data/* /Users/dabercro/GradSchool/Summer1
 
 ## Data
 
-hadd -f /Users/dabercro/GradSchool/Summer16/Data/wscale_Data.root $CrombieSkimDir/wscale_Single*.root $CrombieSkimDir/wscale_JetHT.root # $CrombieSkimDir/wscale_MET.root
+hadd -f /Users/dabercro/GradSchool/Summer16/Data/wscale_Data.root $CrombieSkimDir/wscale_Single*.root $CrombieSkimDir/wscale_JetHT.root $CrombieSkimDir/wscale_MET.root
 
 CrombieFlatSkimmer  --cut '1' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc 1 --indir /Users/dabercro/GradSchool/Summer16/Data --outdir $CrombieSkimDir --json $CrombieGoodRuns -d
 
