@@ -40,13 +40,16 @@ as shown in Figure~\ref{fig:wscale_DRGen}.
   This is not considered signal.
 \item Recoiling Jet: For jets very far from the nearest generator W, we assume the selected
   jet is actually a jet from an additional radiated gluon or pileup.
+  All events from the di-lepton $t\bar{t}$ sample is also considered to be from recoiling jets
+  since there is no true V-jet to identify in the event.
 \end{itemize}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\linewidth]{semilep_nocut_fatjetDRGenW.pdf}
-  \caption{The TTJets sample is split based on the distance of the reconstructed fat jet
-  from the nearest generator W. Jets close to the W are considered to be signal.}
+  \caption{The TTJets sample is mostly split based on the distance of the reconstructed fat jet
+  from the nearest generator W. Jets close to the W are considered to be signal.
+  All di-lepton $t\bar{t}$ MC is considered recoiling jets, despite their distance from generator W bosons.}
   \label{fig:wscale_DRGen}
 \end{figure}
 
@@ -102,44 +105,45 @@ Figures~\ref{fig:wscale_massp} and \ref{fig:wscale_tau21}.
 \end{figure}
   
 The scale factor is determined by counting the W-matched MC and the background-subtracted data.
-An uncertainty factor of 100\% is applied to this background subtraction.
-All other uncertainty results from statistical uncertainties.
+The MC is normalized to the data before subtraction.
+Since there is good agreement between the MC and data, the only uncertainties given in these tables 
+are the statistical uncertainties.
 Table~\ref{tab:wscale_res} shows resulting scale factors from this.
 
 \begin{table}[h]
   \caption{Scale factors from using all of the data from the previous selection are given.}
   \begin{tabular}{c | c | c | c | c}
     \hline
-    & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ cut & Full V-tag cut \\
+    & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
     \hline
-    Background Subtracted Data & 60.33 \pm 23.58 & 36.69 \pm 9.75 & 
-    43.69 \pm 14.60 & 35.26 \pm 9.00 \\
-    W-matched MC & 55.68 \pm 3.92 & 41.79 \pm 3.36 & 44.21 \pm 3.48 & 39.17 \pm 3.26 \\
+    Background Subtracted Data & 130.97 \pm 13.32 & 88.99 \pm 10.17 & 103.91 \pm 11.07 & 84.63 \pm 9.80 \\
+    Truth-matched MC & 143.92 \pm 2.28 & 109.14 \pm 1.99 & 114.09 \pm 2.03 & 103.04 \pm 1.93 \\
     \hline
-    Normalized Ratio & 1.00 \pm 0.40 & 0.81 \pm 0.23 & 0.91 \pm 0.31 & 0.83 \pm 0.22 \\
+    Normalized Ratio & 1.00 \pm 0.10 & 0.90 \pm 0.10 & 1.00 \pm 0.11 & 0.90 \pm 0.11 \\
     \hline
   \end{tabular}
   \label{tab:wscale_res}
 \end{table}
 
 Historically, the low pruned mass peak is ignored in scale factor measurements. 
-Table~\ref{tab:wscale_hmm} shows the results from this approach, though it is not recommended
-since the scale factors between MC and Data are different in this region.
+In our case, that would significantly reduce the effect of background subtraction needed.
+Table~\ref{tab:wscale_hmm} shows the results from this approach.
 
 \begin{table}[h]
   \caption{Scale factors from adding a $m_\text{pruned} > \SI{25}{GeV}$ cut.}
   \begin{tabular}{c | c | c | c | c}
     \hline
-    & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ cut & Full V-tag cut \\
+    & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
     \hline
-    Background Subtracted Data & 49.27 \pm 16.51 & 37.00 \pm 9.42 & 44.61 \pm 13.65 & 
-    35.52 \pm 8.73 \\
-    W-matched MC & 50.22 \pm 3.69 & 41.79 \pm 3.36 & 43.92 \pm 3.46 & 39.17 \pm 3.26 \\
+    Background Subtracted Data & 112.86 \pm 11.89 & 89.17 \pm 10.17 & 104.62 \pm 11.07 & 84.78 \pm 9.80 \\
+    Truth-matched MC & 125.79 \pm 2.13 & 109.14 \pm 1.99 & 113.03 \pm 2.02 & 103.04 \pm 1.93 \\
     \hline
-    Normalized Ratio & 1.00 \pm 0.34 & 0.90 \pm 0.24 & 1.04 \pm 0.33 & 0.92 \pm 0.24 \\
+    Normalized Ratio & 1.00 \pm 0.11 & 0.91 \pm 0.11 & 1.03 \pm 0.11 & 0.92 \pm 0.11 \\
     \hline
   \end{tabular}
   \label{tab:wscale_hmm}
 \end{table}
+
+The two methods of obtaining scale factors are consistent with each other.
   
 \end{document}
