@@ -10,7 +10,7 @@ export CrombieMCConfig=MCConfig.txt
 export CrombieLuminosity=2071.44
 #export CrombieInFilesDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_160619
 export CrombieInFilesDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_160622
-export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_fin
+export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_play
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 
 export CrombieCutsFile=cuts.py

@@ -10,8 +10,7 @@ regions    = ['bwindow','dphilep','nsmalljets']
 #     }
 
 regionCuts = {
-    'nocut' : '1',
-#    'nocut' : 'vectorSumPt(lep1Pt,lep1Phi,met,metPhi) > 100',
+    'nocut' : 'fatjetPt > 280',
     'semilep' : 'n_tightlep == 1 && n_looselep == 1', # && abs(lep1PdgId) == 13',
     'bwindow' : 'fatjetDRLooseB > 0.8 && fatjetDRLooseB < 1.2',
     'dphilep' : 'fatjetDPhiLep1 > 2.0',
