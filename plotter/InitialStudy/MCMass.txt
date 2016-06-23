@@ -1,6 +1,0 @@
-skip             res/wscale_TTJets.root
-skip             probtop/wscale_TTJets.root
-skip             nonres/wscale_TTJets.root
-others             goodmass/wscale_TTJets.root                                                831.76       W_mass_(tt)        857
-others             lowmass/wscale_TTJets.root                                                   831.76     Low_mass_(tt)           856
-others             highmass/wscale_TTJets.root                                                831.76       High_mass_(tt)        855
