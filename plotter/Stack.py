@@ -2,7 +2,6 @@
 
 from CrombieTools.PlotTools.PlotStack import *
 from array import array
-#from cuts import regions
 
 SetupFromEnv()
 
@@ -23,16 +22,14 @@ plotter.SetAxisTitleOffset(1.2)
 plotter.SetRatioMinMax(0,2)
 
 plotter.SetForceTop('W-matched (tt)')
-#plotter.SetMakeRatio(False)
 
 def SetupArgs():
     return [
         ['npv',50,0,50,'NPV','Events/1.0'],
-        ['fatjetDRGenW',20,0,4,'#Delta R from Gen W','Events/1.0'],
         ['fatjetMaxBTag',25,0,1.25,'#Delta #phi from MET','Events/1.0'],
         ['jet_ht',40,0,2000,'Jet HT (jet p_{T} > 30 GeV)','Events/1.0'],
 #        ['fatjetDPhiMet',25,0,5,'#Delta #phi from MET','Events/1.0'],
-#        ['met',20,0,400,'MET [GeV]','Events/1.0'],
+        ['met',20,0,400,'MET [GeV]','Events/1.0'],
         ['mt',20,0,200,'m_{T}','Events/1.0'],
 #        ['n_tightlep',4,0,4,'Num Tight Leptons','Events/1.0'],
 #        ['n_mediumlep',4,0,4,'Num Medium Leptons','Events/1.0'],
@@ -51,28 +48,15 @@ def SetupArgs():
 #        ['fatjetDRMediumB',25,0,5,'#Delta R from Medium b','Events/1.0'],
 #        ['fatjetDRTightB',25,0,5,'#Delta R from Tight b','Events/1.0'],
         ['fatjetDPhiLep1',25,0,5,'#Delta #phi from Lepton','Events/1.0'],
-        ['topMass_11',25,0,500,'Reco Top Mass [GeV]','Events/1.0'],
-        ['topMass_12',25,0,500,'Reco Top Mass [GeV]','Events/1.0'],
+#        ['topMass_11',25,0,500,'Reco Top Mass [GeV]','Events/1.0'],
+#        ['topMass_12',25,0,500,'Reco Top Mass [GeV]','Events/1.0'],
         ]
 
 def RunPlots(categories):
     cutList = ['nocut','full']
     MakePlots(categories,cutList,SetupArgs())
-    return
-    regions = ['tau21','massp']
-    for region in regions:
-        cutList.append('full_' + region)
-        tempList1 = regions[:regions.index(region)]
-        for region1 in tempList1:
-            cutList.append('full_' + region1 + '_' + region)
-            tempList2 = tempList1[:tempList1.index(region1)]
-#            for region2 in tempList2:
-#                cutList.append(region2 + '_' + region1 + '_' + region)
-#                tempList3 = tempList2[:tempList2.index(region2)]
-#                for region3 in tempList3:
-#                    cutList.append(region3 + '_' + region2 + '_' + region1 + '_' + region)
-
-    MakePlots(categories,cutList,SetupArgs())
+    plotter.SetMakeRatio(False)
+    MakePlots(categories,cutList,[['fatjetDRGenW',20,0,4,'#Delta R from Gen W','Events/1.0']])
 
 if __name__ == '__main__':
     RunPlots(['semilep'])

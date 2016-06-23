@@ -1,22 +1,18 @@
 # Used in full region
 
-regions    = ['bwindow','dphilep','nsmalljets']
+regions = []
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
-# categoryCuts = {
-#     'leading' : 'fatjet1Pt > 0',
-#     'trailing' : 'fatjet2Pt > 0'
-#     }
-
 regionCuts = {
     'nocut' : '1',
-    'semilep' : 'n_tightlep == 1 && n_looselep == 1', # && abs(lep1PdgId) == 13',
+    'nolep' : 'n_looselep == 0',
+    'boostedt' : 'fatjet1tau32 < 0.5',
+    'ht' : 'jet_ht > 800',
     'bwindow' : 'fatjetDRLooseB > 0.8 && fatjetDRLooseB < 1.2',
-    'dphilep' : 'fatjetDPhiLep1 > 2.0',
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
     'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
-    'nbtags' : 'n_bjetsLoose > 0',
+    'nbtags' : 'n_bjetsLoose == 2',
     'nsmalljets' : '((n_jetsNotFat == 3 && fatjet2Pt < 0) || (n_jetsNotFat == 2))',
     'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
@@ -28,19 +24,14 @@ def JoinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
-        'fatjetPt > 250 && thirdFatMass < 50',
+        'fatjetPt > 250',
         JoinCuts([
-                'semilep',
                 'nbtags',
+                'nolep',
                 ]),
         ])
 
 regionCuts['full'] = JoinCuts(regions,regionCuts)
-
-fullhadCuts = {
-    'boostedt' : 'fatjet1tau32 < 0.5',
-    'ht' : 'jet_ht > 800',
-    }
 
 # A weight applied to all MC
 
@@ -63,21 +54,6 @@ def cut(category,inRegions):
 
     theCut = ' && '.join(theCuts)
 
-    if category == 'fullhad':
-        theCut = theCut.replace('fatjet1','fatjet2').replace('_1','_2')
-        theCut = ' && '.join([
-                theCut,
-                JoinCuts(cuts=fullhadCuts,toJoin=fullhadCuts.keys())
-                ])
-    else:
-        theCut = ' && '.join([
-                theCut,
-                regionCuts['semilep']
-                ])
-                
-    if category == 'nolowmass':
-        theCut += ' && fatjetPrunedM > 25'
-        
     return theCut
 
 

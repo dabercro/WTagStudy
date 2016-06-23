@@ -1,0 +1,10 @@
+skip           res/wscale_TTJets_SingleLeptFromT.root
+skip           res/wscale_TTJets_SingleLeptFromTbar.root
+skip           probtop/wscale_TTJets_SingleLeptFromT.root
+skip           probtop/wscale_TTJets_SingleLeptFromTbar.root
+skip           nonres/wscale_TTJets_SingleLeptFromT.root
+skip           nonres/wscale_TTJets_SingleLeptFromTbar.root
+skip           wscale_TTJets_DiLept.root
+TT              res/wscale_TTJets.root                                                        832.0        W-matched_(tt)          867
+TT              probtop/wscale_TTJets.root                                                    832.0        Pulled_off_W_(tt)       859
+TT              nonres/wscale_TTJets.root                                                     832.0        Recoiling_Jet_(tt)      868
