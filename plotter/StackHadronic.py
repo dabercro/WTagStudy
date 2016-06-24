@@ -38,10 +38,10 @@ def SetupArgs():
         ]
 
 def RunPlots(categories):
-    cutList = ['nocut']
+    cutList = ['full']
     MakePlots(categories,cutList,SetupArgs())
-    plotter.SetMakeRatio(False)
-    MakePlots(categories,cutList,[['fatjet2DRGenW',20,0,4,'#Delta R from Gen W','Events/1.0']])
+#    plotter.SetMakeRatio(False)
+#    MakePlots(categories,cutList,[['fatjet2DRGenW',20,0,4,'#Delta R from Gen W','Events/1.0']])
 
 if __name__ == '__main__':
     RunPlots(['hadronic'])
