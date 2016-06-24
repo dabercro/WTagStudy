@@ -12,7 +12,7 @@ regionCuts = {
     'bwindow' : 'fatjetDRLooseB > 0.8 && fatjetDRLooseB < 1.2',
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
     'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
-    'nbtags' : 'n_bjetsLoose == 2',
+    'nbtags' : 'n_bjetsLoose > 0',
     'nsmalljets' : '((n_jetsNotFat == 3 && fatjet2Pt < 0) || (n_jetsNotFat == 2))',
     'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
@@ -24,7 +24,7 @@ def JoinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
-        'fatjetPt > 250',
+        'fatjet2Pt > 250',
         JoinCuts([
                 'nbtags',
                 'nolep',
@@ -35,7 +35,7 @@ regionCuts['full'] = JoinCuts(regions,regionCuts)
 
 # A weight applied to all MC
 
-defaultMCWeight = 'mcFactors * topPtReweighting'
+defaultMCWeight = 'mcFactors'
 
 # Additional weights applied to certain control regions
 

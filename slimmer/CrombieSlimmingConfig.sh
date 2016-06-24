@@ -10,9 +10,10 @@ export CrombieEosDir=80X.txt
 export CrombieFileBase=wscale
 export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eoscms/cms$CrombieEosDir
 export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Temp
-export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_$CROMBIEDATE
+export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_160624
 export CrombieSkimDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_$CROMBIEDATE
-export CrombieDirList=TopStudy.txt
+#export CrombieDirList=TopStudy.txt
+export CrombieDirList=HadronicTop.txt
 
 export CrombieSlimmerScript=runSlimmer.py
 export CrombieJobScriptList=CrombieJobScriptList.txt
