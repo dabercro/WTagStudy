@@ -1,13 +1,14 @@
 # Used in full region
 
-regions = ['bwindow','moarpt','ht','jetmasses','subjettags','topnsub','nsmalljets']
+regions = ['bwindow','ht','jetmasses','jetdphimet']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
 regionCuts = {
+    'jetdphimet' : 'fatjet1DPhiMet > 1.0',
     'topnsub' : 'fatjet1tau21 < 0.6',
     'jetmasses' : 'fatjet1PrunedM > 60 && topMass_11 < 280',
-    'moarpt' : 'fatjet2Pt > 300',
+    'moarpt' : 'fatjet2Pt > 250',
     'nocut' : '1',
     'nolep' : 'n_looselep == 0',
     'nopho' : 'n_loosepho == 0',
@@ -17,7 +18,7 @@ regionCuts = {
     'subjettags' : 'fatjet1MaxBTag > 0.8 && fatjet2MaxBTag < 0.6',
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
     'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
-    'nbtags' : 'n_bjetsMedium == 2 && n_bjetsLoose == 2',
+    'nbtags' : 'n_bjetsMedium == 2 && n_bjetsLoose == 2 && n_bjetsTight > 0',
     'nsmalljets' : 'n_jetsNotFat < 3',
     'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
@@ -31,7 +32,7 @@ def JoinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
-        'fatjet1Pt > 350',
+        'fatjet1Pt > 300',
         JoinCuts([
                 'nbtags',
                 'nolep',
