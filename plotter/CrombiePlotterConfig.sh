@@ -9,7 +9,7 @@ source ../slimmer/CrombieSlimmingConfig.sh
 #export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE
 
 export CrombieMCConfig=MCHadronic.txt
-export CrombieLuminosity=2550.0
+export CrombieLuminosity=2596.9
 export CrombieInFilesDir=/Users/dabercro/GradSchool/Summer16/Skim_160627
 export CrombieOutPlotDir=plots/$CROMBIEDATE
 
