@@ -2,7 +2,7 @@
 
 from CrombieTools.AnalysisTools.TmvaClassifier import classifier
 
-inDirectory = '/Users/dabercro/GradSchool/Summer16/bdtTest/'
+inDirectory = '/afs/cern.ch/work/d/dabercro/public/Summer16/bdtTest/'
 
 classifier.SetConfigFile('config.txt')
 classifier.SetUniformVariable('')
