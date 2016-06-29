@@ -36,7 +36,7 @@ CrombieFlatSkimmer  --cut '1' --tree 'events' --copy 'htotal' --run 'runNum' --l
 
 ## tt stuff
 
-cp $CrombieSkimDir/wscale_TTJets*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X/.
+cp $CrombieSkimDir/wscale_TT*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X/.
 
 CrombieFlatSkimmer --cut 'fatjet1DRGenW < 0.2' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc $CrombieNLocalProcs --indir /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X --outdir $CrombieSkimDir/res --json $CrombieGoodRuns -d
 
