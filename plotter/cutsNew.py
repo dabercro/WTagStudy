@@ -29,7 +29,7 @@ def JoinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
-        'fatjetPt > 250 && thirdFatMass < 50',
+        'fatjetPt > 300 && thirdFatMass < 50',
         JoinCuts([
                 'semilep',
                 'nbtags',

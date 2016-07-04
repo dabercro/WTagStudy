@@ -12,7 +12,7 @@ TT              probtop/wscale_TTJets_SingleLeptFromT.root                      
 TT              probtop/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
 TT              nonres/wscale_TTJets_SingleLeptFromT.root                                     181.5        Recoiling_Jet_(tt)      868
 TT              nonres/wscale_TTJets_SingleLeptFromTbar.root                                  181.5              .                  .
-TT              wscale_TTJets_DiLept.root                                                      85.4              .                  .
+TT              wscale_TTJets_DiLept.root                                                      85.4        Di-Lepton_(tt)          820
 #TT              res/wscale_TT.root                                        832.0        W-matched_(tt)          867
 #TT              probtop/wscale_TT.root                                    832.0        Pulled_off_W_(tt)       859
 #TT              nonres/wscale_TT.root                                     832.0        Recoiling_Jet_(tt)      868

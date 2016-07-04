@@ -271,6 +271,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       if (fabs(tempJet->Eta()) > 2.4 || (*(inTree->jetPuId))[iJet] < -0.62 || tempJet->Pt() < 30.0)
         continue;
 
+      outTree->n_jetsTot++;
+
       //// Now do cleaning ////
       
       Bool_t match = false;
@@ -295,7 +297,6 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       if (match)
         continue;
 
-      outTree->n_jetsTot++;
       outTree->jet_ht_boosted += tempJet->Pt();
 
       if (outTree->jet1Pt < 0)
