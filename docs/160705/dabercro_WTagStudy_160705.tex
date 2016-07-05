@@ -1,0 +1,310 @@
+\documentclass{beamer}
+
+\author[D. Abercrombie]{
+  Daniel Abercrombie
+}
+
+\title{\bf \sffamily W Tag Study Update}
+\date{\today}
+
+\usecolortheme{dove}
+
+\usepackage[absolute,overlay]{textpos}
+\usefonttheme{serif}
+\usepackage{appendixnumberbeamer}
+\usepackage{isotope}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\setbeamerfont{frametitle}{size=\Large,series=\bf\sffamily}
+\setbeamertemplate{frametitle}[default][center]
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{makecell}
+
+\setbeamertemplate{navigation symbols}{}
+\usepackage{graphicx}
+\usepackage{color}
+\setbeamertemplate{footline}[text line]{\parbox{1.083\linewidth}{\footnotesize \hfill \insertshortauthor \hfill \insertpagenumber /\inserttotalframenumber}}
+\setbeamertemplate{headline}[text line]{\parbox{1.083\linewidth}{\footnotesize \hspace{-0.083\linewidth} \textcolor{blue}{\sffamily \insertsection \hfill \insertsubsection}}}
+
+\usepackage{changepage}
+
+\newcommand{\beginbackup}{
+  \newcounter{framenumbervorappendix}
+  \setcounter{framenumbervorappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+}
+
+\graphicspath{{figs/}}
+
+\begin{document}
+
+\begin{frame}[nonumbering]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{First change: Fixed bugged $n_\text{jets}$ definition}
+  Previously was not cleaning before counting jets.
+  The new cut is now slightly looser in the signal region and just changes the shape of the backgrounds.
+  \vspace{6pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Not cleaned}
+      \includegraphics[width=\linewidth]{old/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Cleaned}
+      \includegraphics[width=\linewidth]{small/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+  \end{columns}
+  See more disagreement at low mass again
+\end{frame}
+
+\begin{frame}
+  \frametitle{Second change: Luminosity}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{small/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{new/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+  \end{columns}
+  Small step is fine. Ready to jump to larger luminosity
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compare: Madgraph and POWHEG}
+  Look at POWHEG since those are the only Herwig samples available
+  \vspace{6pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Madgraph}
+      \includegraphics[width=\linewidth]{new/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{POWHEG}
+      \includegraphics[width=\linewidth]{powheg/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+  \end{columns}
+  Mass matches pretty well
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compare: Madgraph and POWHEG}
+  Look at POWHEG since those are the only Herwig samples available
+  \vspace{6pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Madgraph}
+      \includegraphics[width=\linewidth]{new/semilep_full_fatjettau21.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{POWHEG}
+      \includegraphics[width=\linewidth]{powheg/semilep_full_fatjettau21.pdf}
+    \end{column}
+  \end{columns}
+  N-subjettiness matches too. POWHEG actually looks better now (not like in 76X)
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compare: Pythia 8 and Herwig}
+  The Herwig showering doesn't predict the yeilds of the selection
+  \vspace{6pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Pythia 8}
+      \includegraphics[width=\linewidth]{powheg/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Herwig}
+      \includegraphics[width=\linewidth]{herwig/semilep_full_fatjetPrunedM.pdf}
+    \end{column}
+  \end{columns}
+  This throws off normalization which changes the tagging scale factors
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors with normalizing}
+  \centering
+
+  \textcolor{blue}{Madgraph all mass}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 289.23 \pm 21.12 & 185.72 \pm 15.22 & 204.80 \pm 16.58 & 172.59 \pm 14.47 \\
+      \makecell{W-matched \\ MC} & 257.37 \pm 3.17 & 180.79 \pm 2.66 & 203.14 \pm 2.82 & 171.06 \pm 2.59 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.07 & 0.91 \pm 0.08 & 0.90 \pm 0.07 & 0.90 \pm 0.08 \\
+      \hline
+    \end{tabular}
+  }
+
+  \textcolor{blue}{Madgraph $m_\text{pruned} > \SI{25}{GeV}$}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 237.11 \pm 18.22 & 188.24 \pm 15.19 & 206.96 \pm 16.44 & 174.59 \pm 14.44 \\
+      \makecell{W-matched \\ MC} & 225.81 \pm 2.97 & 180.79 \pm 2.66 & 200.67 \pm 2.80 & 171.06 \pm 2.59 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 0.99 \pm 0.08 & 0.98 \pm 0.08 & 0.97 \pm 0.08 \\
+      \hline
+    \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors with normalizing}
+  \centering
+
+  \textcolor{blue}{Powheg with Pythia8 all mass}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data}  & 296.43 \pm 21.02 & 187.35 \pm 15.18 & 208.19 \pm 16.53 & 173.91 \pm 14.44 \\
+      \makecell{W-matched \\ MC} & 271.59 \pm 1.67 & 187.32 \pm 1.39 & 210.54 \pm 1.48 & 176.50 \pm 1.35 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.07 & 0.92 \pm 0.07 & 0.91 \pm 0.07 & 0.90 \pm 0.08 \\
+      \hline
+    \end{tabular}
+  }
+
+  \textcolor{blue}{Powheg with Pythia8 $m_\text{pruned} > \SI{25}{GeV}$}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 239.10 \pm 18.16 & 189.67 \pm 15.16 & 210.08 \pm 16.40 & 175.75 \pm 14.42 \\
+      \makecell{W-matched \\ MC} & 233.90 \pm 1.55 & 187.32 \pm 1.39 & 207.98 \pm 1.47 & 176.50 \pm 1.35 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 0.99 \pm 0.08 & 0.99 \pm 0.08 & 0.97 \pm 0.08 \\
+      \hline
+    \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors with normalizing}
+  \centering
+
+  \textcolor{blue}{Powheg with Herwig all mass}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 281.10 \pm 21.55 & 182.01 \pm 15.36 & 202.00 \pm 16.81 & 170.94 \pm 14.59 \\
+      \makecell{W-matched \\ MC} & 218.82 \pm 4.52 & 139.99 \pm 3.61 & 162.00 \pm 3.89 & 127.79 \pm 3.45 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 1.01 \pm 0.09 & 0.97 \pm 0.08 & 1.04 \pm 0.09 \\
+      \hline
+    \end{tabular}
+  }
+
+  \textcolor{blue}{Powheg with Herwig $m_\text{pruned} > \SI{25}{GeV}$}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 227.29 \pm 18.50 & 184.44 \pm 15.32 & 204.53 \pm 16.64 & 172.80 \pm 14.55 \\
+      \makecell{W-matched \\ MC} & 187.83 \pm 4.17 & 139.99 \pm 3.61 & 160.03 \pm 3.86 & 127.79 \pm 3.45 \\
+      \hline
+      \makecell{Normalized \\ Ratio}& 1.00 \pm 0.08 & 1.09 \pm 0.09 & 1.06 \pm 0.09 & 1.12 \pm 0.10 \\
+      \hline
+    \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors with normalizing}
+  \centering
+
+  \textcolor{blue}{Powheg with Herwig all mass}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 281.10 \pm 21.55 & 182.01 \pm 15.36 & 202.00 \pm 16.81 & 170.94 \pm 14.59 \\
+      \makecell{W-matched \\ MC} & 218.82 \pm 4.52 & 139.99 \pm 3.61 & 162.00 \pm 3.89 & 127.79 \pm 3.45 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 1.01 \pm 0.09 & 0.97 \pm 0.08 & 1.04 \pm 0.09 \\
+      \hline
+    \end{tabular}
+  }
+
+  \textcolor{blue}{Powheg with Herwig $m_\text{pruned} > \SI{25}{GeV}$}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 227.29 \pm 18.50 & 184.44 \pm 15.32 & 204.53 \pm 16.64 & 172.80 \pm 14.55 \\
+      \makecell{W-matched \\ MC} & 187.83 \pm 4.17 & 139.99 \pm 3.61 & 160.03 \pm 3.86 & 127.79 \pm 3.45 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 1.09 \pm 0.09 & 1.06 \pm 0.09 & 1.12 \pm 0.10 \\
+      \hline
+    \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors without normalizing}
+  \centering
+
+  \textcolor{blue}{Powheg with Herwig all mass}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 310.99 \pm 21.10 & 191.31 \pm 15.21 & 215.07 \pm 16.55 & 178.04 \pm 14.45 \\
+      \makecell{W-matched \\ MC} & 218.82 \pm 4.52 & 139.99 \pm 3.61 & 162.00 \pm 3.89 & 127.79 \pm 3.45 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.07 & 0.96 \pm 0.08 & 0.93 \pm 0.08 & 0.98 \pm 0.08 \\
+      \hline
+    \end{tabular}
+  }
+
+  \textcolor{blue}{Powheg with Herwig $m_\text{pruned} > \SI{25}{GeV}$}
+  {\scriptsize
+    \begin{tabular}{c | c | c | c | c}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 242.52 \pm 18.27 & 191.31 \pm 15.21 & 213.99 \pm 16.47 & 178.04 \pm 14.45 \\
+      \makecell{W-matched \\ MC} & 187.83 \pm 4.17 & 139.99 \pm 3.61 & 160.03 \pm 3.86 & 127.79 \pm 3.45 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 1.06 \pm 0.09 & 1.04 \pm 0.08 & 1.08 \pm 0.09 \\
+      \hline
+    \end{tabular}
+  }
+  Still not good agreement
+  (normalization does not affect the pythia samples)
+\end{frame}
+
+
+\end{document}
