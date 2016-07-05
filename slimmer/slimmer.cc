@@ -139,6 +139,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     outTree->met    = ((TLorentzVector*)((*(inTree->metP4))[0]))->Pt();
     outTree->metPhi = ((TLorentzVector*)((*(inTree->metP4))[0]))->Phi();
 
+    outTree->pfovercaloMet = outTree->met/inTree->caloMet_Pt;
+
     outTree->triggerFired = inTree->triggerFired;
     
     // std::cout << "//// Here is the lepton filling ////" << std::endl;
@@ -265,10 +267,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       outTree->jet_ht += tempJet->Pt();
       
       //// Ignore jets that are not in this region ////
+
       if (fabs(tempJet->Eta()) > 2.4 || (*(inTree->jetPuId))[iJet] < -0.62 || tempJet->Pt() < 30.0)
         continue;
-
-      outTree->n_jetsTot++;
 
       //// Now do cleaning ////
       
@@ -293,7 +294,25 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       
       if (match)
         continue;
-      
+
+      outTree->n_jetsTot++;
+      outTree->jet_ht_boosted += tempJet->Pt();
+
+      if (outTree->jet1Pt < 0)
+        outTree->jet1Pt = tempJet->Pt();
+      else if (outTree->jet2Pt < 0)
+        outTree->jet2Pt = tempJet->Pt();
+      else if (outTree->jet3Pt < 0)
+        outTree->jet3Pt = tempJet->Pt();
+      else if (outTree->jet4Pt < 0)
+        outTree->jet4Pt = tempJet->Pt();
+      else if (outTree->jet5Pt < 0)
+        outTree->jet5Pt = tempJet->Pt();
+      else if (outTree->jet6Pt < 0)
+        outTree->jet6Pt = tempJet->Pt();
+      else if (outTree->jet7Pt < 0)
+        outTree->jet7Pt = tempJet->Pt();
+
       //// Count jets for b-tagging ////
 
       float dR_1 = dROverlap + 0.1;
