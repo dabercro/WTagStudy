@@ -8,7 +8,7 @@ export CrombieMCConfig=MCLongName.txt
 export CrombieLuminosity=2596.9
 #export CrombieLuminosity=2071.44
 export CrombieInFilesDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_160704
-export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE
+export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_fin
 
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 

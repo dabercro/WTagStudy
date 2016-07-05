@@ -1,6 +1,6 @@
 # Used in full region
 
-regions    = ['bwindow','dphilep','nsmalljets']
+regions    = ['bwindow','dphilep','nsmalljets','n_tau']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
@@ -23,6 +23,7 @@ regionCuts = {
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
     'tau21' : 'fatjettau21 < 0.6',
     'massp' : 'fatjetPrunedM > 60 && fatjetPrunedM < 110',
+    'n_tau' : 'n_tau == 0',
     }
 
 def JoinCuts(toJoin, cuts=regionCuts):

@@ -18,4 +18,4 @@ for cut, name in [('fatjetPrunedM > 65 && fatjetPrunedM < 105','Pruned Mass Cut'
     histAnalysis.AddScaleFactorCut(cut,name)
 
 if __name__ == "__main__":
-    histAnalysis.DoScaleFactors('n_tightlep',1,0,2)
+    histAnalysis.DoScaleFactors('n_tightlep',1,0,2) #,0,False)
