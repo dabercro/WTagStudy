@@ -15,6 +15,25 @@
 #include "OutTree.h"
 #include "NeroTree.h"
 
+
+enum TauSelection{
+  TauBaseline = 1UL << 0,
+  TauDecayModeFindingNewDMs = 1UL << 1,
+  TauDecayModeFinding = 1UL << 2,
+  AgainstEleLoose = 1UL <<8,
+  AgainstEleMedium = 1UL<<9,
+  AgainstMuLoose = 1UL<<10,
+  AgainstMuTight = 1UL<<11,
+  byLooseIsolationMVArun2v1DBoldDMwLT = 1UL <<12,
+  byMediumIsolationMVArun2v1DBoldDMwLT= 1UL <<13,
+  byTightIsolationMVArun2v1DBoldDMwLT = 1UL <<14,
+  byVTightIsolationMVArun2v1DBoldDMwLT= 1UL <<15,
+  byLooseIsolationMVArun2v1DBnewDMwLT = 1UL <<16,
+  byMediumIsolationMVArun2v1DBnewDMwLT= 1UL <<17,
+  byTightIsolationMVArun2v1DBnewDMwLT = 1UL <<18,
+  byVTightIsolationMVArun2v1DBnewDMwLT= 1UL <<19,
+};
+
 enum IsoType {
   kIsoVeto = 0,  
   kIsoLoose,
@@ -351,7 +370,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       }
     }
 
-    if (outTree->n_bjetsLoose < 1)
+    if (outTree->n_bjetsLoose != 2)
       continue;
     
     // std::cout << "//// Now check number of non-overlapping taus ////" << std::endl;
@@ -362,9 +381,12 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       if (tempTau->Pt() < 18. || fabs(tempTau->Eta()) > 2.3)
         continue;
 
-      if (((*(inTree->tauSelBits))[iTau] & 7) != 7) 
+      if ((inTree->tauSelBits->at(iTau) & TauDecayModeFinding) != TauDecayModeFinding)
         continue;
-      if ((*(inTree->tauIsoDeltaBetaCorr))[iTau] > 4.5)
+      if ((inTree->tauSelBits->at(iTau) & TauDecayModeFindingNewDMs) != TauDecayModeFindingNewDMs)
+        continue;
+
+      if ((*(inTree->tauIsoDeltaBetaCorr))[iTau] > 5.0)
         continue;
 
       //// Now do cleaning ////
