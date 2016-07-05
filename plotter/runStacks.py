@@ -6,6 +6,11 @@ source CrombiePlotterConfig.sh
 
 mkdir -p $CrombieOutPlotDir 2> /dev/null
 
-./StackHadronic.py
+./Stack.py &
+#./StackHadronic.py &
 
-plots/makePage.sh $CrombieOutPlotDir 3
+wait
+
+cd ~/www
+./makePage.sh $CrombieOutPlotDir 3
+cd - 1> /dev/null
