@@ -2,10 +2,9 @@ export CrombieFilesPerJob=20
 export CrombieNBatchProcs=4
 export CrombieQueue=2nw4cores
 
-export CrombieNLocalProcs=6
+export CrombieNLocalProcs=3
 
 export CrombieEosDir=80X.txt
-#export CrombieEosDir=/store/user/zdemirag/setup80x/Nero/Data/zey_base
 
 export CrombieFileBase=wscale
 #export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eoscms/cms$CrombieEosDir
