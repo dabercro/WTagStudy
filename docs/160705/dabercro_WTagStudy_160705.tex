@@ -48,6 +48,25 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Samples Used}
+  {\scriptsize
+  \begin{itemize}
+  \item Madgraph Samples:
+    \begin{itemize}
+      {\scriptsize
+    \item /TTJets\_SingleLeptFromT\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16\_80X\_mcRun2\_asymptotic\_2016\_miniAODv2\_v0-v1
+    \item /TTJets\_SingleLeptFromTbar\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16\_80X\_mcRun2\_asymptotic\_2016\_miniAODv2\_v0-v1
+    \item /TTJets\_DiLept\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16\_80X\_mcRun2\_asymptotic\_2016\_miniAODv2\_v0-v4
+    \item /TTJets\_DiLept\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16\_80X\_mcRun2\_asymptotic\_2016\_miniAODv2\_v0\_ext1-v1
+      }
+    \end{itemize}
+  \item /TT\_TuneCUETP8M1\_13TeV-powheg-pythia8/RunIISpring16MiniAODv2-PUSpring16\_80X\_mcRun2\_asymptotic\_2016\_miniAODv2\_v0\_ext4-v1
+  \item /TT\_TuneEE5C\_13TeV-powheg-herwigpp/RunIISpring16MiniAODv2-PUSpring16\_80X\_mcRun2\_asymptotic\_2016\_miniAODv2\_v0-v1
+  \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
   \frametitle{First change: Fixed bugged $n_\text{jets}$ definition}
   Previously was not cleaning before counting jets.
   The new cut is now slightly looser in the signal region and just changes the shape of the backgrounds.
@@ -68,7 +87,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Second change: Luminosity}
+  \frametitle{Second change: Integrated Luminosity}
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \centering
@@ -89,15 +108,16 @@
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{Madgraph}
+      \textcolor{blue}{Madgraph -- Pythia8}
       \includegraphics[width=\linewidth]{new/semilep_full_fatjetPrunedM.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{POWHEG}
+      \textcolor{blue}{POWHEG -- Pythia8}
       \includegraphics[width=\linewidth]{powheg/semilep_full_fatjetPrunedM.pdf}
     \end{column}
   \end{columns}
+  Both samples in Pythia 8 \\
   Mass matches pretty well
 \end{frame}
 
@@ -108,31 +128,33 @@
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{Madgraph}
+      \textcolor{blue}{Madgraph -- Pythia8}
       \includegraphics[width=\linewidth]{new/semilep_full_fatjettau21.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{POWHEG}
+      \textcolor{blue}{POWHEG -- Pythia8}
       \includegraphics[width=\linewidth]{powheg/semilep_full_fatjettau21.pdf}
     \end{column}
   \end{columns}
-  N-subjettiness matches too. POWHEG actually looks better now (not like in 76X)
+  Both samples in Pythia 8 \\
+  N-subjettiness matches too. POWHEG actually looks better than madgraph (not like in 76X)
 \end{frame}
 
 \begin{frame}
   \frametitle{Compare: Pythia 8 and Herwig}
+  Both of these are now POWHEG \\
   The Herwig showering doesn't predict the yeilds of the selection
   \vspace{6pt}
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{Pythia 8}
+      \textcolor{blue}{POWHEG -- Pythia 8}
       \includegraphics[width=\linewidth]{powheg/semilep_full_fatjetPrunedM.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{Herwig}
+      \textcolor{blue}{POWHEG -- Herwig}
       \includegraphics[width=\linewidth]{herwig/semilep_full_fatjetPrunedM.pdf}
     \end{column}
   \end{columns}
@@ -233,39 +255,6 @@
       \makecell{W-matched \\ MC} & 187.83 \pm 4.17 & 139.99 \pm 3.61 & 160.03 \pm 3.86 & 127.79 \pm 3.45 \\
       \hline
       \makecell{Normalized \\ Ratio}& 1.00 \pm 0.08 & 1.09 \pm 0.09 & 1.06 \pm 0.09 & 1.12 \pm 0.10 \\
-      \hline
-    \end{tabular}
-  }
-\end{frame}
-
-\begin{frame}
-  \frametitle{Scale Factors with normalizing}
-  \centering
-
-  \textcolor{blue}{Powheg with Herwig all mass}
-  {\scriptsize
-    \begin{tabular}{c | c | c | c | c}
-      \hline
-      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-      \hline
-      \makecell{Background \\ Subtracted \\ Data} & 281.10 \pm 21.55 & 182.01 \pm 15.36 & 202.00 \pm 16.81 & 170.94 \pm 14.59 \\
-      \makecell{W-matched \\ MC} & 218.82 \pm 4.52 & 139.99 \pm 3.61 & 162.00 \pm 3.89 & 127.79 \pm 3.45 \\
-      \hline
-      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 1.01 \pm 0.09 & 0.97 \pm 0.08 & 1.04 \pm 0.09 \\
-      \hline
-    \end{tabular}
-  }
-
-  \textcolor{blue}{Powheg with Herwig $m_\text{pruned} > \SI{25}{GeV}$}
-  {\scriptsize
-    \begin{tabular}{c | c | c | c | c}
-      \hline
-      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-      \hline
-      \makecell{Background \\ Subtracted \\ Data} & 227.29 \pm 18.50 & 184.44 \pm 15.32 & 204.53 \pm 16.64 & 172.80 \pm 14.55 \\
-      \makecell{W-matched \\ MC} & 187.83 \pm 4.17 & 139.99 \pm 3.61 & 160.03 \pm 3.86 & 127.79 \pm 3.45 \\
-      \hline
-      \makecell{Normalized \\ Ratio} & 1.00 \pm 0.08 & 1.09 \pm 0.09 & 1.06 \pm 0.09 & 1.12 \pm 0.10 \\
       \hline
     \end{tabular}
   }
