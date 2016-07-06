@@ -508,6 +508,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
 
           // std::cout << "Gen Checking" << std::endl;
 
+          Int_t WIndex = -1;
+
           for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
             Int_t checkPdgId = abs((*(inTree->genPdgId))[iGen]);
             if (checkPdgId != 23 && checkPdgId != 24)
@@ -525,8 +527,33 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
               outTree->fatjet1DRGenW   = checkDR;
               outTree->fatjet1GenWPt   = tempGen->Pt();
               outTree->fatjet1GenWMass = tempGen->M();
+              WIndex = iGen;
             }
           }
+
+          if (WIndex > -1) {
+            for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
+              if (((*(inTree->genParent))[iGen]) == WIndex) {
+                TLorentzVector *tempGen = (TLorentzVector*) inTree->genP4->At(iGen);
+                
+                checkDR = deltaR(outTree->fatjet1Phi,outTree->fatjet1Eta,tempGen->Phi(),tempGen->Eta());
+                if (checkDR > outTree->fatjet1DRWq1) {
+                  outTree->fatjet1DRWq2 = outTree->fatjet1DRWq1;
+                  outTree->fatjet1DRWq1 = checkDR;
+                }
+                else if (checkDR > outTree->fatjet1DRWq2)
+                  outTree->fatjet1DRWq2 = checkDR;
+              }
+              else if (abs((*(inTree->genPdgId))[iGen]) == 5) {
+                TLorentzVector *tempGen = (TLorentzVector*) inTree->genP4->At(iGen);
+                
+                checkDR = deltaR(outTree->fatjet1Phi,outTree->fatjet1Eta,tempGen->Phi(),tempGen->Eta());
+                if (checkDR < outTree->fatjet1DRGenB)
+                  outTree->fatjet1DRGenB = checkDR;
+              }
+            }
+          }
+
           // std::cout << "Gen Checking Done" << std::endl;
         }
       }
@@ -582,6 +609,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         }
 
         if (inTree->metP4_GEN->GetEntries() > 0) {
+
+          Int_t WIndex = -1;
+
           for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
             Int_t checkPdgId = abs((*(inTree->genPdgId))[iGen]);
             if (checkPdgId != 23 && checkPdgId != 24)
@@ -593,6 +623,30 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
               outTree->fatjet2DRGenW   = checkDR;
               outTree->fatjet2GenWPt   = tempGen->Pt();
               outTree->fatjet2GenWMass = tempGen->M();
+              WIndex = iGen;
+            }
+          }
+
+          if (WIndex > -1) {
+            for (Int_t iGen = 0; iGen < inTree->genP4->GetEntries(); iGen++) {
+              if (((*(inTree->genParent))[iGen]) == WIndex) {
+                TLorentzVector *tempGen = (TLorentzVector*) inTree->genP4->At(iGen);
+                
+                checkDR = deltaR(outTree->fatjet2Phi,outTree->fatjet2Eta,tempGen->Phi(),tempGen->Eta());
+                if (checkDR > outTree->fatjet2DRWq1) {
+                  outTree->fatjet2DRWq2 = outTree->fatjet2DRWq1;
+                  outTree->fatjet2DRWq1 = checkDR;
+                }
+                else if (checkDR > outTree->fatjet2DRWq2)
+                  outTree->fatjet2DRWq2 = checkDR;
+              }
+              else if (abs((*(inTree->genPdgId))[iGen]) == 5) {
+                TLorentzVector *tempGen = (TLorentzVector*) inTree->genP4->At(iGen);
+                
+                checkDR = deltaR(outTree->fatjet2Phi,outTree->fatjet2Eta,tempGen->Phi(),tempGen->Eta());
+                if (checkDR < outTree->fatjet2DRGenB)
+                  outTree->fatjet2DRGenB = checkDR;
+              }
             }
           }
         }
@@ -699,6 +753,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjetDPhiLep1 = outTree->fatjet1DPhiLep1;
         outTree->fatjetDRLep1 = outTree->fatjet1DRLep1;
         outTree->fatjetMaxBTag = outTree->fatjet1MaxBTag;
+        outTree->fatjetDRWq1 = outTree->fatjet1DRWq1;
+        outTree->fatjetDRWq2 = outTree->fatjet1DRWq2;
+        outTree->fatjetDRGenB = outTree->fatjet1DRGenB;
       }
 
       else if (outTree->fatjet2PrunedM < prunedCheck) {
@@ -747,6 +804,9 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjetDPhiLep1 = outTree->fatjet2DPhiLep1;
         outTree->fatjetDRLep1 = outTree->fatjet2DRLep1;
         outTree->fatjetMaxBTag = outTree->fatjet2MaxBTag;
+        outTree->fatjetDRWq1 = outTree->fatjet2DRWq1;
+        outTree->fatjetDRWq2 = outTree->fatjet2DRWq2;
+        outTree->fatjetDRGenB = outTree->fatjet2DRGenB;
       }
     }
 

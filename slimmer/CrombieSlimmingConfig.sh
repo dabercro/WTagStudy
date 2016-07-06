@@ -2,7 +2,7 @@ export CrombieFilesPerJob=20
 export CrombieNBatchProcs=4
 export CrombieQueue=2nw4cores
 
-export CrombieNLocalProcs=3
+export CrombieNLocalProcs=6
 
 export CrombieEosDir=80X.txt
 

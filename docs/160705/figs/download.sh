@@ -6,6 +6,11 @@ images="semilep_full_fatjetPrunedM.pdf semilep_full_fatjettau21.pdf"
 for dir in $dirs
 do
 
+    if [ ! -d $dir ]
+    then
+        mkdir $dir
+    fi
+
     url=http://dabercro.web.cern.ch/dabercro/plots/16070
     if [ "$dir" = "small" ]
     then
