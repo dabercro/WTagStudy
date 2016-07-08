@@ -3,4 +3,5 @@
 /store/user/zdemirag/setup80x/Nero/Data/zey_base
 /store/user/zdemirag/setup80x/Nero/zey_base
 /eos/user/d/dabercro/80X
+/store/user/dabercro/Nero/forDylan
 /store/caf/user/dmytro/zdemirag/setup80x/Nero/v1.4

@@ -6,10 +6,10 @@ import os
 
 SetupFromEnv()
 
+#histAnalysis.SetBaseCut(cuts.cut('semilep','full'))
+histAnalysis.SetBaseCut(cuts.cut('nolowmass','full'))
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
-histAnalysis.SetBaseCut(cuts.cut('nolowmass','full'))
-#histAnalysis.SetBaseCut(cuts.cut('semilep','full'))
 histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.environ.get('CrombieLuminosity') + ')')
 
 for cut, name in [('fatjetPrunedM > 65 && fatjetPrunedM < 105','Pruned Mass Cut'),

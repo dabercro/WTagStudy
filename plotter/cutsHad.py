@@ -1,12 +1,12 @@
 # Used in full region
 
-regions = ['bwindow','ht','jetmasses','jetdphimet']
+regions = ['bwindow','ht','jetmasses','jetdphimet','subjettags','nsmalljets','topnsub']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
 regionCuts = {
     'jetdphimet' : 'fatjet1DPhiMet > 1.0',
-    'topnsub' : 'fatjet1tau21 < 0.6',
+    'topnsub' : 'fatjet1tau32 < 0.6',
     'jetmasses' : 'fatjet1PrunedM > 60 && topMass_11 < 280',
     'moarpt' : 'fatjet2Pt > 250',
     'nocut' : '1',

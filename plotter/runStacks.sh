@@ -6,8 +6,8 @@ source CrombiePlotterConfig.sh
 
 mkdir -p $CrombieOutPlotDir 2> /dev/null
 
-./Stack.py &
-#./StackHadronic.py &
+#./Stack.py &
+./StackHadronic.py &
 
 wait
 
