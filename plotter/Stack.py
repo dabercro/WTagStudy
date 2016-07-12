@@ -40,6 +40,7 @@ def SetupArgs():
         ['fatjetPt',25,100,600,'p_{T} [GeV]','Events/1.0'],
         ['fatjetMass',25,0,250,'Fat Jet Mass [GeV]','Events/1.0'],
         ['fatjetPrunedM',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
+        ['fatjetPrunedML2L3',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
         ['fatjetPrunedMuncorr',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
         ['fatjettau21',25,0,1.5,'#tau_{2}/#tau_{1}','Events/1.0'],
         ['fatjettau32',25,0,1.5,'#tau_{2}/#tau_{1}','Events/1.0'],
@@ -52,7 +53,7 @@ def SetupArgs():
         ]
 
 def RunPlots(categories):
-    cutList = ['nocut','full']
+    cutList = ['nocut','full','full_massp_tau21']
     MakePlots(categories,cutList,SetupArgs())
     plotter.SetMakeRatio(False)
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])

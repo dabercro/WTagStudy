@@ -22,7 +22,7 @@ regionCuts = {
     'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
     'tau21' : 'fatjettau21 < 0.6',
-    'massp' : 'fatjetPrunedM > 60 && fatjetPrunedM < 110',
+    'massp' : 'fatjetPrunedML2L3 > 65 && fatjetPrunedML2L3 < 105',
     'n_tau' : 'n_tau == 0',
     }
 

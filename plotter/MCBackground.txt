@@ -13,9 +13,9 @@ wln_400               wscale_WJetsToLNu_Pt-400To600_TuneCUETP8M1_13TeV-amcatnloF
 wln_600               wscale_WJetsToLNu_Pt-600ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root        0.4524          .                  .
 TT              wscale_TTJets_DiLept_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root               85.4            .          .
 TT              res/wscale_TTJets_SingleLeptFromT.root                                        181.5        Signal          867
+TT              res/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .
 TT              nonres/wscale_TTJets_SingleLeptFromT.root                                     181.5              .                  .
 TT              nonres/wscale_TTJets_SingleLeptFromTbar.root                                  181.5              .                  .
-TT              res/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .
 TT              probtop/wscale_TTJets_SingleLeptFromT.root                                    181.5              .                  .
 TT              probtop/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
 antitop_5f           wscale_ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1.root         35.6              .                  .
