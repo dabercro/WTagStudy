@@ -156,3 +156,6 @@ fatjet2DRGenB/F=10
 fatjetDRWq1/F=-1
 fatjetDRWq2/F=-1
 fatjetDRGenB/F=10
+fatjetPrunedML2L3SmearedCentral/F=-5
+fatjetPrunedML2L3SmearedUp/F=-5
+fatjetPrunedML2L3SmearedDown/F=-5

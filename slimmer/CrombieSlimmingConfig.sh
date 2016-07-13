@@ -5,7 +5,6 @@ export CrombieQueue=2nw4cores
 export CrombieNLocalProcs=6
 
 export CrombieEosDir=80X.txt
-
 export CrombieFileBase=wscale
 #export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eoscms/cms$CrombieEosDir
 export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eosuser/user/d/dabercro/80X

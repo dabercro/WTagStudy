@@ -14,7 +14,7 @@
 #include "KinematicFunctions.h"
 #include "OutTree.h"
 #include "NeroTree.h"
-
+#include "JetSmearer.h"
 
 enum TauSelection{
   TauBaseline = 1UL << 0,
@@ -105,6 +105,10 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
 
   TLorentzVector saveGenVec;
   TLorentzVector saveDMVec;
+
+  JetSmearer *smearer = new JetSmearer(inTree);
+  smearer->ReadSFConfig("files/Spring16_25nsV6_MC_SF_AK8PFchs.txt");
+  smearer->ReadResConfig("files/Spring16_25nsV6_MC_PtResolution_AK8PFchs.txt");
 
   Int_t nentries = inTreeFetch->GetEntriesFast();
 
@@ -810,6 +814,15 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       }
     }
 
+    if (outTree->fatjetPt > 0) {
+      outTree->fatjetPrunedML2L3SmearedCentral = smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
+                                                                     outTree->fatjetPrunedML2L3, kCentral);
+      outTree->fatjetPrunedML2L3SmearedUp   =    smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
+                                                                     outTree->fatjetPrunedML2L3, kUp);
+      outTree->fatjetPrunedML2L3SmearedDown =    smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
+                                                                     outTree->fatjetPrunedML2L3, kDown);
+    }      
+
     outTree->Fill();
 
   }
@@ -817,4 +830,6 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
   outTree->WriteToFile(outFile);
   outFile->Close();
   inFile->Close();
+
+  delete smearer;
 }

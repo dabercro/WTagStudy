@@ -1,2 +1,4 @@
 http://dabercro.web.cern.ch/dabercro/slimmerfiles_160218/uncertainties_EWK_24bins.root
 http://dabercro.web.cern.ch/dabercro/slimmerfiles_160621/puWeight_2fb_2016.root
+https://raw.githubusercontent.com/cms-jet/JRDatabase/master/textFiles/Spring16_25nsV6_MC/Spring16_25nsV6_MC_PtResolution_AK8PFchs.txt
+https://raw.githubusercontent.com/cms-jet/JRDatabase/master/textFiles/Spring16_25nsV6_MC/Spring16_25nsV6_MC_SF_AK8PFchs.txt

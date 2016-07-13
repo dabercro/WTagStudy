@@ -18,3 +18,4 @@ OutTree.cc
 *.out
 *.snm
 *.png
+*/files/*.txt
