@@ -38,9 +38,15 @@ def SetupArgs():
         ['n_bjetsMedium',6,0,6,'Num Medium b Jets','Events/1.0'],
         ['n_bjetsTight',6,0,6,'Num Tight b Jets','Events/1.0'],
         ['fatjetPt',25,100,600,'p_{T} [GeV]','Events/1.0'],
+        ['fatjetPtSmearedCentral',25,100,600,'p_{T} [GeV]','Events/1.0'],
+        ['fatjetPtSmearedUp',25,100,600,'p_{T} [GeV]','Events/1.0'],
+        ['fatjetPtSmearedDown',25,100,600,'p_{T} [GeV]','Events/1.0'],
         ['fatjetMass',25,0,250,'Fat Jet Mass [GeV]','Events/1.0'],
         ['fatjetPrunedM',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
         ['fatjetPrunedML2L3',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
+        ['fatjetPrunedML2L3','fatjetPrunedML2L3SmearedCentral',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
+        ['fatjetPrunedML2L3','fatjetPrunedML2L3SmearedUp',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
+        ['fatjetPrunedML2L3','fatjetPrunedML2L3SmearedDown',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
         ['fatjetPrunedMuncorr',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0'],
         ['fatjettau21',25,0,1.5,'#tau_{2}/#tau_{1}','Events/1.0'],
         ['fatjettau32',25,0,1.5,'#tau_{2}/#tau_{1}','Events/1.0'],
@@ -60,4 +66,4 @@ def RunPlots(categories):
 
 if __name__ == '__main__':
     plotter.AddDataFile('wscale_Data.root')
-    RunPlots(['semilep'])
+    RunPlots(['semilep','semilepMu'])
