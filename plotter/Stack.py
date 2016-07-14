@@ -59,6 +59,6 @@ def RunPlots(categories):
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])
 
 if __name__ == '__main__':
-    plotter.AddDataFile('wscale_Data.root')
-#    plotter.AddDataFile('wscale_SmallData.root')
+#    plotter.AddDataFile('wscale_Data.root')
+    plotter.AddDataFile('wscale_SmallData.root')
     RunPlots(['semilep'])

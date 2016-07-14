@@ -16,7 +16,7 @@ export CrombieDirList=WScale.txt
 #export CrombieDirList=TTLeptBar.txt
 
 export CrombieSlimmerScript=runSlimmer.py
-export CrombieJobScriptList=CrombieJobScriptList.txt
+export CrombieJobScriptList=JobScriptList.txt
 export CrombieCheckerScript=$CROMBIEPATH/scripts/CrombieTreeFinder.py
 
 #export CrombieGoodRuns=/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Cert_271036-273730_13TeV_PromptReco_Collisions16_JSON.txt

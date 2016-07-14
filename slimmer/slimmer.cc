@@ -815,6 +815,12 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     }
 
     if (outTree->fatjetPt > 0) {
+      outTree->fatjetPtSmearedCentral = smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
+                                                            outTree->fatjetPt, kCentral);
+      outTree->fatjetPtSmearedUp   =    smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
+                                                            outTree->fatjetPt, kUp);
+      outTree->fatjetPtSmearedDown =    smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
+                                                            outTree->fatjetPt, kDown);
       outTree->fatjetPrunedML2L3SmearedCentral = smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 
                                                                      outTree->fatjetPrunedML2L3, kCentral);
       outTree->fatjetPrunedML2L3SmearedUp   =    smearer->GetSmeared(outTree->rho, outTree->fatjetPt, outTree->fatjetEta, outTree->fatjetPhi, 

@@ -7,11 +7,11 @@ export CrombieMCConfig=MCTruthMatch.txt
 #export CrombieMCConfig=MCHadronic.txt
 
 #export CrombieMCConfig=MCHadronic.txt
-export CrombieLuminosity=6264.6
-#export CrombieLuminosity=2596.9
+#export CrombieLuminosity=6264.6
+export CrombieLuminosity=2596.9
 #export CrombieLuminosity=2071.44
-export CrombieInFilesDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_160712
-export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE
+export CrombieInFilesDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_160713
+export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_lowlumi
 
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 

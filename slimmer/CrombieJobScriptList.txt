@@ -1,4 +1,0 @@
-slimmer.cc
-OutTree.txt
-NeroTree.h
-NeroTree.C

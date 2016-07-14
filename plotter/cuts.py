@@ -1,6 +1,6 @@
 # Used in full region
 
-regions    = ['bwindow','dphilep','nsmalljets','n_tau']
+regions    = ['bwindow','dphilep','nsmalljets'] # ,'n_tau']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
