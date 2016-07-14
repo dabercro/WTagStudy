@@ -1,6 +1,6 @@
 # Used in full region
 
-regions    = ['bwindow','dphilep','nsmalljets'] # ,'n_tau']
+regions    = ['bwindow','dphilep','nsmalljets'] # ,'ntau','mediumB']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
@@ -18,12 +18,14 @@ regionCuts = {
     'topmass' : '(topMass_11 > 120 || topMass_12 > 120)',
     'toppruned' : '(topPrunedM_11 > 70 || topPrunedM_12 > 70)',
     'nbtags' : 'n_bjetsLoose == 2',
+    'mediumB' : 'n_bjetsMedium > 0',
     'nsmalljets' : '((n_jetsNotFat == 3 && fatjet2Pt < 0) || (n_jetsNotFat == 2))',
     'fatjetPt' : 'fatjetPt > 100',
     'fullhadronic' : 'fatjet2Pt > 100 && n_looselep == 0',
     'tau21' : 'fatjettau21 < 0.6',
     'massp' : 'fatjetPrunedML2L3 > 65 && fatjetPrunedML2L3 < 105',
-    'n_tau' : 'n_tau == 0',
+    'ntau' : 'n_tau == 0',
+    'ntot' : 'n_jetsTot > 3',
     }
 
 def joinCuts(toJoin, cuts=regionCuts):

@@ -16,7 +16,7 @@ for cut, name in [(cuts.regionCuts['massp'],'Pruned Mass Cut'),
     histAnalysis.AddScaleFactorCut(cut,name)
 
 if __name__ == "__main__":
-    histAnalysis.SetBaseCut(cuts.cut('semilep','full'))
+    histAnalysis.SetBaseCut(cuts.cut('semilep','full_ntau_mediumB_ntot'))
     histAnalysis.DoScaleFactors('n_tightlep',1,0,2) #,0,False)
-    histAnalysis.SetBaseCut(cuts.cut('nolowmass','full'))
+    histAnalysis.SetBaseCut(cuts.cut('nolowmass','full_ntau_mediumB_ntot'))
     histAnalysis.DoScaleFactors('n_tightlep',1,0,2) #,0,False)
