@@ -1,6 +1,6 @@
 # Used in full region
 
-regions    = ['bwindow','dphilep','nsmalljets','n_tau']
+regions    = ['bwindow','dphilep','nsmalljets'] # ,'n_tau']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
@@ -26,17 +26,17 @@ regionCuts = {
     'n_tau' : 'n_tau == 0',
     }
 
-def JoinCuts(toJoin, cuts=regionCuts):
+def joinCuts(toJoin, cuts=regionCuts):
     return ' && '.join([cuts[cut] for cut in toJoin])
 
 base = ' && '.join([
         'fatjetPt > 250 && thirdFatMass < 50',
-        JoinCuts([
+        joinCuts([
                 'nbtags',
                 ]),
         ])
 
-regionCuts['full'] = JoinCuts(regions,regionCuts)
+regionCuts['full'] = joinCuts(regions,regionCuts)
 
 fullhadCuts = {
     'boostedt' : 'fatjet1tau32 < 0.5',
@@ -68,7 +68,7 @@ def cut(category,inRegions):
         theCut = theCut.replace('fatjet1','fatjet2').replace('_1','_2')
         theCut = ' && '.join([
                 theCut,
-                JoinCuts(cuts=fullhadCuts,toJoin=fullhadCuts.keys())
+                joinCuts(cuts=fullhadCuts,toJoin=fullhadCuts.keys())
                 ])
     else:
         theCut = ' && '.join([
@@ -76,8 +76,11 @@ def cut(category,inRegions):
                 regionCuts['semilep']
                 ])
                 
-    if category == 'nolowmass':
+    if 'nolowmass' in category:
         theCut += ' && fatjetPrunedM > 25'
+
+    if 'Mu' in category:
+        theCut += ' && abs(lep1PdgId) == 13'
         
     return theCut
 
