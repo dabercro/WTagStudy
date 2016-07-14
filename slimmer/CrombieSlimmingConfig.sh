@@ -6,14 +6,12 @@ export CrombieNLocalProcs=6
 
 export CrombieEosDir=80X.txt
 export CrombieFileBase=wscale
-#export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eoscms/cms$CrombieEosDir
 export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eosuser/user/d/dabercro/80X
 #export CrombieFullDir=/tmp/dabercro/Full_$CROMBIEDATE
 export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Temp
-export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_$CROMBIEDATE
+export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Full_160713
 export CrombieSkimDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_$CROMBIEDATE
 export CrombieDirList=WScale.txt
-#export CrombieDirList=TTLeptBar.txt
 
 export CrombieSlimmerScript=runSlimmer.py
 export CrombieJobScriptList=JobScriptList.txt
