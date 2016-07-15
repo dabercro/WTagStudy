@@ -1,5 +1,5 @@
 export CrombieMCConfig=MCBackground.txt
-export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_background
+export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_herwig_background
 #export CrombieMCConfig=MCTruthMatch.txt
 #export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE
 
