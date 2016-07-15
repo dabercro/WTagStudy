@@ -1,5 +1,7 @@
 # Used in full region
 
+from CrombieTools import Nminus1Cut
+
 regions    = ['bwindow','dphilep','nsmalljets'] # ,'ntau','mediumB']
 
 # Two dictionaries to define the cuts for separate categories and control regions
@@ -60,8 +62,15 @@ additions    = { # key : [Data,MC]
 # Generally you can probably leave these alone
 
 def cut(category,inRegions):
-    theCuts = [base]
-    for region in inRegions.split('_'):
+    theCuts = base
+    holdRegions = inRegions.split('_')
+    if holdRegions[-1] == 'nopt':
+        holdRegions.pop(-1)
+        theCuts = Nminus1Cut(theCuts,'jetPt')
+
+    theCuts = [theCuts]
+
+    for region in holdRegions:
         theCuts.append(regionCuts[region])
 
     theCut = ' && '.join(theCuts)

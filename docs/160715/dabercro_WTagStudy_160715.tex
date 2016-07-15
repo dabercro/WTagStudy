@@ -181,12 +181,12 @@
     \begin{column}{0.5\linewidth}
       \centering
       \includegraphics[width=\linewidth]
-                      {160714_background/semilep_full_ntau_mediumB_massp_tau21_fatjetPrunedML2L3.pdf}
+                      {160714_background/semilep_full_ntau_mediumB_ntot_massp_tau21_fatjetPrunedML2L3.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
       \includegraphics[width=\linewidth]
-                      {160714_background/semilep_full_ntau_mediumB_massp_tau21_fatjettau21.pdf}
+                      {160714_background/semilep_full_ntau_mediumB_ntot_massp_tau21_fatjettau21.pdf}
     \end{column}
   \end{columns}
   Incorrect reconstruction and recoiling jets are left since they simulate
@@ -276,7 +276,36 @@
 
 \begin{frame}
   \frametitle{Systematics}
-  Coming soon. Need to be careful that I'm applying the right smearing cuts.
+  Two separate effects were investigated for the systematics
+  \begin{itemize}
+  \item Jet Smearing: 
+    \begin{itemize}
+    \item Used the \href{https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution#Smearing_procedures}
+      {hybrid method}
+    \item all mass 6\%, no low mass 7\%
+    \end{itemize}
+  \item Background subtraction
+    \begin{itemize}
+    \item Scaled the background being subtracted up and down 100\%
+    \item all mass 5\%, no low mass 3\%
+    \end{itemize}
+  \item Adding in Quadrature for all mass: 8\%
+  \end{itemize}
+  The dump of SF tables for these cases are in the backup slides
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+  We suggest using the entire mass spectrum for the W-tagging scale factor.
+  The final scale factor is therefore: \\
+  
+  \begin{center}
+  \boxed{$1.01 \pm 0.05 \text{(stat.)} \pm 0.08 \text{(sys.)}$}
+  \end{center}
+
+  Which looks pretty close to unity.
+
+  Cheers
 \end{frame}
 
 \beginbackup
@@ -307,6 +336,204 @@
   \item WW(WZ)(ZZ)\_TuneCUETP8M1\_13TeV-pythia8
   \item WJetsToLNu\_Pt-*\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Most Different Smearing (Smear Up)}
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    \vspace{6pt}
+    \textcolor{blue}{All mass}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 619.89 $\pm$ 26.52 & 431.26 $\pm$ 21.27 & 470.49 $\pm$ 22.36 & 393.66 $\pm$ 20.26 \\
+\makecell{Signal-\\ matched MC} & 717.49 $\pm$ 9.36 & 458.45 $\pm$ 7.39 & 531.69 $\pm$ 7.89 & 424.78 $\pm$ 7.06 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.09 $\pm$ 0.06 & 1.02 $\pm$ 0.05 & 1.07 $\pm$ 0.06 \\
+\hline
+      \end{tabular}
+    }
+
+    \vspace{6pt}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 542.63 $\pm$ 24.27 & 431.44 $\pm$ 21.26 & 469.56 $\pm$ 22.30 & 393.80 $\pm$ 20.25 \\
+\makecell{Signal-\\ matched MC} & 637.55 $\pm$ 8.76 & 458.45 $\pm$ 7.39 & 526.68 $\pm$ 7.85 & 424.78 $\pm$ 7.06 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.11 $\pm$ 0.06 & 1.05 $\pm$ 0.05 & 1.09 $\pm$ 0.06 \\
+\hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background Subtraction (subtract no background)}
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    \vspace{6pt}
+    \textcolor{blue}{All mass}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 665.00 $\pm$ 25.79 & 443.00 $\pm$ 21.05 & 488.00 $\pm$ 22.09 & 403.00 $\pm$ 20.07 \\
+\makecell{Signal-\\ matched MC} & 717.49 $\pm$ 9.36 & 488.83 $\pm$ 7.63 & 561.67 $\pm$ 8.11 & 453.18 $\pm$ 7.26 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 0.98 $\pm$ 0.05 & 0.94 $\pm$ 0.04 & 0.96 $\pm$ 0.05 \\
+\hline
+      \end{tabular}
+    }
+
+    \vspace{6pt}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 570.00 $\pm$ 23.87 & 443.00 $\pm$ 21.05 & 486.00 $\pm$ 22.05 & 403.00 $\pm$ 20.07 \\
+\makecell{Signal-\\ matched MC} & 637.55 $\pm$ 8.76 & 488.83 $\pm$ 7.63 & 556.67 $\pm$ 8.07 & 453.18 $\pm$ 7.26 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.01 $\pm$ 0.05 & 0.98 $\pm$ 0.05 & 0.99 $\pm$ 0.05 \\
+\hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background Subtraction (subtract more background)}
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    \vspace{6pt}
+    \textcolor{blue}{All mass}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 574.77 $\pm$ 28.59 & 419.67 $\pm$ 21.92 & 452.41 $\pm$ 23.14 & 384.04 $\pm$ 20.80 \\
+\makecell{Signal-\\ matched MC} & 717.49 $\pm$ 9.36 & 488.83 $\pm$ 7.63 & 561.67 $\pm$ 8.11 & 453.18 $\pm$ 7.26 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.07 $\pm$ 0.06 & 1.01 $\pm$ 0.05 & 1.06 $\pm$ 0.06 \\
+\hline
+      \end{tabular}
+    }
+
+    \vspace{6pt}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 515.26 $\pm$ 25.44 & 420.02 $\pm$ 21.90 & 452.56 $\pm$ 23.06 & 384.32 $\pm$ 20.78 \\
+\makecell{Signal-\\ matched MC} & 637.55 $\pm$ 8.76 & 488.83 $\pm$ 7.63 & 556.67 $\pm$ 8.07 & 453.18 $\pm$ 7.26 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.06 $\pm$ 0.06 & 1.01 $\pm$ 0.05 & 1.05 $\pm$ 0.06 \\
+\hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Subtract other background processes (selecting wrong jet in $tt$)}
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    \vspace{6pt}
+    \textcolor{blue}{All mass}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 541.98 $\pm$ 26.70 & 410.52 $\pm$ 21.32 & 438.01 $\pm$ 22.44 & 377.81 $\pm$ 20.30 \\
+\makecell{Signal-\\ matched MC} & 627.32 $\pm$ 8.66 & 464.73 $\pm$ 7.42 & 524.41 $\pm$ 7.81 & 434.99 $\pm$ 7.10 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.02 $\pm$ 0.06 & 0.97 $\pm$ 0.05 & 1.01 $\pm$ 0.06 \\
+\hline
+      \end{tabular}
+    }
+
+    \vspace{6pt}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 495.75 $\pm$ 24.38 & 411.00 $\pm$ 21.32 & 438.57 $\pm$ 22.38 & 378.19 $\pm$ 20.30 \\
+\makecell{Signal-\\ matched MC} & 582.47 $\pm$ 8.33 & 464.73 $\pm$ 7.42 & 520.58 $\pm$ 7.78 & 434.99 $\pm$ 7.10 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.04 $\pm$ 0.06 & 0.99 $\pm$ 0.05 & 1.02 $\pm$ 0.06 \\
+\hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Change cut $p_T > \SI{350}{GeV}$ (as opposed to \SI{250}{GeV})}
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    \vspace{6pt}
+    \textcolor{blue}{All mass}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+ & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 103.01 $\pm$ 10.98 & 65.01 $\pm$ 8.46 & 78.02 $\pm$ 9.47 & 58.66 $\pm$ 8.08 \\
+\makecell{Signal-\\ matched MC} & 131.78 $\pm$ 3.87 & 82.89 $\pm$ 2.99 & 98.33 $\pm$ 3.19 & 73.98 $\pm$ 2.72 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.11 & 1.00 $\pm$ 0.14 & 1.02 $\pm$ 0.13 & 1.01 $\pm$ 0.14 \\
+\hline
+      \end{tabular}
+    }
+
+    \vspace{6pt}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{c | c | c | c | c}
+\hline
+\makecell{Background \\ Subtracted \\ Data} & 87.50 $\pm$ 10.06 & 65.12 $\pm$ 8.45 & 77.46 $\pm$ 9.40 & 58.79 $\pm$ 8.07 \\
+\makecell{Signal-\\ matched MC} & 116.33 $\pm$ 3.56 & 82.89 $\pm$ 2.99 & 96.60 $\pm$ 3.16 & 73.98 $\pm$ 2.72 \\
+\hline
+\makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.12 & 1.04 $\pm$ 0.14 & 1.07 $\pm$ 0.13 & 1.06 $\pm$ 0.15 \\
+\hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
 \end{frame}
 
 \input{backup_slides.tex}

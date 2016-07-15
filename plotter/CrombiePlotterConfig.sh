@@ -1,14 +1,14 @@
-export CrombieMCConfig=MCBackground.txt
-export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE\_herwig_background
 #export CrombieMCConfig=MCTruthMatch.txt
-#export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE
+export CrombieMCConfig=MCBackground.txt
+export CrombieExcept_herwig=MCBackgroundHerwig.txt
+export CrombieOutPlotDir=/afs/cern.ch/user/d/dabercro/www/plots/$CROMBIEDATE
 
 source ../slimmer/CrombieSlimmingConfig.sh
 #export CrombieMCConfig=MCHadronic.txt
 
 #export CrombieMCConfig=MCHadronic.txt
 export CrombieLuminosity=7647.6
-export CrombieInFilesDir=/afs/cern.ch/work/d/dabercro/public/Summer16/Skim_160714
+export CrombieInFilesDir=../../Skim_160714
 
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 

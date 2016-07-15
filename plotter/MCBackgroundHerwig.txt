@@ -1,0 +1,18 @@
+skip              WMerged/wscale_TTJets_SingleLeptFromT.root
+skip              WMerged/wscale_TTJets_SingleLeptFromTbar.root
+skip              TopMerged/wscale_TTJets_SingleLeptFromT.root
+skip              TopMerged/wscale_TTJets_SingleLeptFromTbar.root
+skip              BQuark/wscale_TTJets_SingleLeptFromT.root
+skip              BQuark/wscale_TTJets_SingleLeptFromTbar.root
+skip              Quark/wscale_TTJets_SingleLeptFromT.root
+skip              Quark/wscale_TTJets_SingleLeptFromTbar.root
+skip              B/wscale_TTJets_SingleLeptFromT.root
+skip              B/wscale_TTJets_SingleLeptFromTbar.root
+skip              Recoiling/wscale_TTJets_SingleLeptFromT.root
+skip              Recoiling/wscale_TTJets_SingleLeptFromTbar.root
+TT              WMerged/wscale_TT_TuneEE5C_13TeV-powheg-herwigpp.root                                  832.0             Signal               867
+TT              TopMerged/wscale_TT_TuneEE5C_13TeV-powheg-herwigpp.root                                  832.0              .                  .
+TT              BQuark/wscale_TT_TuneEE5C_13TeV-powheg-herwigpp.root                                  832.0              .                  .
+TT              Quark/wscale_TT_TuneEE5C_13TeV-powheg-herwigpp.root                                  832.0              .                  .
+TT              B/wscale_TT_TuneEE5C_13TeV-powheg-herwigpp.root                                  832.0              .                  .
+TT              Recoiling/wscale_TT_TuneEE5C_13TeV-powheg-herwigpp.root                                  832.0              .                  .

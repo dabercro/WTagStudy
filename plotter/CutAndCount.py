@@ -10,13 +10,45 @@ histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
 histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.environ.get('CrombieLuminosity') + ')')
 
-for cut, name in [(cuts.regionCuts['massp'],'Pruned Mass Cut'),
-                  (cuts.regionCuts['tau21'],'$\\tau_2/\\tau_1$ Cut'),
-                  (cuts.joinCuts(['massp','tau21']),'Full V-tag Cut')]:
-    histAnalysis.AddScaleFactorCut(cut,name)
+def doBoth(addToRegion='_ntau_mediumB_ntot'):
+    print('All mass')
+    histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion))
+    histAnalysis.DoScaleFactors('n_tightlep',1,0,2)
+    print('No low mass')
+    histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion))
+    histAnalysis.DoScaleFactors('n_tightlep',1,0,2)
+
+def doSmear(whichDir, addToRegion='_ntau_mediumB_ntot'):
+    histAnalysis.ResetScaleFactorCuts()
+    for name, cut in [('Pruned Mass Cut',cuts.regionCuts['massp']),
+                      ('$\\tau_2/\\tau_1$ Cut',cuts.regionCuts['tau21']),
+                      ('Full V-tag Cut',cuts.joinCuts(['massp','tau21']))]:
+        datacut = '(' + cut + ' && fatjetPt > 250)'
+        mccut = '(' + cut.replace('L2L3','L2L3Smeared' + whichDir) + ' && fatjetPtSmeared' + whichDir + '  > 250)'
+        histAnalysis.AddScaleFactorCut(name, mccut, datacut)
+
+    doBoth(addToRegion + '_nopt')
+
+def GetTables(addToRegion='_ntau_mediumB_ntot'):
+    histAnalysis.ResetScaleFactorCuts()
+    for name, cut in [('Pruned Mass Cut',cuts.regionCuts['massp']),
+                      ('$\\tau_2/\\tau_1$ Cut',cuts.regionCuts['tau21']),
+                      ('Full V-tag Cut',cuts.joinCuts(['massp','tau21']))]:
+        histAnalysis.AddScaleFactorCut(name, cut)
+
+    print('\nDefault Pythia setup\n')
+    doBoth(addToRegion)
+    print('\nSmear Down\n')
+    doSmear('Down', addToRegion)
+    print('\nSmear Central\n')
+    doSmear('Central', addToRegion)
+    print('\nSmear Up\n')
+    doSmear('Up', addToRegion)
+
+def main():
+    GetTables()
+    print('\nLooser cuts\n')
+    GetTables('')
 
 if __name__ == "__main__":
-    histAnalysis.SetBaseCut(cuts.cut('semilep','full_ntau_mediumB_ntot'))
-    histAnalysis.DoScaleFactors('n_tightlep',1,0,2) #,0,False)
-    histAnalysis.SetBaseCut(cuts.cut('nolowmass','full_ntau_mediumB_ntot'))
-    histAnalysis.DoScaleFactors('n_tightlep',1,0,2) #,0,False)
+    main()
