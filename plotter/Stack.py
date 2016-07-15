@@ -59,8 +59,7 @@ def SetupArgs():
         ]
 
 def RunPlots(categories):
-#    cutList = ['nocut','full','full_massp_tau21','full_ntau_mediumB','full_ntau_mediumB_massp_tau21','full_ntau_mediumB_ntot']
-    cutList = ['full_ntau_mediumB_ntot_massp_tau21']
+    cutList = ['nocut','full','full_massp_tau21','full_ntau_mediumB','full_ntau_mediumB_massp_tau21','full_ntau_mediumB_ntot','full_ntau_mediumB_ntot_massp_tau21']
     MakePlots(categories,cutList,SetupArgs())
     plotter.SetMakeRatio(False)
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])
