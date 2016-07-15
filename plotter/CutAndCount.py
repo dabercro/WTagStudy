@@ -6,6 +6,8 @@ import os
 
 SetupFromEnv()
 
+histAnalysis.SetIsPresentation(False)
+
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
 histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.environ.get('CrombieLuminosity') + ')')

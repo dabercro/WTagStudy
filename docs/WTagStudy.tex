@@ -20,49 +20,58 @@ but this will be decreased significantly as more data is gathered.
 
 To match the selection used in the Mono-V category of the analysis,
 all events require one anti-$k_T$, $R = 0.8$ ``fat'' jet with $p_T > \SI{250}{GeV}$.
-To select semi-leptonic $t\bar{t}$ events, two loose b-tagged anti-$k_T$, $R = 0.4$
-jets with $csv > 0.605$ and one tight muon (electron) with
+To select semi-leptonic $t\bar{t}$ events, two b-tagged anti-$k_T$, $R = 0.4$ jets,
+at least one with $csv > 0.89$ (medium working point)
+and the other with $csv > 0.605$ (loose working point),
+and one tight muon (electron) with
 $p_T > \SI{20}{GeV} (\SI{40}{GeV})$ are also required.
 Finally, we only allow for one additional anti-$k_T$, $R = 0.4$ jet from ISR, \emph{etc.}
+That is, there can only be three jets outside of the fat jet, the other two being
+the b-tagged jets.
 in the event to ensure a clean $t\bar{t}$ selection.
 If the other jet is boosted enough to create another fat jet, we use the requirement 
 of all other fat jets that is not the selection jet has $m_\text{pruned} < \SI{50}{GeV}$.
 Note that this is not a direct cut on the jet being selected.
 
-To evaluate the combinatoric backgrounds, we split the TTJets sample into three regions
-as shown in Figure~\ref{fig:wscale_DRGen}.
+To evaluate the combinatoric backgrounds, we split the semi-leptonic TTJets sample into six regions
+based on the relative locations of the reco jet and truth-matched particles.
 \begin{itemize}
-\item W-matched: in these events, the generator W is within $\Delta R < 0.2$ from the
-  reconstructed fat jet. These are our signal events.
-\item Pulled off W: In these events, the jet is pulled away from initial W direction.
-  From Figure~\ref{fig:wscale_DRb}, we can guess that this is most likely from the jet from
-  the W is merged with the b jet from the top decay.
-  This is not considered signal.
-\item Recoiling Jet: For jets very far from the nearest generator W, we assume the selected
-  jet is actually a jet from an additional radiated gluon or pileup.
-  All events from the di-lepton $t\bar{t}$ sample is also considered to be from recoiling jets
-  since there is no true V-jet to identify in the event.
+\item W-matched: In this region, two daughter quarks from the closest W are contained inside the jet
+  ($\Delta R < 0.8$). There are no truth-matched b quarks inside.
+\item Top-matched: In this region, both daughter quarks from the closest W as well as a b quark are
+  inside the fat jet.
+\item One W and b: In this region, one daughter quark and a b quark are inside the jet
+\item Part of W: Only one quark from the W is inside the jet. No b quarks are present.
+\item B Quark: A b quark is inside the jet, but no quark daughters of the closest W are present
+\item Recoiling Jet: No quark daughters of the closest W are present, and there are no b quarks in the jet.
+  This happens when an ISR jet is picked up instead.
 \end{itemize}
+The distance between the reco jet and the generated $W$
+in these regions is shown in Figure~\ref{fig:wscale_DRGen}.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\linewidth]{semilep_nocut_fatjetDRGenW.pdf}
-  \caption{The TTJets sample is mostly split based on the distance of the reconstructed fat jet
-  from the nearest generator W. Jets close to the W are considered to be signal.
-  All di-lepton $t\bar{t}$ MC is considered recoiling jets, despite their distance from generator W bosons.}
+  \includegraphics[width=0.5\linewidth]{160714/semilep_nocut_fatjetDRGenW.pdf}
+  \caption{The TTJets sample is split based on the distance of the reconstructed fat jet
+  from various truth-matched quarks.}
   \label{fig:wscale_DRGen}
 \end{figure}
 
 Additional cuts from the obvious Mono-V and $t\bar{t}$ selection are 
-justified by Figures~\ref{fig:wscale_DRb} and \ref{fig:wscale_DPhiLep}.
-We use the selection $0.8 < \Delta R(j_b,j_\text{fat}) < 1.2$ 
-and $\Delta\phi(\ell,j_\text{fat})$ to cut out the two combinatoric backgrounds.
+justified by Figures~\ref{fig:wscale_DRb}, \ref{fig:wscale_DPhiLep}, and \ref{fig:wscale_njetstot}.
+We use the selection $0.8 < \Delta R(j_b,j_\text{fat}) < 1.2$,
+$\Delta\phi(\ell,j_\text{fat})$, and
+$n_\text{jets,$ak_T$ 0.4} > 3$
+to cut out combinatoric backgrounds.
+This number of jets cut is in addition to requiring the number of jets outside the fat jet
+to be three or less, since this is total number of jets, not just the jets outside
+the fat jet.
 
 \begin{figure}[h]
   \centering
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{semilep_nocut_fatjetDRLooseB.pdf}
+    \includegraphics[width=\linewidth]{160714/semilep_nocut_fatjetDRLooseB.pdf}
     \caption{$\Delta R$ between the reconstructed fat jet and the closest loose
     b-tagged jet is shown. When too close to the b-jet, the fat jet is pulled from
     the W. Recoiling jets are more likely to be far away.}
@@ -71,44 +80,79 @@ and $\Delta\phi(\ell,j_\text{fat})$ to cut out the two combinatoric backgrounds.
   ~
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{semilep_nocut_fatjetDPhiLep1.pdf}
+    \includegraphics[width=\linewidth]{160714/semilep_nocut_fatjetDPhiLep1.pdf}
     \caption{$\Delta\phi$ between the reconstructed fat jet and the tight lepton
       is shown. While not as discriminating as $\Delta R$, this can clean up the selection
       as well.}
     \label{fig:wscale_DPhiLep}
   \end{minipage}
+  ~
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{160714/semilep_full_ntau_mediumB_n_jetsTot.pdf}
+    \caption{After cutting on $\Delta R(j_b,j_\text{fat})$, and $\Delta\phi(\ell,j_\text{fat})$,
+      the number of $ak_{T}$ 0.4 jets with $p_T > \SI{30}{GeV}$ are shown.
+      If at least 4 jets are required, this means there are two b-tags, and two prongs of a
+      fat jet, or one merged fat jet and an ISR jet.}
+    \label{fig:wscale_njetstot}
+  \end{minipage}
 \end{figure}
   
 \subsection{Vector Tagging Variables and Scale Factor} \label{sec:wscale_tagging}
 
-We use the loose cut-based tagger of $\SI{65}{GeV} < m_\text{pruned} < \SI{115}{GeV}$
+We use the loose cut-based tagger of $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$
 and $\tau_2/\tau_1 < 0.6$.
 The distributions of the two variables after the selection described
 in the previous section is applied are shown in
 Figures~\ref{fig:wscale_massp} and \ref{fig:wscale_tau21}.
-
+Each distribution after cutting on the other are shown in
+Figures~\ref{fig:wscale_massp_nm1} and \ref{fig:wscale_tau21_nm1}.
+  
 \begin{figure}[h]
   \centering
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{semilep_full_fatjetPrunedM.pdf}
+    \includegraphics[width=\linewidth]{160714/semilep_full_ntau_mediumB_ntot_fatjetPrunedML2L3.pdf}
     \caption{The distribution of the pruned mass is shown above.}
     \label{fig:wscale_massp}
   \end{minipage}
   ~
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{semilep_full_fatjettau21.pdf}
+    \includegraphics[width=\linewidth]{160714/semilep_full_ntau_mediumB_ntot_fatjettau21.pdf}
     \caption{The distribution of $\tau_2/\tau_1$ is shown above.}
     \label{fig:wscale_tau21}
   \end{minipage}
 \end{figure}
-  
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{160714/semilep_full_ntau_mediumB_ntot_massp_tau21_fatjetPrunedML2L3.pdf}
+    \caption{The distribution of the pruned mass after cutting on $\tau_2/\tau_1$ is shown above.}
+    \label{fig:wscale_massp_nm1}
+  \end{minipage}
+  ~
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{160714/semilep_full_ntau_mediumB_ntot_massp_tau21_fatjettau21.pdf}
+    \caption{The distribution of $\tau_2/\tau_1$ after cutting on pruned mass is shown above.}
+    \label{fig:wscale_tau21_nm1}
+  \end{minipage}
+\end{figure}
+
 The scale factor is determined by counting the W-matched MC and the background-subtracted data.
 The MC is normalized to the data before subtraction.
-Since there is good agreement between the MC and data, the only uncertainties given in these tables 
-are the statistical uncertainties.
+The backgrounds subtracted are QCD, $W\rightarrow \ell\nu$, single-top no W, and 
+di-lepton $tt$ events.
+Other MC events failing to match the W are left in to simulate selection of the wrong jet
+for results reported.
+It was also confirmed, taking out additional backgrounds does not significantly 
+change the scale factors.
 Table~\ref{tab:wscale_res} shows resulting scale factors from this.
+The only uncertainties given in these tables 
+are the statistical uncertainties.
 
 \begin{table}[h]
   \caption{Scale factors from using all of the data from the previous selection are given.}
@@ -116,10 +160,10 @@ Table~\ref{tab:wscale_res} shows resulting scale factors from this.
     \hline
     & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
     \hline
-    Background Subtracted Data & 130.97 \pm 13.32 & 85.47 \pm 9.92 & 103.91 \pm 11.07 & 80.67 \pm 9.54 \\
-    Truth-matched MC & 143.92 \pm 2.28 & 103.03 \pm 1.93 & 114.09 \pm 2.03 & 97.97 \pm 1.88 \\
+    Background Subtracted Data & 619.89 $\pm$ 26.52 & 431.34 $\pm$ 21.27 & 470.20 $\pm$ 22.36 & 393.52 $\pm$ 20.26 \\
+    Signal-matched MC & 717.49 $\pm$ 9.36 & 488.83 $\pm$ 7.63 & 561.67 $\pm$ 8.11 & 453.18 $\pm$ 7.26 \\
     \hline
-    Normalized Ratio & 1.00 \pm 0.10 & 0.91 \pm 0.11 & 1.00 \pm 0.11 & 0.90 \pm 0.11 \\
+    Normalized Ratio & 1.00 $\pm$ 0.04 & 1.02 $\pm$ 0.05 & 0.97 $\pm$ 0.05 & 1.01 $\pm$ 0.05 \\
     \hline
   \end{tabular}
   \label{tab:wscale_res}
@@ -135,15 +179,19 @@ Table~\ref{tab:wscale_hmm} shows the results from this approach.
     \hline
     & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
     \hline
-    Background Subtracted Data & 112.86 \pm 11.89 & 85.63 \pm 9.91 & 104.62 \pm 11.07 & 80.80 \pm 9.54 \\
-    Truth-matched MC & 125.79 \pm 2.13 & 103.03 \pm 1.93 & 113.03 \pm 2.02 & 97.97 \pm 1.88 \\
+    Background Subtracted Data & 542.63 $\pm$ 24.27 & 431.51 $\pm$ 21.26 & 469.28 $\pm$ 22.30 & 393.66 $\pm$ 20.25 \\
+    Signal-matched MC & 637.55 $\pm$ 8.76 & 488.83 $\pm$ 7.63 & 556.67 $\pm$ 8.07 & 453.18 $\pm$ 7.26 \\
     \hline
-    Normalized Ratio & 1.00 \pm 0.11 & 0.93 \pm 0.11 & 1.03 \pm 0.11 & 0.92 \pm 0.11 \\
+    Normalized Ratio & 1.00 $\pm$ 0.05 & 1.04 $\pm$ 0.05 & 0.99 $\pm$ 0.05 & 1.02 $\pm$ 0.05 \\
     \hline
   \end{tabular}
   \label{tab:wscale_hmm}
 \end{table}
 
 The two methods of obtaining scale factors are consistent with each other.
+
+\subsection{Systematics}
+
+
   
 \end{document}

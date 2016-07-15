@@ -25,7 +25,7 @@ plotter.SetForceTop('W-matched (tt)')
 def SetupArgs():
     return [
         ['npv',50,0,50,'NPV','Events/1.0'],
-        ['fatjetMaxBTag',25,0,1.25,'#Delta #phi from MET','Events/1.0'],
+        ['fatjetMaxBTag',25,0,1.25,'Max subjet b-tag (csv)','Events/1.0'],
         ['jet_ht',40,0,2000,'Jet HT (jet p_{T} > 30 GeV)','Events/1.0'],
 #        ['fatjetDPhiMet',25,0,5,'#Delta #phi from MET','Events/1.0'],
         ['met',20,0,400,'MET [GeV]','Events/1.0'],
@@ -59,7 +59,10 @@ def SetupArgs():
         ]
 
 def RunPlots(categories):
-    cutList = ['nocut','full','full_massp_tau21','full_ntau_mediumB','full_ntau_mediumB_massp_tau21','full_ntau_mediumB_ntot','full_ntau_mediumB_ntot_massp_tau21']
+    cutList = ['full']
+    for move in range(7):
+        cutList.append('full_' + str(move * 0.1))
+
     MakePlots(categories,cutList,SetupArgs())
     plotter.SetMakeRatio(False)
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])

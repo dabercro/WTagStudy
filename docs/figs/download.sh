@@ -1,11 +1,4 @@
 #!/bin/bash
 
-rm *.pdf 2> /dev/null
+CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160714/semilep_nocut_fatjetDRLooseB,160714/semilep_nocut_fatjetDPhiLep1,160714/semilep_nocut_fatjetDRGenW,160714/semilep_full_ntau_mediumB_n_jetsTot,160714/semilep_full_ntau_mediumB_ntot_fatjetPrunedML2L3,160714/semilep_full_ntau_mediumB_ntot_fatjettau21,160714/semilep_full_ntau_mediumB_ntot_massp_tau21_fatjetPrunedML2L3,160714/semilep_full_ntau_mediumB_ntot_massp_tau21_fatjettau21" 
 
-files="semilep_full_fatjetPrunedM.pdf semilep_full_fatjetPrunedMuncorr.pdf semilep_full_fatjettau21.pdf semilep_nocut_fatjetDPhiLep1.pdf semilep_nocut_fatjetDRGenW.pdf semilep_nocut_fatjetDRLooseB.pdf"
-
-for f in $files
-do
-    wget http://dabercro.web.cern.ch/dabercro/plots/160622_fin/$f
-    pdfcrop $f $f
-done

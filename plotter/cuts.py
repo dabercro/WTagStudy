@@ -1,8 +1,9 @@
 # Used in full region
 
 from CrombieTools import Nminus1Cut
+import re
 
-regions    = ['bwindow','dphilep','nsmalljets'] # ,'ntau','mediumB']
+regions    = ['bwindow','dphilep','nsmalljets','ntau','mediumB','ntot']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
@@ -68,6 +69,11 @@ def cut(category,inRegions):
         holdRegions.pop(-1)
         theCuts = Nminus1Cut(theCuts,'jetPt')
 
+    startB = -1.0
+    for iCut in range(len(holdRegions)):
+        if re.match(r'^\d+\.\d+$',holdRegions[iCut]):
+            startB = float(holdRegions.pop(iCut))
+
     theCuts = [theCuts]
 
     for region in holdRegions:
@@ -75,6 +81,9 @@ def cut(category,inRegions):
 
     theCut = ' && '.join(theCuts)
 
+    if startB > -0.5:
+        theCut = theCut.replace(regionCuts['bwindow'],'fatjetDRLooseB > ' + str(0.5 + startB) +' && fatjetDRLooseB < ' + str(0.9 + startB))
+        
     if category == 'fullhad':
         theCut = theCut.replace('fatjet1','fatjet2').replace('_1','_2')
         theCut = ' && '.join([
