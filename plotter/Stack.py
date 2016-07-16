@@ -60,7 +60,7 @@ def SetupArgs():
 
 def RunPlots(categories):
     cutList = ['full']
-    for move in range(7):
+    for move in range(10):
         cutList.append('full_' + str(move * 0.1))
 
     MakePlots(categories,cutList,SetupArgs())

@@ -234,8 +234,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       }
     }
 
-    if (outTree->n_looselep > 1)
-      continue;
+    // if (outTree->n_looselep > 1)
+    //   continue;
 
     //// If there are identified leptons, we will define our recoil using them ////
 
@@ -374,8 +374,8 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
       }
     }
 
-    if (outTree->n_bjetsLoose != 2)
-      continue;
+    // if (outTree->n_bjetsLoose != 2)
+    //   continue;
     
     // std::cout << "//// Now check number of non-overlapping taus ////" << std::endl;
 
