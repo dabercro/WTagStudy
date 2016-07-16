@@ -2,7 +2,12 @@ export CrombieFilesPerJob=20
 export CrombieNBatchProcs=4
 export CrombieQueue=2nw4cores
 
-export CrombieNLocalProcs=6
+if [ "$(hostname)" = "dabercro-MacBookAir" ]
+then
+    export CrombieNLocalProcs=3
+else
+    export CrombieNLocalProcs=6
+fi
 
 export CrombieEosDir=80X.txt
 export CrombieFileBase=wscale
