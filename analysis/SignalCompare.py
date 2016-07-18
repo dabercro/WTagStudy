@@ -19,4 +19,4 @@ plotter.AddLegendEntry('All',1)
 plotter.AddLegendEntry('Part of W',2)
 plotter.AddLegendEntry('Not Matching W',4)
 
-plotter.MakeCanvas("plots/fatjetPrunedMx",25,0,150,"m_{pruned}","A.U.")
+plotter.MakeCanvas("plots/fatjetPrunedMx",25,0,150,"m_{pruned} [GeV]","A.U.")
