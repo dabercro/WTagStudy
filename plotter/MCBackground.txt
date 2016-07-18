@@ -12,6 +12,10 @@ wln_100               wscale_WJetsToLNu_Pt-100To250_TuneCUETP8M1_13TeV-amcatnloF
 wln_250               wscale_WJetsToLNu_Pt-250To400_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root       23.94            .                  .
 wln_400               wscale_WJetsToLNu_Pt-400To600_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root        3.031           .                  .
 wln_600               wscale_WJetsToLNu_Pt-600ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root        0.4524          .                  .
+TT              WMerged/wscale_TTJets_SingleLeptFromT.root                                        181.5        Signal          867
+TT              WMerged/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .
+TT              Quark/wscale_TTJets_SingleLeptFromT.root                                    181.5         . .
+TT              Quark/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
 TT              TopMerged/wscale_TTJets_SingleLeptFromT.root                                    181.5        .  .
 TT              TopMerged/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
 antitop_5f           wscale_ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1.root         35.6              .                  .
@@ -22,7 +26,3 @@ TT              Recoiling/wscale_TTJets_SingleLeptFromT.root                    
 TT              Recoiling/wscale_TTJets_SingleLeptFromTbar.root                                  181.5              .                  .
 TT              BQuark/wscale_TTJets_SingleLeptFromT.root                                    181.5         .  .
 TT              BQuark/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
-TT              Quark/wscale_TTJets_SingleLeptFromT.root                                    181.5         . .
-TT              Quark/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
-TT              WMerged/wscale_TTJets_SingleLeptFromT.root                                        181.5        Signal          867
-TT              WMerged/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .

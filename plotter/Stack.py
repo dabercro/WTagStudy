@@ -57,7 +57,7 @@ def SetupArgs():
         ]
 
 def RunPlots(categories):
-    cutList = ['nocut','nocut_ntot_nsmalljets','full','full_highpt']
+    cutList = ['nocut','nocut_ntot_nsmalljets','full','full_highpt','full_massp_tau21']
     for move in range(8):
         cutList.append('full_' + str(move * 0.1))
 
