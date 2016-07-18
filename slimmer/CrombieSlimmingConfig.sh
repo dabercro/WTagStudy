@@ -4,7 +4,7 @@ export CrombieQueue=2nw4cores
 
 if [ "$(hostname)" = "dabercro-MacBookAir" ]
 then
-    export CrombieNLocalProcs=3
+    export CrombieNLocalProcs=2
 else
     export CrombieNLocalProcs=6
 fi
