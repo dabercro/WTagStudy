@@ -9,7 +9,11 @@ CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/sta
 CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160718/fatjetPrunedMx" 
 CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160707/WPt_comparison" 
 CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160718/semilep_nocut_n_bjetsMedium,160718/semilep_nocut_n_jetsNotFat,160718/semilep_nocut_n_jetsTot" 
+CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160714/semilep_full_n_jetsNotFat,160714/semilep_full_n_jetsTot" 
 CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160718/semilep_full_0.0_fatjetPrunedML2L3,160718/semilep_full_0.1_fatjetPrunedML2L3,160718/semilep_full_0.2_fatjetPrunedML2L3,160718/semilep_full_0.3_fatjetPrunedML2L3,160718/semilep_full_0.4_fatjetPrunedML2L3,160718/semilep_full_0.5_fatjetPrunedML2L3,160718/semilep_full_0.6_fatjetPrunedML2L3,160718/semilep_full_0.7_fatjetPrunedML2L3" 
+CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160718/semilep_nocut_ntot_nsmalljets_fatjetDPhiLep1,160718/semilep_nocut_ntot_nsmalljets_fatjetDRLooseB" 
+CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160714/semilep_full_n_bjetsMedium,160714/semilep_full_n_jetsTot" 
+CrombieDownloadTar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160718/semilep_nocut_ntot_nsmalljets_fatjetPrunedML2L3" 
 
 rm */*n_bjetsLoose.pdf
 rm */*highpt*Pt.pdf

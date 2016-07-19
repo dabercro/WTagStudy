@@ -6,7 +6,7 @@ import os
 
 SetupFromEnv()
 
-histAnalysis.SetIsPresentation(False)
+#histAnalysis.SetIsPresentation(False)
 
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
@@ -54,9 +54,9 @@ def GetTables(addToRegion=''):
 
 def main():
     GetTables()
-#    for move in range(10):
-#        print('\nAbout to do range ' + str(move) + '\n')
-#        GetTables('_' + str(move * 0.1))
+    for move in range(8):
+        print('\nAbout to do range ' + str(move) + '\n')
+        GetTables('_' + str(move * 0.1))
 
 
 if __name__ == "__main__":
