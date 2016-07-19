@@ -55,10 +55,11 @@ def SetupArgs():
 #        ['fatjetDRMediumB',25,0,5,'#Delta R from Medium b','Events/1.0'],
 #        ['fatjetDRTightB',25,0,5,'#Delta R from Tight b','Events/1.0'],
         ['fatjetDPhiLep1',25,0,5,'#Delta #phi from Lepton','Events/1.0'],
+        ['thirdFatMass',25,0,15,'Pruned Mass of Other Fat Jets','Events/1.0'],
         ]
 
 def RunPlots(categories):
-    cutList = ['nocut','nocut_ntot_nsmalljets','full','full_highpt','full_massp_tau21']
+    cutList = ['nocut','nocut_nsmalljets','full','full_highpt','full_massp_tau21']
     for move in range(8):
         cutList.append('full_' + str(move * 0.1))
 

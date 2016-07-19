@@ -3,7 +3,7 @@
 from CrombieTools import Nminus1Cut
 import re
 
-regions    = ['bwindow','dphilep','nsmalljets','ntau','mediumB','ntot']
+regions    = ['bwindow','dphilep','nsmalljets','ntau','mediumB']
 
 # Two dictionaries to define the cuts for separate categories and control regions
 
