@@ -6,7 +6,7 @@ import os
 
 SetupFromEnv()
 
-#histAnalysis.SetIsPresentation(False)
+histAnalysis.SetIsPresentation(False)
 
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
@@ -41,7 +41,6 @@ def GetTables(addToRegion=''):
                       ('Full V-tag Cut',cuts.joinCuts(['massp','tau21']))]:
         histAnalysis.AddScaleFactorCut(name, cut)
 
-    print('\nDefault Pythia setup\n')
     doBoth(addToRegion)
 
 #    print('\nSmear Down\n')
@@ -54,10 +53,9 @@ def GetTables(addToRegion=''):
 
 def main():
     GetTables()
-    for move in range(8):
-        print('\nAbout to do range ' + str(move) + '\n')
-        GetTables('_' + str(move * 0.1))
-
 
 if __name__ == "__main__":
-    main()
+    GetTables()
+#    for move in range(10):
+#        print('\nAbout to do range ' + str(move) + '\n')
+#        GetTables('_' + str(move * 0.1))
