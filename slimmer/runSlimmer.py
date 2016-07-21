@@ -6,7 +6,7 @@ import ROOT
 
 OutTreeName = 'OutTree'
 
-os.system(os.environ['CROMBIEPATH'] + '/scripts/MakeTree.sh ' + OutTreeName)
+os.system('crombie maketree ' + OutTreeName)
 ROOT.gROOT.LoadMacro('NeroTree.C+')
 ROOT.gROOT.LoadMacro(OutTreeName + '.cc+')
 ROOT.gROOT.LoadMacro('slimmer.cc+')
