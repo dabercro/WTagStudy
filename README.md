@@ -1,6 +1,6 @@
 # WTagStudy
 
-Depends on CrombieTools tag ICHEP2016:
+Tags 160715 and older depend on CrombieTools tag ICHEP2016:
 
 ```
 git clone https://github.com/dabercro/CrombieTools.git
