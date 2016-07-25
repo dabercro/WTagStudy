@@ -6,7 +6,7 @@ import os
 
 SetupFromEnv()
 
-histAnalysis.SetIsPresentation(False)
+#histAnalysis.SetIsPresentation(False)
 
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
@@ -55,7 +55,8 @@ def main():
     GetTables()
 
 if __name__ == "__main__":
-    GetTables()
+#    GetTables()
+    GetTables('_highpt')
 #    for move in range(10):
 #        print('\nAbout to do range ' + str(move) + '\n')
 #        GetTables('_' + str(move * 0.1))
