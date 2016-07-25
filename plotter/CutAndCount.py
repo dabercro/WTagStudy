@@ -2,7 +2,7 @@
 
 from CrombieTools.AnalysisTools.HistAnalysis import *
 from CrombieTools.LoadConfig import cuts
-import os
+import os, sys
 
 SetupFromEnv()
 
@@ -43,20 +43,61 @@ def GetTables(addToRegion=''):
 
     doBoth(addToRegion)
 
-#    print('\nSmear Down\n')
-#    doSmear('Down', addToRegion)
-#    print('\nSmear Central\n')
-#    doSmear('Central', addToRegion)
-#    print('\nSmear Up\n')
-#    doSmear('Up', addToRegion)
 
+def printBig(printThis):
+    chars = len(printThis)
+    print('\n' + '#' * (chars + 4))
+    print('# {0} #'.format(printThis))
+    print('#' * (chars + 4) + '\n')
 
 def main():
     GetTables()
 
+
 if __name__ == "__main__":
-#    GetTables()
-    GetTables('_highpt')
-#    for move in range(10):
-#        print('\nAbout to do range ' + str(move) + '\n')
-#        GetTables('_' + str(move * 0.1))
+    GetTables()
+
+    if len(sys.argv) > 1 and sys.argv[1] == 'full':
+
+        printBig('SMEARING')
+
+        print('\nSmear Down\n')
+        doSmear('Down')
+        print('\nSmear Central\n')
+        doSmear('Central')
+        print('\nSmear Up\n')
+        doSmear('Up')
+        
+        printBig('BACKGROUND SCALING')
+
+        print('\nBackground Up\n')
+        histAnalysis.ChangeBackground(1.0)
+        GetTables()
+        print('\nBackground Down\n')
+        histAnalysis.ChangeBackground(-1.0)
+        doBoth()
+        histAnalysis.ChangeBackground(0.0)
+
+        printBig('HIGH PT')
+
+        print('\nHigh Pt\n')
+        doBoth('_highpt')
+        
+        printBig('SHOWERING UNCERTAINTY')
+
+        for move in range(10):
+            print('\nAbout to do range ' + str(move) + '\n')
+            GetTables('_' + str(move * 0.1))
+
+        printBig('ALTERNATE BACKGROUNDS')
+
+        print('\nMore background\n')
+        histAnalysis.ResetConfig()
+        histAnalysis.AddDataFile('wscale_Data.root')
+        histAnalysis.ReadMCConfig('MCBackground_more.txt')
+        GetTables()
+        print('\nMid background\n')
+        histAnalysis.ResetConfig()
+        histAnalysis.AddDataFile('wscale_Data.root')
+        histAnalysis.ReadMCConfig('MCBackground_mid.txt')
+        doBoth()
