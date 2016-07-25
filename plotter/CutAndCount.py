@@ -8,6 +8,8 @@ SetupFromEnv()
 
 #histAnalysis.SetIsPresentation(False)
 
+histAnalysis.ResetConfig()
+histAnalysis.ReadMCConfig('MCBackground.txt')
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
 histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.environ.get('CrombieLuminosity') + ')')

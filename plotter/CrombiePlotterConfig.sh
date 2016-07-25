@@ -1,5 +1,5 @@
-#export CrombieMCConfig=MCTruthMatch.txt
-export CrombieMCConfig=MCBackground.txt
+export CrombieMCConfig=MCTruthMatch.txt
+#export CrombieMCConfig=MCBackground.txt
 #export CrombieMCConfig=MCBackground_mid.txt
 export CrombieExcept_herwig=MCBackgroundHerwig.txt
 
@@ -14,7 +14,7 @@ source ../slimmer/CrombieSlimmingConfig.sh
 
 #export CrombieLuminosity=7647.6
 export CrombieLuminosity=12918.14
-export CrombieInFilesDir=../../Skim_160722
+export CrombieInFilesDir=../../Skim_160725
 
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 

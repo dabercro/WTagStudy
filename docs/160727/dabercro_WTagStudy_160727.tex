@@ -57,9 +57,9 @@
 
   \vspace{12pt}
 
-  Given a tight enough selection and enough data, we can caluculate the 
+  Given a tight enough selection and enough data, we can calculate the 
   scale factor with a cut and count method.
-  Though conservative systematics are applied, this method still has advantages
+  Though conservative systematic uncertainties are applied, this method still has advantages
   over fitting for taggers where backgrounds are shaped.
   For now, this method is only applied to a loose cut-based tagger,
   but we would like to use it in the future for more sophisticated tagging techniques.
@@ -76,7 +76,7 @@
   \item WW(WZ)(ZZ)\_TuneCUETP8M1\_13TeV-pythia8 [$\dagger$]
   \item WJetsToLNu\_Pt-*\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8
   \end{itemize}
-  [$\dagger$] Ended up with negligible yeilds, not in plot legends
+  [$\dagger$] Ended up with negligible yields, not in plot legends
 \end{frame}
 
 \begin{frame}
@@ -120,7 +120,7 @@
     \end{column}
     \begin{column}{0.5\linewidth}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_nocut_nsmalljets_fatjetPrunedML2L3.pdf}
+                      {160725/semilep_nocut_nsmalljets_fatjetPrunedML2L3.pdf}
     \end{column}
   \end{columns}
 \end{frame}
@@ -134,13 +134,13 @@
       \centering
       \textcolor{blue}{$\Delta R(j_b,j_\text{fat})$ of closest b-tag}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_nocut_nsmalljets_fatjetDRLooseB.pdf}
+                      {160725/semilep_nocut_nsmalljets_fatjetDRLooseB.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
       \textcolor{blue}{$\Delta\phi(\ell,j_\text{fat})$}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_nocut_nsmalljets_fatjetDPhiLep1.pdf}
+                      {160725/semilep_nocut_nsmalljets_fatjetDPhiLep1.pdf}
     \end{column}
   \end{columns}
   \vspace{12pt}
@@ -157,13 +157,13 @@
       \centering
       \textcolor{blue}{Pruned Mass}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_full_fatjetPrunedML2L3.pdf}
+                      {160725/semilep_full_fatjetPrunedML2L3.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
       \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_full_fatjettau21.pdf}
+                      {160725/semilep_full_fatjettau21.pdf}
     \end{column}
   \end{columns}
 \end{frame}
@@ -177,13 +177,13 @@
       \centering
       \textcolor{blue}{Pruned Mass}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_full_massp_tau21_fatjetPrunedML2L3.pdf}
+                      {160725/semilep_full_massp_tau21_fatjetPrunedML2L3.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
       \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
       \includegraphics[width=\linewidth]
-                      {160719/semilep_full_massp_tau21_fatjettau21.pdf}
+                      {160725/semilep_full_massp_tau21_fatjettau21.pdf}
     \end{column}
   \end{columns}
 \end{frame}
@@ -215,18 +215,18 @@
   \item Two reasons to not subtract more
     \begin{itemize}
     \item Dominant non-reducible background in analysis is $t\bar{t}$
-    \item Selecting W is not guarenteed in signal samples
+    \item Selecting W is not guaranteed in signal samples
     \end{itemize}
   \item Both of these cases would be poorly represented by
     W-matched background subtraction
-  \item Other background subtraction is explored in systematics, though it actually makes no
+  \item Other background subtraction is explored in systematic uncertainties, though it actually makes no
     difference to scale factor
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Scale Factors}
-  Only statistical uncertainties in these tables \\ systematics explored next
+  Only statistical uncertainties in these tables \\ systematic uncertainties explored next
   \begin{adjustwidth}{-1.5em}{-1.5em}
     \centering
     \vspace{6pt}
@@ -235,14 +235,7 @@
 
     {\scriptsize
       \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 725.33 $\pm$ 29.33 & 448.50 $\pm$ 22.11 & 496.54 $\pm$ 23.41 & 407.11 $\pm$ 21.04 \\
-        \makecell{Signal-\\ matched MC} & 815.21 $\pm$ 9.96 & 510.50 $\pm$ 7.79 & 593.07 $\pm$ 8.31 & 470.81 $\pm$ 7.38 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 0.99 $\pm$ 0.05 & 0.94 $\pm$ 0.05 & 0.97 $\pm$ 0.05 \\
-        \hline
+
       \end{tabular}
     }
 
@@ -255,10 +248,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 587.79 $\pm$ 25.72 & 449.10 $\pm$ 22.07 & 494.53 $\pm$ 23.28 & 407.62 $\pm$ 21.00 \\
-        \makecell{Signal-\\ matched MC} & 685.62 $\pm$ 9.06 & 510.50 $\pm$ 7.79 & 586.18 $\pm$ 8.26 & 470.81 $\pm$ 7.38 \\
+        \makecell{Background \\ Subtracted \\ Data} & 976.65 $\pm$ 33.70 & 737.60 $\pm$ 28.68 & 824.84 $\pm$ 30.47 & 671.90 $\pm$ 27.34 \\
+        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 860.33 $\pm$ 13.02 & 988.32 $\pm$ 13.81 & 793.25 $\pm$ 12.33 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.03 $\pm$ 0.05 & 0.98 $\pm$ 0.05 & 1.01 $\pm$ 0.05 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.02 $\pm$ 0.04 & 0.99 $\pm$ 0.04 & 1.00 $\pm$ 0.04 \\
         \hline
       \end{tabular}
     }
@@ -266,8 +259,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Systematics}
- Four separate effects were investigated for the systematics
+  \frametitle{Systematic Uncertainties}
+ Four separate effects were investigated for the systematic uncertainties
   \begin{itemize}
   \item Jet Smearing: 
     \begin{itemize}
@@ -292,6 +285,26 @@
       \item all mass 5\%, no low mass 6\%
     \end{itemize}
   \end{itemize}
+  Adding in Quadrature for all mass: 9\% \\
+  The dump of SF tables for these studies are in the backup slides \\
+  \vspace{12pt}
+  {\small [*] 
+    \href{https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution#Smearing_procedures}
+         {https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Systematic Uncertainties}
+  \begin{center}
+  \begin{tabular}{l|c|c}
+    Source & All Mass & No Low Mass \\
+    \hline
+    Jet Smearing & 6\% & 6\% \\
+    Background subtraction & 5\% & 3\% \\
+    Which background is subtracted & 0\% & 0\% \\
+    Shower effect on purity cuts & 5\% & 6\% \\
+  \end{tabular}
+  \end{center}
   Adding in Quadrature for all mass: 9\% \\
   The dump of SF tables for these studies are in the backup slides \\
   \vspace{12pt}
@@ -332,10 +345,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 725.33 $\pm$ 29.33 & 448.34 $\pm$ 22.11 & 496.88 $\pm$ 23.41 & 407.24 $\pm$ 21.04 \\
-        \makecell{Signal-\\ matched MC} & 815.21 $\pm$ 9.96 & 480.50 $\pm$ 7.56 & 562.58 $\pm$ 8.09 & 442.65 $\pm$ 7.18 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1195.31 $\pm$ 38.53 & 736.52 $\pm$ 28.75 & 829.48 $\pm$ 30.65 & 671.47 $\pm$ 27.39 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 809.55 $\pm$ 12.63 & 947.81 $\pm$ 13.51 & 745.50 $\pm$ 11.99 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.05 $\pm$ 0.05 & 0.99 $\pm$ 0.05 & 1.03 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 1.05 $\pm$ 0.04 & 1.01 $\pm$ 0.04 & 1.04 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -349,10 +362,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 587.79 $\pm$ 25.72 & 448.95 $\pm$ 22.07 & 494.86 $\pm$ 23.28 & 407.74 $\pm$ 21.00 \\
-        \makecell{Signal-\\ matched MC} & 685.62 $\pm$ 9.06 & 480.50 $\pm$ 7.56 & 555.68 $\pm$ 8.04 & 442.65 $\pm$ 7.18 \\
+        \makecell{Background \\ Subtracted \\ Data} & 976.65 $\pm$ 33.70 & 737.30 $\pm$ 28.69 & 825.39 $\pm$ 30.47 & 672.11 $\pm$ 27.33 \\
+        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 809.55 $\pm$ 12.63 & 936.56 $\pm$ 13.43 & 745.50 $\pm$ 11.99 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.09 $\pm$ 0.06 & 1.04 $\pm$ 0.05 & 1.07 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.08 $\pm$ 0.05 & 1.04 $\pm$ 0.04 & 1.07 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -372,10 +385,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 792.00 $\pm$ 28.14 & 465.00 $\pm$ 21.56 & 521.00 $\pm$ 22.83 & 421.00 $\pm$ 20.52 \\
-        \makecell{Signal-\\ matched MC} & 815.21 $\pm$ 9.96 & 510.50 $\pm$ 7.79 & 593.07 $\pm$ 8.31 & 470.81 $\pm$ 7.38 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1305.00 $\pm$ 36.12 & 764.00 $\pm$ 27.64 & 869.00 $\pm$ 29.48 & 694.00 $\pm$ 26.34 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 0.94 $\pm$ 0.05 & 0.90 $\pm$ 0.04 & 0.92 $\pm$ 0.05 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 0.94 $\pm$ 0.04 & 0.92 $\pm$ 0.03 & 0.92 $\pm$ 0.04 \\
         \hline
       \end{tabular}
     }
@@ -389,10 +402,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 626.00 $\pm$ 25.02 & 465.00 $\pm$ 21.56 & 517.00 $\pm$ 22.74 & 421.00 $\pm$ 20.52 \\
-        \makecell{Signal-\\ matched MC} & 685.62 $\pm$ 9.06 & 510.50 $\pm$ 7.79 & 586.18 $\pm$ 8.26 & 470.81 $\pm$ 7.38 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1040.00 $\pm$ 32.25 & 764.00 $\pm$ 27.64 & 862.00 $\pm$ 29.36 & 694.00 $\pm$ 26.34 \\
+        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 860.33 $\pm$ 13.02 & 988.32 $\pm$ 13.81 & 793.25 $\pm$ 12.33 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.00 $\pm$ 0.05 & 0.97 $\pm$ 0.04 & 0.98 $\pm$ 0.05 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 0.99 $\pm$ 0.04 & 0.97 $\pm$ 0.04 & 0.97 $\pm$ 0.04 \\
         \hline
       \end{tabular}
     }
@@ -412,10 +425,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 658.65 $\pm$ 32.63 & 432.00 $\pm$ 23.67 & 472.08 $\pm$ 25.07 & 393.22 $\pm$ 22.54 \\
-        \makecell{Signal-\\ matched MC} & 815.21 $\pm$ 9.96 & 510.50 $\pm$ 7.79 & 593.07 $\pm$ 8.31 & 470.81 $\pm$ 7.38 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1085.63 $\pm$ 44.99 & 709.66 $\pm$ 31.83 & 788.83 $\pm$ 33.93 & 648.51 $\pm$ 30.32 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.05 $\pm$ 0.06 & 0.99 $\pm$ 0.05 & 1.03 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.04 $\pm$ 0.05 & 1.00 $\pm$ 0.05 & 1.04 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -429,10 +442,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 549.58 $\pm$ 27.71 & 433.20 $\pm$ 23.53 & 472.06 $\pm$ 24.83 & 394.23 $\pm$ 22.40 \\
-        \makecell{Signal-\\ matched MC} & 685.62 $\pm$ 9.06 & 510.50 $\pm$ 7.79 & 586.18 $\pm$ 8.26 & 470.81 $\pm$ 7.38 \\
+        \makecell{Background \\ Subtracted \\ Data} & 913.29 $\pm$ 37.71 & 711.20 $\pm$ 31.61 & 787.69 $\pm$ 33.59 & 649.80 $\pm$ 30.11 \\
+        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 860.33 $\pm$ 13.02 & 988.32 $\pm$ 13.81 & 793.25 $\pm$ 12.33 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.06 $\pm$ 0.06 & 1.00 $\pm$ 0.05 & 1.04 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.05 $\pm$ 0.05 & 1.01 $\pm$ 0.05 & 1.04 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -452,10 +465,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 465.59 $\pm$ 29.91 & 373.88 $\pm$ 22.38 & 392.33 $\pm$ 23.71 & 350.38 $\pm$ 21.24 \\
-        \makecell{Signal-\\ matched MC} & 523.28 $\pm$ 7.49 & 426.64 $\pm$ 6.76 & 475.95 $\pm$ 7.15 & 407.05 $\pm$ 6.61 \\
+        \makecell{Background \\ Subtracted \\ Data} & 766.85 $\pm$ 39.70 & 613.71 $\pm$ 29.29 & 657.38 $\pm$ 31.26 & 577.69 $\pm$ 27.80 \\
+        \makecell{Signal-\\ matched MC} & 882.34 $\pm$ 12.51 & 718.67 $\pm$ 11.30 & 802.20 $\pm$ 11.95 & 685.60 $\pm$ 11.04 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.07 & 0.98 $\pm$ 0.06 & 0.93 $\pm$ 0.06 & 0.97 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 0.98 $\pm$ 0.05 & 0.94 $\pm$ 0.05 & 0.97 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -469,10 +482,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 438.48 $\pm$ 26.11 & 377.20 $\pm$ 22.32 & 397.97 $\pm$ 23.55 & 352.95 $\pm$ 21.19 \\
-        \makecell{Signal-\\ matched MC} & 511.46 $\pm$ 7.41 & 426.64 $\pm$ 6.76 & 473.55 $\pm$ 7.14 & 407.05 $\pm$ 6.61 \\
+        \makecell{Background \\ Subtracted \\ Data} & 728.16 $\pm$ 34.50 & 617.97 $\pm$ 29.20 & 664.33 $\pm$ 31.03 & 580.99 $\pm$ 27.72 \\
+        \makecell{Signal-\\ matched MC} & 862.25 $\pm$ 12.37 & 718.67 $\pm$ 11.30 & 798.26 $\pm$ 11.92 & 685.60 $\pm$ 11.04 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.06 & 1.03 $\pm$ 0.06 & 0.98 $\pm$ 0.06 & 1.01 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.02 $\pm$ 0.05 & 0.99 $\pm$ 0.05 & 1.00 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -492,10 +505,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 659.50 $\pm$ 29.54 & 415.46 $\pm$ 22.28 & 453.11 $\pm$ 23.57 & 381.29 $\pm$ 21.16 \\
-        \makecell{Signal-\\ matched MC} & 741.22 $\pm$ 9.13 & 473.37 $\pm$ 7.17 & 544.26 $\pm$ 7.72 & 441.78 $\pm$ 6.92 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1086.25 $\pm$ 38.97 & 682.22 $\pm$ 29.08 & 756.81 $\pm$ 30.98 & 628.44 $\pm$ 27.65 \\
+        \makecell{Signal-\\ matched MC} & 1249.84 $\pm$ 15.26 & 797.49 $\pm$ 11.98 & 916.61 $\pm$ 12.89 & 743.99 $\pm$ 11.55 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 0.99 $\pm$ 0.05 & 0.94 $\pm$ 0.05 & 0.97 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 0.98 $\pm$ 0.04 & 0.95 $\pm$ 0.04 & 0.97 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -509,10 +522,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 532.84 $\pm$ 25.91 & 417.27 $\pm$ 22.23 & 453.23 $\pm$ 23.43 & 382.73 $\pm$ 21.12 \\
-        \makecell{Signal-\\ matched MC} & 621.52 $\pm$ 8.28 & 473.37 $\pm$ 7.17 & 538.01 $\pm$ 7.67 & 441.78 $\pm$ 6.92 \\
+        \makecell{Background \\ Subtracted \\ Data} & 884.74 $\pm$ 34.10 & 684.54 $\pm$ 29.01 & 755.68 $\pm$ 30.78 & 630.30 $\pm$ 27.57 \\
+        \makecell{Signal-\\ matched MC} & 1047.66 $\pm$ 13.83 & 797.49 $\pm$ 11.98 & 906.42 $\pm$ 12.81 & 743.99 $\pm$ 11.55 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.03 $\pm$ 0.06 & 0.98 $\pm$ 0.05 & 1.01 $\pm$ 0.06 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.02 $\pm$ 0.05 & 0.99 $\pm$ 0.04 & 1.00 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -520,11 +533,11 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Maximum Showering Difference \\ ($0.6 < \Delta R(j_b,j_\text{fat}) < 1.0$)}
+  \frametitle{Maximum Showering Difference}
   \begin{adjustwidth}{-1.5em}{-1.5em}
     \centering
     \vspace{6pt}
-    \textcolor{blue}{All mass}
+    \textcolor{blue}{All mass ($1.0 < \Delta R(j_b,j_\text{fat}) < 1.4$)}
     \vspace{6pt}
 
     {\scriptsize
@@ -532,16 +545,16 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 583.45 $\pm$ 27.53 & 275.45 $\pm$ 18.51 & 402.85 $\pm$ 22.29 & 239.10 $\pm$ 17.29 \\
-        \makecell{Signal-\\ matched MC} & 651.90 $\pm$ 8.96 & 327.65 $\pm$ 6.37 & 468.17 $\pm$ 7.50 & 288.88 $\pm$ 5.91 \\
+        \makecell{Background \\ Subtracted \\ Data} & 991.58 $\pm$ 37.47 & 619.43 $\pm$ 26.60 & 688.55 $\pm$ 29.48 & 569.52 $\pm$ 25.27 \\
+        \makecell{Signal-\\ matched MC} & 1126.97 $\pm$ 14.98 & 695.94 $\pm$ 11.52 & 820.75 $\pm$ 12.58 & 653.11 $\pm$ 11.16 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 0.94 $\pm$ 0.07 & 0.96 $\pm$ 0.06 & 0.92 $\pm$ 0.07 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.01 $\pm$ 0.05 & 0.95 $\pm$ 0.04 & 0.99 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
 
     \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$ ($0.6 < \Delta R(j_b,j_\text{fat}) < 1.0$)}
     \vspace{6pt}
 
     {\scriptsize
@@ -549,10 +562,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 498.13 $\pm$ 24.96 & 276.04 $\pm$ 18.43 & 398.16 $\pm$ 22.00 & 239.65 $\pm$ 17.22 \\
-        \makecell{Signal-\\ matched MC} & 573.98 $\pm$ 8.37 & 327.65 $\pm$ 6.37 & 460.97 $\pm$ 7.44 & 288.88 $\pm$ 5.91 \\
+        \makecell{Background \\ Subtracted \\ Data} & 527.15 $\pm$ 33.69 & 383.86 $\pm$ 25.16 & 433.26 $\pm$ 29.69 & 342.79 $\pm$ 23.51 \\
+        \makecell{Signal-\\ matched MC} & 633.33 $\pm$ 10.73 & 452.37 $\pm$ 8.98 & 517.75 $\pm$ 9.60 & 407.37 $\pm$ 8.47 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 0.97 $\pm$ 0.07 & 1.00 $\pm$ 0.06 & 0.96 $\pm$ 0.07 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.07 & 1.02 $\pm$ 0.07 & 1.01 $\pm$ 0.07 & 1.01 $\pm$ 0.07 \\
         \hline
       \end{tabular}
     }
@@ -572,10 +585,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 132.65 $\pm$ 12.53 & 80.29 $\pm$ 9.39 & 94.91 $\pm$ 10.42 & 72.13 $\pm$ 8.93 \\
-        \makecell{Signal-\\ matched MC} & 158.10 $\pm$ 4.19 & 98.22 $\pm$ 3.22 & 115.88 $\pm$ 3.45 & 88.36 $\pm$ 2.96 \\
+        \makecell{Background \\ Subtracted \\ Data} & 201.09 $\pm$ 17.09 & 128.50 $\pm$ 12.73 & 144.15 $\pm$ 14.08 & 112.54 $\pm$ 11.85 \\
+        \makecell{Signal-\\ matched MC} & 235.10 $\pm$ 6.19 & 152.93 $\pm$ 4.88 & 175.31 $\pm$ 5.24 & 140.30 $\pm$ 4.66 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.10 & 0.97 $\pm$ 0.12 & 0.98 $\pm$ 0.11 & 0.97 $\pm$ 0.12 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.09 & 0.98 $\pm$ 0.10 & 0.96 $\pm$ 0.10 & 0.94 $\pm$ 0.10 \\
         \hline
       \end{tabular}
     }
@@ -589,10 +602,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 105.48 $\pm$ 11.04 & 80.58 $\pm$ 9.36 & 93.75 $\pm$ 10.28 & 72.44 $\pm$ 8.90 \\
-        \makecell{Signal-\\ matched MC} & 136.56 $\pm$ 3.83 & 98.22 $\pm$ 3.22 & 113.68 $\pm$ 3.42 & 88.36 $\pm$ 2.96 \\
+        \makecell{Background \\ Subtracted \\ Data} & 165.15 $\pm$ 15.21 & 129.40 $\pm$ 12.67 & 143.59 $\pm$ 13.88 & 113.28 $\pm$ 11.79 \\
+        \makecell{Signal-\\ matched MC} & 203.57 $\pm$ 5.68 & 152.93 $\pm$ 4.88 & 172.18 $\pm$ 5.20 & 140.30 $\pm$ 4.66 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.11 & 1.06 $\pm$ 0.13 & 1.07 $\pm$ 0.12 & 1.06 $\pm$ 0.14 \\
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.10 & 1.04 $\pm$ 0.11 & 1.03 $\pm$ 0.10 & 1.00 $\pm$ 0.11 \\
         \hline
       \end{tabular}
     }

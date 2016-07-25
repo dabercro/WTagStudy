@@ -70,3 +70,24 @@ def RunPlots(categories):
 if __name__ == '__main__':
     plotter.AddDataFile('wscale_Data.root')
     RunPlots(['semilep'])
+
+    if len(sys.argv) > 1 and sys.argv[1] == 'full':
+        outbase = plotter.GetOutDirectory()
+
+        plotter.ResetConfig()
+        plotter.AddDataFile('wscale_Data.root')
+        plotter.ReadMCConfig('MCBackground.txt')
+        plotter.SetOutDirectory(outbase + '_background')
+        RunPlots(['semilep'])
+
+        plotter.ResetConfig()
+        plotter.AddDataFile('wscale_Data.root')
+        plotter.ReadMCConfig('MCBackground_more.txt')
+        plotter.SetOutDirectory(outbase + '_morebackground')
+        RunPlots(['semilep'])
+
+        plotter.ResetConfig()
+        plotter.AddDataFile('wscale_Data.root')
+        plotter.ReadMCConfig('MCBackground_mid.txt')
+        plotter.SetOutDirectory(outbase + '_midbackground')
+        RunPlots(['semilep'])
