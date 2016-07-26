@@ -1,0 +1,14 @@
+TT              WMerged/wscale_TTJets_SingleLeptFromT.root                                        181.5        Signal          867
+TT              WMerged/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .
+TT              Quark/wscale_TTJets_SingleLeptFromT.root                                    181.5         . .
+TT              Quark/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
+TT              TopMerged/wscale_TTJets_SingleLeptFromT.root                                    181.5        .  .
+TT              TopMerged/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
+antitop_5f           wscale_ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1.root         35.6              .                  .
+top_5f               wscale_ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1.root             35.6              .                  .
+TT              B/wscale_TTJets_SingleLeptFromT.root                                    181.5            . .
+TT              B/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .
+TT              Recoiling/wscale_TTJets_SingleLeptFromT.root                                     181.5      . .
+TT              Recoiling/wscale_TTJets_SingleLeptFromTbar.root                                  181.5              .                  .
+TT              BQuark/wscale_TTJets_SingleLeptFromT.root                                    181.5         .  .
+TT              BQuark/wscale_TTJets_SingleLeptFromTbar.root                                 181.5              .                  .

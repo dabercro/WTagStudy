@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 from CrombieTools.PlotTools.PlotStack import *
+from CrombieTools.LoadConfig import cuts
 from array import array
+import sys, os
 
 SetupFromEnv()
 
@@ -63,16 +65,29 @@ def RunPlots(categories):
     for move in range(8):
         cutList.append('full_' + str(move * 0.1))
 
+#    cutList = ['full']
+
     MakePlots(categories,cutList,SetupArgs())
+
+    plotter.SetDefaultWeight(cuts.cut('semilep','full_nopt'))
+    plotter.SetMCWeights('(fatjetPtSmearedUp > 250) * (' + cuts.defaultMCWeight + ')')
+    plotter.SetDataWeights('(fatjetPt > 250)')
+    plotter.SetDataExpression('fatjetPrunedML2L3')
+    plotter.SetDefaultExpr('fatjetPrunedML2L3SmearedUp')
+    plotter.MakeCanvas('smearedup_mass',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0')
+
     plotter.SetMakeRatio(False)
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])
+#    plotter.SetMakeRatio(True)
 
 if __name__ == '__main__':
     plotter.AddDataFile('wscale_Data.root')
     RunPlots(['semilep'])
-
     if len(sys.argv) > 1 and sys.argv[1] == 'full':
-        outbase = plotter.GetOutDirectory()
+        outbase = plotter.GetOutDirectory().Data().rstrip('/')
+        for ending in ['_background', '_morebackground', '_midbackground', '_up', '_down']:
+            if not os.path.exists(outbase + ending):
+                os.makedirs(outbase + ending)
 
         plotter.ResetConfig()
         plotter.AddDataFile('wscale_Data.root')
@@ -90,4 +105,16 @@ if __name__ == '__main__':
         plotter.AddDataFile('wscale_Data.root')
         plotter.ReadMCConfig('MCBackground_mid.txt')
         plotter.SetOutDirectory(outbase + '_midbackground')
+        RunPlots(['semilep'])
+
+        plotter.ResetConfig()
+        plotter.AddDataFile('wscale_Data.root')
+        plotter.ReadMCConfig('MCBackground_up.txt')
+        plotter.SetOutDirectory(outbase + '_up')
+        RunPlots(['semilep'])
+
+        plotter.ResetConfig()
+        plotter.AddDataFile('wscale_Data.root')
+        plotter.ReadMCConfig('MCBackground_down.txt')
+        plotter.SetOutDirectory(outbase + '_down')
         RunPlots(['semilep'])
