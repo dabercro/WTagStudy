@@ -1,3 +1,17 @@
+QCD_100To200        wscale_QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                   13750000.0            Backgrounds                393
+QCD_200To300        wscale_QCD_HT200to300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                     867500.0              .                  .
+QCD_300To500        wscale_QCD_HT300to500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                     183400.0              .                  .
+QCD_500To700        wscale_QCD_HT500to700_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                      14685.0              .                  .
+QCD_700To1000       wscale_QCD_HT700to1000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                      3262.0              .                  .
+QCD_1000To1500      wscale_QCD_HT1000to1500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                      532.0              .                  .
+QCD_1500To2000      wscale_QCD_HT1500to2000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                       60.75              .                  .
+QCD_2000ToInf       wscale_QCD_HT2000toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root                        12.71             .                  .
+TT              wscale_TTJets_DiLept_TuneCUETP8M1_13TeV-madgraphMLM-pythia8.root               42.7         . .
+antitop             wscale_ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1.root     13.11           . .
+wln_100               wscale_WJetsToLNu_Pt-100To250_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root      338.15       . .
+wln_250               wscale_WJetsToLNu_Pt-250To400_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root       11.97            .                  .
+wln_400               wscale_WJetsToLNu_Pt-400To600_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root        1.5155           .                  .
+wln_600               wscale_WJetsToLNu_Pt-600ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8.root        0.2262          .                  .
 TT              WMerged/wscale_TTJets_SingleLeptFromT.root                                        181.5        Signal          867
 TT              WMerged/wscale_TTJets_SingleLeptFromTbar.root                                     181.5              .                  .
 TT              Quark/wscale_TTJets_SingleLeptFromT.root                                    181.5         . .

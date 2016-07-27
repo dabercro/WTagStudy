@@ -78,7 +78,7 @@ def RunPlots(categories):
 
     plotter.SetMakeRatio(False)
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])
-#    plotter.SetMakeRatio(True)
+    plotter.SetMakeRatio(True)
 
 if __name__ == '__main__':
     plotter.AddDataFile('wscale_Data.root')
