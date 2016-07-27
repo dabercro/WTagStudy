@@ -52,10 +52,10 @@
 
 \begin{frame}
   \frametitle{Scale Factor Needed for Mono-V}
-  As of the time of this talk, the scale factor section of the analysis note
-  has plots with $\SI{7.6}{fb^{-1}}$.
-  Measurements with $\SI{12.9}{fb^{-1}}$ were made at the beginning of this week
-  and are presented in this talk.
+  The mono-jet analysis included a Mono-V category where
+  a loose cut-based tagger is applied to an anti-$k_T$, $R = 0.8$ jet \\
+  $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ and
+  $\tau_2/\tau_1 < 0.6$  
 
   \begin{center}
     \includegraphics[width=0.4\linewidth]{met_SR.pdf} \\
@@ -335,7 +335,7 @@
     \begin{column}{0.5\linewidth}
       \centering
       \includegraphics[width=0.7\linewidth]
-                      {160726_background/smearedup_mass.pdf}
+                      {160727_background/smearedup_mass.pdf}
     \end{column}
   \end{columns}
 
@@ -350,10 +350,10 @@
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 1200.81 $\pm$ 38.63 & 738.39 $\pm$ 28.79 & 832.30 $\pm$ 30.71 & 673.37 $\pm$ 27.44 \\
-        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 809.55 $\pm$ 12.63 & 947.81 $\pm$ 13.51 & 745.50 $\pm$ 11.99 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1199.02 $\pm$ 38.53 & 697.68 $\pm$ 28.01 & 785.68 $\pm$ 29.88 & 633.72 $\pm$ 26.64 \\
+        \makecell{Signal-\\ matched MC} & 1412.32 $\pm$ 16.90 & 867.47 $\pm$ 13.08 & 1011.87 $\pm$ 13.98 & 798.93 $\pm$ 12.43 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 & 1.04 $\pm$ 0.04 & 1.01 $\pm$ 0.04 & \fcolorbox{red}{yellow}{1.03 $\pm$ 0.05} \\
+        \makecell{Normalized \\ Ratio} & 1.00 & 0.95 $\pm$ 0.04 & 0.91 $\pm$ 0.04 & \fcolorbox{red}{yellow}{0.93 $\pm$ 0.04} \\
         \hline
       \end{tabular}
     }
@@ -366,7 +366,7 @@
 
 \begin{frame}
   \frametitle{Background Subtraction}
-  Scaling the backgrounds down to half
+  Scaling the backgrounds down by a factor of two
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \centering
@@ -402,7 +402,7 @@
 
 \begin{frame}
   \frametitle{Background Subtraction}
-  Scaling the backgrounds up 100\%
+  Scaling the backgrounds up by a factor of two
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \centering
@@ -554,25 +554,24 @@
   \begin{tabular}{l|c|c}
     Source & All Mass & No Low Mass \\
     \hline
-    Jet Smearing & 6\% & 7\% \\
+    Jet Smearing & 4\% & 5\% \\
     Background Subtraction & 6\% & 4\% \\
     Which background is subtracted & 0\% & 0\% \\
     Shower effect on purity cuts & 2\% & 1\% \\
   \end{tabular}
   \end{center}
-  Adding in Quadrature for all mass: \boxed{$\pm 9\%$} \\
-  The dump of SF tables for these studies are in the backup slides \\
+  Adding in Quadrature for All Mass column: \boxed{$\pm 8\%$}
   \vspace{12pt}
 \end{frame}
 
 \begin{frame}
   \frametitle{Conclusions}
-  We suggest using the entire mass spectrum for the W-tagging scale factor.
+  We wish to use the entire mass spectrum for the W-tagging scale factor.
   This may not be the scale factor for vectors only, but it represents our selection.
   The final scale factor is therefore: \\
   
   \begin{center}
-  \boxed{$0.97 \pm 0.04 \text{(stat.)} \pm 0.09 \text{(sys.)}$}
+  \boxed{$0.97 \pm 0.04 \text{(stat.)} \pm 0.08 \text{(sys.)}$}
   \end{center}
 
   This looks pretty close to unity, which is used in the analysis presently.
