@@ -22,7 +22,10 @@ crombie downloadtar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/st
 crombie downloadtar "http://dabercro.web.cern.ch/dabercro/plotviewer/viewplot/static/viewplot/returntar.php?only=pdf&files=160726/semilep_nocut_nsmalljets_fatjetDRLooseB,160726/semilep_nocut_fatjetDRLooseB"
 
 rm ttselection.pdf 2> /dev/null
-wget http://t3serv001.mit.edu/~dabercro/misc/ttselection.pdf
+wget http://t3serv001.mit.edu/~dabercro/misc/160727/ttselection.pdf
+
+rm met_SR.pdf 2> /dev/null
+wget http://t3serv001.mit.edu/~dabercro/misc/160727/met_SR.pdf
 
 rm */*n_bjetsLoose.pdf
 rm */*highpt*Pt.pdf
@@ -33,6 +36,8 @@ rename -s 0. 0_ */*0.*
 if [ "$(hostname)" = "dabercro-MacBookAir" ]
 then
     for f in */*.pdf; do pdfcrop $f $f; done
+    pdfcrop ttselection.pdf ttselection.pdf
+    pdfcrop met_SR.pdf met_SR.pdf
 else
     echo "#########################"
     echo "# Don't forget to crop! #"

@@ -4,7 +4,7 @@
   The Monojet Working Group
 }
 
-\title{\bf \sffamily V-tagging in the Monojet/Mono-V Analysis}
+\title{\bf \sffamily V(W)-tagging in the Monojet/Mono-V Analysis}
 \date{July 27, 2016}
 
 \usecolortheme{dove}
@@ -51,7 +51,22 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Introduction}
+  \frametitle{Scale Factor Needed for Mono-V}
+  As of the time of this talk, the scale factor section of the analysis note
+  has plots with $\SI{7.6}{fb^{-1}}$.
+  Measurements with $\SI{12.9}{fb^{-1}}$ were made at the beginning of this week
+  and are presented in this talk.
+
+  \begin{center}
+    \includegraphics[width=0.4\linewidth]{met_SR.pdf} \\
+    \textcolor{blue}{From AN-16-195}
+  \end{center}
+
+  The scale factor is for di-boson, top, and signal samples.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Introduction to Measurement}
   The goal of this study was to determine the scale factors that should
   be applied to MC when tagging for hadronic vector bosons is applied.
   We did this by studying hadronic W bosons in a tight $t\bar{t}$ selection.
@@ -86,9 +101,33 @@
 \begin{frame}
   \frametitle{Base selection}
   In a picture \\
-  \begin{center}
-  \includegraphics[width=0.8\linewidth]{ttselection.pdf} \\
-  \end{center}
+  \vspace{12pt}
+  \begin{columns}
+    \begin{column}{0.8\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{ttselection.pdf}
+    \end{column}
+    \begin{column}{0.2\linewidth}
+      \centering
+      \vspace{-60pt}
+      \hspace{-72pt}
+      {\scriptsize
+      \begin{tabular}{|c|c|c|}
+        \hline
+        $m_\text{p,1}$ & $m_\text{p,2}$ & Select jet \\
+        \hline
+        \SI{25}{GeV} & -- & 1 \\
+        \SI{80}{GeV} & -- & 1 \\
+        \SI{25}{GeV} & \SI{25}{GeV} & 1 \\
+        \SI{80}{GeV} & \SI{25}{GeV} & 1 \\
+        \SI{25}{GeV} & \SI{80}{GeV} & 2 \\
+        \SI{80}{GeV} & \SI{80}{GeV} & Neither \\
+        \hline
+      \end{tabular}
+      }
+    \end{column}
+  \end{columns}
+  \vspace{12pt}
   Both b jets are loose and at least one is medium
 \end{frame}
 
@@ -213,7 +252,7 @@
     \end{columns}
   \item Two reasons to not subtract more
     \begin{itemize}
-    \item Dominant non-reducible background in analysis is $t\bar{t}$
+    \item A non-reducible background in analysis is $t\bar{t}$
     \item Selecting W is not guaranteed in signal samples
     \end{itemize}
   \item Both of these cases would be poorly represented by
@@ -465,7 +504,7 @@
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
-      \textcolor{blue}{End of Scan (1.4, 1.8)} \\
+      \textcolor{blue}{End of Scan (1.2, 1.6)} \\
       \includegraphics[width=0.7\linewidth]
                       {160726/semilep_full_0_7_fatjetPrunedML2L3.pdf}
     \end{column}
@@ -529,14 +568,14 @@
 \begin{frame}
   \frametitle{Conclusions}
   We suggest using the entire mass spectrum for the W-tagging scale factor.
-  This may not be the true ``vector tagging'' scale factor, but it represents our selection.
+  This may not be the scale factor for vectors only, but it represents our selection.
   The final scale factor is therefore: \\
   
   \begin{center}
   \boxed{$0.97 \pm 0.04 \text{(stat.)} \pm 0.09 \text{(sys.)}$}
   \end{center}
 
-  This looks pretty close to unity, which is used in the analysis.
+  This looks pretty close to unity, which is used in the analysis presently.
 \end{frame}
 
 \beginbackup
