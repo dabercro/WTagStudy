@@ -4,12 +4,13 @@
   The Monojet Working Group
 }
 
-\title{\bf \sffamily V-tagging in the Monojet/Mono-V Analysis}
+\title{\bf \sffamily V(W)-tagging in the Monojet/Mono-V Analysis}
 \date{July 27, 2016}
 
 \usecolortheme{dove}
 
 \usepackage{hyperref}
+\usepackage{xcolor}
 
 \usepackage[absolute,overlay]{textpos}
 \usefonttheme{serif}
@@ -50,7 +51,22 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Introduction}
+  \frametitle{Scale Factor Needed for Mono-V}
+  As of the time of this talk, the scale factor section of the analysis note
+  has plots with $\SI{7.6}{fb^{-1}}$.
+  Measurements with $\SI{12.9}{fb^{-1}}$ were made at the beginning of this week
+  and are presented in this talk.
+
+  \begin{center}
+    \includegraphics[width=0.4\linewidth]{met_SR.pdf} \\
+    \textcolor{blue}{From AN-16-195}
+  \end{center}
+
+  The scale factor is for di-boson, top, and signal samples.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Introduction to Measurement}
   The goal of this study was to determine the scale factors that should
   be applied to MC when tagging for hadronic vector bosons is applied.
   We did this by studying hadronic W bosons in a tight $t\bar{t}$ selection.
@@ -67,20 +83,57 @@
 
 \begin{frame}
   \frametitle{Samples Used}
+  {\scriptsize
   \begin{itemize}
   \item TTJets\_SingleLeptFromT\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8
   \item TTJets\_SingleLeptFromTbar\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8
   \item TTJets\_DiLept\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8
   \item QCD\_HT*\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8
   \item ST\_t(W)*13TeV-powhegV2-madspin-pythia8\_TuneCUETP8M1
-  \item WW(WZ)(ZZ)\_TuneCUETP8M1\_13TeV-pythia8 [$\dagger$]
   \item WJetsToLNu\_Pt-*\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8
+  \item WW(WZ)(ZZ)\_TuneCUETP8M1\_13TeV-pythia8 [$\dagger$]
+  \item DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8 [$\dagger$]
   \end{itemize}
   [$\dagger$] Ended up with negligible yields, not in plot legends
+  }
 \end{frame}
 
 \begin{frame}
   \frametitle{Base selection}
+  In a picture \\
+  \vspace{12pt}
+  \begin{columns}
+    \begin{column}{0.8\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{ttselection.pdf}
+    \end{column}
+    \begin{column}{0.2\linewidth}
+      \centering
+      \vspace{-60pt}
+      \hspace{-72pt}
+      {\scriptsize
+      \begin{tabular}{|c|c|c|}
+        \hline
+        $m_\text{p,1}$ & $m_\text{p,2}$ & Select jet \\
+        \hline
+        \SI{25}{GeV} & -- & 1 \\
+        \SI{80}{GeV} & -- & 1 \\
+        \SI{25}{GeV} & \SI{25}{GeV} & 1 \\
+        \SI{80}{GeV} & \SI{25}{GeV} & 1 \\
+        \SI{25}{GeV} & \SI{80}{GeV} & 2 \\
+        \SI{80}{GeV} & \SI{80}{GeV} & Neither \\
+        \hline
+      \end{tabular}
+      }
+    \end{column}
+  \end{columns}
+  \vspace{12pt}
+  Both b jets are loose and at least one is medium
+\end{frame}
+
+\begin{frame}
+  \frametitle{Base selection}
+  In words
   \begin{itemize}
   \item one anti-$k_T$, $R = 0.8$ ``fat'' jet with $p_T > \SI{250}{GeV}$ \\
     (to match Mono-V analysis)
@@ -91,8 +144,8 @@
     (to select $t\bar{t}$)
   \item all other fat jets that is not the selection jet has $m_\text{pruned} < \SI{50}{GeV}$
     (to reduce confusion between fat jets)
-  \item allow only one additional anti-$k_T$, $R = 0.4$ jet from ISR, \emph{etc.}
-    (clean $t\bar{t}$ selection)
+  \item allow only up to one additional anti-$k_T$, $R = 0.4$ or $R = 0.8$ jet from ISR,
+    \emph{etc.} \\ (clean $t\bar{t}$ selection, which allows for extra boost from ISR)
   \end{itemize}
 \end{frame}
 
@@ -109,6 +162,7 @@
   \begin{columns}
     \begin{column}{0.5\linewidth}
       \begin{itemize}
+        \vspace{-24pt}
     {\small
       \item One W and b: one daughter quark and a b quark
       \item Part of W: only one quark from the W, no b quarks
@@ -119,8 +173,10 @@
       \end{itemize}
     \end{column}
     \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Base selection, not final}
       \includegraphics[width=\linewidth]
-                      {160725/semilep_nocut_nsmalljets_fatjetPrunedML2L3.pdf}
+                      {160726/semilep_nocut_nsmalljets_fatjetPrunedML2L3.pdf}
     \end{column}
   \end{columns}
 \end{frame}
@@ -134,13 +190,13 @@
       \centering
       \textcolor{blue}{$\Delta R(j_b,j_\text{fat})$ of closest b-tag}
       \includegraphics[width=\linewidth]
-                      {160725/semilep_nocut_nsmalljets_fatjetDRLooseB.pdf}
+                      {160726/semilep_nocut_nsmalljets_fatjetDRLooseB.pdf}
     \end{column}
     \begin{column}{0.5\linewidth}
       \centering
       \textcolor{blue}{$\Delta\phi(\ell,j_\text{fat})$}
       \includegraphics[width=\linewidth]
-                      {160725/semilep_nocut_nsmalljets_fatjetDPhiLep1.pdf}
+                      {160726/semilep_nocut_nsmalljets_fatjetDPhiLep1.pdf}
     \end{column}
   \end{columns}
   \vspace{12pt}
@@ -150,42 +206,23 @@
 
 \begin{frame}
   \frametitle{V-tagging variables}
+  This is the selection we use to get clean, hadronic Ws without biasing the tagging variables
+  \vspace{12pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Pruned Mass}
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_fatjettau21.pdf}
+    \end{column}
+  \end{columns}
   Cut on $m_\text{pruned}$ and $\tau_2/\tau_1$ for V-tagging
-  \vspace{12pt}
-  \begin{columns}
-    \begin{column}{0.5\linewidth}
-      \centering
-      \textcolor{blue}{Pruned Mass}
-      \includegraphics[width=\linewidth]
-                      {160725/semilep_full_fatjetPrunedML2L3.pdf}
-    \end{column}
-    \begin{column}{0.5\linewidth}
-      \centering
-      \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
-      \includegraphics[width=\linewidth]
-                      {160725/semilep_full_fatjettau21.pdf}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}
-  \frametitle{V-tagging variables}
-  Each variable is shown after cutting on the other variable
-  \vspace{12pt}
-  \begin{columns}
-    \begin{column}{0.5\linewidth}
-      \centering
-      \textcolor{blue}{Pruned Mass}
-      \includegraphics[width=\linewidth]
-                      {160725/semilep_full_massp_tau21_fatjetPrunedML2L3.pdf}
-    \end{column}
-    \begin{column}{0.5\linewidth}
-      \centering
-      \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
-      \includegraphics[width=\linewidth]
-                      {160725/semilep_full_massp_tau21_fatjettau21.pdf}
-    \end{column}
-  \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -202,31 +239,36 @@
         \includegraphics[width=\linewidth]{160719/fatjetPrunedMx.pdf}
       \end{column}
       \begin{column}{0.6\linewidth}
-        \vspace{-6pt}
+        \vspace{-12pt}
       \item Only subtract MCs without a hadronic W existing
+        \vspace{-6pt}
         \begin{itemize}
         \item $W \rightarrow \ell \nu$
         \item QCD
-        \item Single top leptonic, no other W
+        \item Single top, ST\_t (not ST\_tW)
         \item Di-leptonic $t\bar{t}$
         \end{itemize}
       \end{column}
     \end{columns}
   \item Two reasons to not subtract more
     \begin{itemize}
-    \item Dominant non-reducible background in analysis is $t\bar{t}$
+    \item A non-reducible background in analysis is $t\bar{t}$
     \item Selecting W is not guaranteed in signal samples
     \end{itemize}
   \item Both of these cases would be poorly represented by
     W-matched background subtraction
-  \item Other background subtraction is explored in systematic uncertainties, though it actually makes no
-    difference to scale factor
+  \item Other background subtraction is explored in systematic uncertainties, 
+    and made no difference to scale factor
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Scale Factors}
-  Only statistical uncertainties in these tables \\ systematic uncertainties explored next
+  Statistical uncertainties, systematic uncertainties explored next
+  \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
   \begin{adjustwidth}{-1.5em}{-1.5em}
     \centering
     \vspace{6pt}
@@ -234,8 +276,15 @@
     \vspace{6pt}
 
     {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 1200.81 $\pm$ 38.63 & 738.71 $\pm$ 28.79 & 831.73 $\pm$ 30.71 & 673.15 $\pm$ 27.44 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 & 0.98 $\pm$ 0.04 & 0.95 $\pm$ 0.04 & \fcolorbox{red}{yellow}{0.97 $\pm$ 0.04} \\
+        \hline
       \end{tabular}
     }
 
@@ -244,14 +293,14 @@
     \vspace{6pt}
 
     {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
+      \begin{tabular}{| c | c | c | c | c |}
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 976.65 $\pm$ 33.70 & 737.60 $\pm$ 28.68 & 824.84 $\pm$ 30.47 & 671.90 $\pm$ 27.34 \\
+        \makecell{Background \\ Subtracted \\ Data} & 981.34 $\pm$ 33.79 & 739.47 $\pm$ 28.73 & 827.66 $\pm$ 30.53 & 673.79 $\pm$ 27.38 \\
         \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 860.33 $\pm$ 13.02 & 988.32 $\pm$ 13.81 & 793.25 $\pm$ 12.33 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.02 $\pm$ 0.04 & 0.99 $\pm$ 0.04 & 1.00 $\pm$ 0.04 \\
+        \makecell{Normalized \\ Ratio} & 1.00 & 1.01 $\pm$ 0.04 & 0.99 $\pm$ 0.04 & 1.00 $\pm$ 0.04 \\
         \hline
       \end{tabular}
     }
@@ -262,68 +311,271 @@
   \frametitle{Systematic Uncertainties}
  Four separate effects were investigated for the systematic uncertainties
   \begin{itemize}
-  \item Jet Smearing: 
-    \begin{itemize}
-    \item Used the hybrid smearing procedure [*] \\
-    \item all mass and no low mass 6\%
-    \end{itemize}
-  \item Background subtraction
-    \begin{itemize}
-    \item Scaled the background being subtracted up and down 100\%
-    \item all mass 5\%, no low mass 3\%
-    \end{itemize}
+  \item Jet Smearing
+  \item Background subtraction magnitude
   \item Which background is subtracted
-    \begin{itemize}
-      \item We are keep all MC where W exists, but we checked when mis-matched jets
-        are also subtracted
-      \item No difference to the scale factors
-    \end{itemize}
   \item Shower effect on purity cuts
-    \begin{itemize}
-      \item We are cutting $0.8 < \Delta R(j_b,j_\text{fat}) < 1.2$
-        so we moved the starting point between 0.5 and 1.2
-      \item all mass 5\%, no low mass 6\%
-    \end{itemize}
   \end{itemize}
-  Adding in Quadrature for all mass: 9\% \\
-  The dump of SF tables for these studies are in the backup slides \\
-  \vspace{12pt}
+  We  use the full mass spectrum, so compare to
+  \fcolorbox{red}{yellow}{0.97 $\pm$ 0.04} \\
+  For each slide with scale factor tables, above will compare pruned mass plots with the base
+  cuts we use on the left and the MC adjusted for systematics on the right
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jet Smearing}
+  Used the hybrid smearing procedure [*] which changes the MC's mass and $p_T$ with
+  ``Smeared Up'' giving the most different SF
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/smearedup_mass.pdf}
+    \end{column}
+  \end{columns}
+
+  \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 1200.81 $\pm$ 38.63 & 738.39 $\pm$ 28.79 & 832.30 $\pm$ 30.71 & 673.37 $\pm$ 27.44 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 809.55 $\pm$ 12.63 & 947.81 $\pm$ 13.51 & 745.50 $\pm$ 11.99 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 & 1.04 $\pm$ 0.04 & 1.01 $\pm$ 0.04 & \fcolorbox{red}{yellow}{1.03 $\pm$ 0.05} \\
+        \hline
+      \end{tabular}
+    }
+
+  \end{adjustwidth}
   {\small [*] 
     \href{https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution#Smearing_procedures}
          {https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution}}
 \end{frame}
 
 \begin{frame}
+  \frametitle{Background Subtraction}
+  Scaling the backgrounds down to half
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160727_down/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 1255.91 $\pm$ 36.83 & 752.35 $\pm$ 27.96 & 851.87 $\pm$ 29.83 & 684.58 $\pm$ 26.65 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 & 0.96 $\pm$ 0.04 & 0.93 $\pm$ 0.04 & \fcolorbox{red}{yellow}{0.95 $\pm$ 0.04} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background Subtraction}
+  Scaling the backgrounds up 100\%
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_up/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 1090.62 $\pm$ 45.13 & 711.41 $\pm$ 31.90 & 791.46 $\pm$ 34.01 & 650.30 $\pm$ 30.39 \\
+        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 & 1.04 $\pm$ 0.05 & 1.00 $\pm$ 0.05 & \fcolorbox{red}{yellow}{1.03 $\pm$ 0.05} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background Selection}
+  If we require the jet to be matched to the W (both daughters inside, no b)
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_morebackground/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 770.38 $\pm$ 39.81 & 615.02 $\pm$ 29.34 & 659.40 $\pm$ 31.33 & 579.16 $\pm$ 27.85 \\
+        \makecell{Signal-\\ matched MC} & 882.34 $\pm$ 12.51 & 718.67 $\pm$ 11.30 & 802.20 $\pm$ 11.95 & 685.60 $\pm$ 11.04 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 & 0.98 $\pm$ 0.05 & 0.94 $\pm$ 0.05 & \fcolorbox{red}{yellow}{0.97 $\pm$ 0.05} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shower Effect on $\Delta R(j,b)$ Cuts}
+  Scanned over a range of $\Delta R$ cuts
+  \begin{columns}
+    \begin{column}{0.32\linewidth}
+      \centering
+      \textcolor{blue}{With tops (0.5, 0.9)} \\
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_0_0_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.32\linewidth}
+      \centering
+      \textcolor{blue}{Begin scan (0.6, 1.0)} \\
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_0_1_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.32\linewidth}
+      \centering
+      \textcolor{blue}{Base cut (0.8, 1.2)} \\
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_0_3_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Maximum diff in SF (1.0, 1.4)} \\
+      \includegraphics[width=0.7\linewidth]
+                      {160726/semilep_full_0_5_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{End of Scan (1.2, 1.6)} \\
+      \includegraphics[width=0.7\linewidth]
+                      {160726/semilep_full_0_7_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shower effect}
+  Compare $0.8 < \Delta R < 1.2$ to $1.0 < \Delta R < 1.4$
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/semilep_full_0_3_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {160726_background/semilep_full_0_5_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 1075.46 $\pm$ 37.16 & 659.46 $\pm$ 26.35 & 743.84 $\pm$ 29.24 & 602.89 $\pm$ 25.06 \\
+        \makecell{Signal-\\ matched MC} & 1219.22 $\pm$ 16.12 & 740.35 $\pm$ 12.31 & 881.44 $\pm$ 13.42 & 689.94 $\pm$ 11.81 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 & 1.01 $\pm$ 0.04 & 0.96 $\pm$ 0.04 & \fcolorbox{red}{yellow}{0.99 $\pm$ 0.04} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
   \frametitle{Systematic Uncertainties}
+  We assume systematic uncertainties are symmetric for now
   \begin{center}
   \begin{tabular}{l|c|c}
     Source & All Mass & No Low Mass \\
     \hline
-    Jet Smearing & 6\% & 6\% \\
-    Background subtraction & 5\% & 3\% \\
+    Jet Smearing & 6\% & 7\% \\
+    Background Subtraction & 6\% & 4\% \\
     Which background is subtracted & 0\% & 0\% \\
-    Shower effect on purity cuts & 5\% & 6\% \\
+    Shower effect on purity cuts & 2\% & 1\% \\
   \end{tabular}
   \end{center}
-  Adding in Quadrature for all mass: 9\% \\
+  Adding in Quadrature for all mass: \boxed{$\pm 9\%$} \\
   The dump of SF tables for these studies are in the backup slides \\
   \vspace{12pt}
-  {\small [*] 
-    \href{https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution#Smearing_procedures}
-         {https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetResolution}}
 \end{frame}
 
 \begin{frame}
   \frametitle{Conclusions}
   We suggest using the entire mass spectrum for the W-tagging scale factor.
-  This may not be the true ``vector tagging'' scale factor, but it represents our selection.
+  This may not be the scale factor for vectors only, but it represents our selection.
   The final scale factor is therefore: \\
   
   \begin{center}
-  \boxed{$0.97 \pm 0.05 \text{(stat.)} \pm 0.09 \text{(sys.)}$}
+  \boxed{$0.97 \pm 0.04 \text{(stat.)} \pm 0.09 \text{(sys.)}$}
   \end{center}
 
-  This looks pretty close to unity, which is used in the analysis.
+  This looks pretty close to unity, which is used in the analysis presently.
 \end{frame}
 
 \beginbackup
@@ -333,239 +585,38 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Most Different Smearing (Smear Up)}
-  \begin{adjustwidth}{-1.5em}{-1.5em}
-    \centering
-    \vspace{6pt}
-    \textcolor{blue}{All mass}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 1195.31 $\pm$ 38.53 & 736.52 $\pm$ 28.75 & 829.48 $\pm$ 30.65 & 671.47 $\pm$ 27.39 \\
-        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 809.55 $\pm$ 12.63 & 947.81 $\pm$ 13.51 & 745.50 $\pm$ 11.99 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 1.05 $\pm$ 0.04 & 1.01 $\pm$ 0.04 & 1.04 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-    
-    \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 976.65 $\pm$ 33.70 & 737.30 $\pm$ 28.69 & 825.39 $\pm$ 30.47 & 672.11 $\pm$ 27.33 \\
-        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 809.55 $\pm$ 12.63 & 936.56 $\pm$ 13.43 & 745.50 $\pm$ 11.99 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.08 $\pm$ 0.05 & 1.04 $\pm$ 0.04 & 1.07 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-  \end{adjustwidth}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Background Subtraction \\ (subtract no background)}
-  \begin{adjustwidth}{-1.5em}{-1.5em}
-    \centering
-    \vspace{6pt}
-    \textcolor{blue}{All mass}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 1305.00 $\pm$ 36.12 & 764.00 $\pm$ 27.64 & 869.00 $\pm$ 29.48 & 694.00 $\pm$ 26.34 \\
-        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 0.94 $\pm$ 0.04 & 0.92 $\pm$ 0.03 & 0.92 $\pm$ 0.04 \\
-        \hline
-      \end{tabular}
-    }
-
-    \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 1040.00 $\pm$ 32.25 & 764.00 $\pm$ 27.64 & 862.00 $\pm$ 29.36 & 694.00 $\pm$ 26.34 \\
-        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 860.33 $\pm$ 13.02 & 988.32 $\pm$ 13.81 & 793.25 $\pm$ 12.33 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 0.99 $\pm$ 0.04 & 0.97 $\pm$ 0.04 & 0.97 $\pm$ 0.04 \\
-        \hline
-      \end{tabular}
-    }
-  \end{adjustwidth}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Background Subtraction \\ (subtract more background)}
-  \begin{adjustwidth}{-1.5em}{-1.5em}
-    \centering
-    \vspace{6pt}
-    \textcolor{blue}{All mass}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 1085.63 $\pm$ 44.99 & 709.66 $\pm$ 31.83 & 788.83 $\pm$ 33.93 & 648.51 $\pm$ 30.32 \\
-        \makecell{Signal-\\ matched MC} & 1375.32 $\pm$ 16.66 & 860.33 $\pm$ 13.02 & 999.57 $\pm$ 13.88 & 793.25 $\pm$ 12.33 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.04 $\pm$ 0.05 & 1.00 $\pm$ 0.05 & 1.04 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-
-    \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 913.29 $\pm$ 37.71 & 711.20 $\pm$ 31.61 & 787.69 $\pm$ 33.59 & 649.80 $\pm$ 30.11 \\
-        \makecell{Signal-\\ matched MC} & 1156.49 $\pm$ 15.16 & 860.33 $\pm$ 13.02 & 988.32 $\pm$ 13.81 & 793.25 $\pm$ 12.33 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.05 $\pm$ 0.05 & 1.01 $\pm$ 0.05 & 1.04 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-  \end{adjustwidth}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Subtract other background processes \\ (selecting wrong jet in $t\bar{t}$)}
-  \begin{adjustwidth}{-1.5em}{-1.5em}
-    \centering
-    \vspace{6pt}
-    \textcolor{blue}{All mass}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 766.85 $\pm$ 39.70 & 613.71 $\pm$ 29.29 & 657.38 $\pm$ 31.26 & 577.69 $\pm$ 27.80 \\
-        \makecell{Signal-\\ matched MC} & 882.34 $\pm$ 12.51 & 718.67 $\pm$ 11.30 & 802.20 $\pm$ 11.95 & 685.60 $\pm$ 11.04 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 0.98 $\pm$ 0.05 & 0.94 $\pm$ 0.05 & 0.97 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-
-    \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 728.16 $\pm$ 34.50 & 617.97 $\pm$ 29.20 & 664.33 $\pm$ 31.03 & 580.99 $\pm$ 27.72 \\
-        \makecell{Signal-\\ matched MC} & 862.25 $\pm$ 12.37 & 718.67 $\pm$ 11.30 & 798.26 $\pm$ 11.92 & 685.60 $\pm$ 11.04 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.05 & 1.02 $\pm$ 0.05 & 0.99 $\pm$ 0.05 & 1.00 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-  \end{adjustwidth}
+  \frametitle{V-tagging variables}
+  Each variable is shown after cutting on the other variable
+  \vspace{12pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Pruned Mass}
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_massp_tau21_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_full_massp_tau21_fatjettau21.pdf}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
   \frametitle{Subtract other background processes \\ (Allow part of W)}
   \begin{adjustwidth}{-1.5em}{-1.5em}
     \centering
-    \vspace{6pt}
-    \textcolor{blue}{All mass}
-    \vspace{6pt}
-
     {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
+      \begin{tabular}{| c | c | c | c | c |}
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 1086.25 $\pm$ 38.97 & 682.22 $\pm$ 29.08 & 756.81 $\pm$ 30.98 & 628.44 $\pm$ 27.65 \\
+        \makecell{Background \\ Subtracted \\ Data} & 1091.25 $\pm$ 39.07 & 683.84 $\pm$ 29.13 & 759.30 $\pm$ 31.04 & 630.14 $\pm$ 27.69 \\
         \makecell{Signal-\\ matched MC} & 1249.84 $\pm$ 15.26 & 797.49 $\pm$ 11.98 & 916.61 $\pm$ 12.89 & 743.99 $\pm$ 11.55 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 0.98 $\pm$ 0.04 & 0.95 $\pm$ 0.04 & 0.97 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-
-    \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 884.74 $\pm$ 34.10 & 684.54 $\pm$ 29.01 & 755.68 $\pm$ 30.78 & 630.30 $\pm$ 27.57 \\
-        \makecell{Signal-\\ matched MC} & 1047.66 $\pm$ 13.83 & 797.49 $\pm$ 11.98 & 906.42 $\pm$ 12.81 & 743.99 $\pm$ 11.55 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.02 $\pm$ 0.05 & 0.99 $\pm$ 0.04 & 1.00 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-  \end{adjustwidth}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Maximum Showering Difference}
-  \begin{adjustwidth}{-1.5em}{-1.5em}
-    \centering
-    \vspace{6pt}
-    \textcolor{blue}{All mass ($1.0 < \Delta R(j_b,j_\text{fat}) < 1.4$)}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 991.58 $\pm$ 37.47 & 619.43 $\pm$ 26.60 & 688.55 $\pm$ 29.48 & 569.52 $\pm$ 25.27 \\
-        \makecell{Signal-\\ matched MC} & 1126.97 $\pm$ 14.98 & 695.94 $\pm$ 11.52 & 820.75 $\pm$ 12.58 & 653.11 $\pm$ 11.16 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 1.01 $\pm$ 0.05 & 0.95 $\pm$ 0.04 & 0.99 $\pm$ 0.05 \\
-        \hline
-      \end{tabular}
-    }
-
-    \vspace{6pt}
-    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$ ($0.6 < \Delta R(j_b,j_\text{fat}) < 1.0$)}
-    \vspace{6pt}
-
-    {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
-        \hline
-        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
-        \hline
-        \makecell{Background \\ Subtracted \\ Data} & 527.15 $\pm$ 33.69 & 383.86 $\pm$ 25.16 & 433.26 $\pm$ 29.69 & 342.79 $\pm$ 23.51 \\
-        \makecell{Signal-\\ matched MC} & 633.33 $\pm$ 10.73 & 452.37 $\pm$ 8.98 & 517.75 $\pm$ 9.60 & 407.37 $\pm$ 8.47 \\
-        \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.07 & 1.02 $\pm$ 0.07 & 1.01 $\pm$ 0.07 & 1.01 $\pm$ 0.07 \\
+        \makecell{Normalized \\ Ratio} & 1.00 & 0.98 $\pm$ 0.04 & 0.95 $\pm$ 0.04 & 0.97 $\pm$ 0.05 \\
         \hline
       \end{tabular}
     }
@@ -581,14 +632,14 @@
     \vspace{6pt}
 
     {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
+      \begin{tabular}{| c | c | c | c | c |}
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 201.09 $\pm$ 17.09 & 128.50 $\pm$ 12.73 & 144.15 $\pm$ 14.08 & 112.54 $\pm$ 11.85 \\
-        \makecell{Signal-\\ matched MC} & 235.10 $\pm$ 6.19 & 152.93 $\pm$ 4.88 & 175.31 $\pm$ 5.24 & 140.30 $\pm$ 4.66 \\
+        \makecell{Background \\ Subtracted \\ Data} & 230.28 $\pm$ 16.93 & 141.39 $\pm$ 12.67 & 163.45 $\pm$ 14.01 & 122.13 $\pm$ 11.85 \\
+        \makecell{Signal-\\ matched MC} & 267.09 $\pm$ 7.02 & 165.72 $\pm$ 5.40 & 195.65 $\pm$ 5.78 & 149.24 $\pm$ 4.96 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.09 & 0.98 $\pm$ 0.10 & 0.96 $\pm$ 0.10 & 0.94 $\pm$ 0.10 \\
+        \makecell{Normalized \\ Ratio} & 1.00 & 0.99 $\pm$ 0.09 & 0.97 $\pm$ 0.09 & 0.95 $\pm$ 0.10 \\
         \hline
       \end{tabular}
     }
@@ -598,14 +649,14 @@
     \vspace{6pt}
 
     {\scriptsize
-      \begin{tabular}{c | c | c | c | c}
+      \begin{tabular}{| c | c | c | c | c |}
         \hline
         & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
         \hline
-        \makecell{Background \\ Subtracted \\ Data} & 165.15 $\pm$ 15.21 & 129.40 $\pm$ 12.67 & 143.59 $\pm$ 13.88 & 113.28 $\pm$ 11.79 \\
-        \makecell{Signal-\\ matched MC} & 203.57 $\pm$ 5.68 & 152.93 $\pm$ 4.88 & 172.18 $\pm$ 5.20 & 140.30 $\pm$ 4.66 \\
+        \makecell{Background \\ Subtracted \\ Data} & 188.94 $\pm$ 15.10 & 141.72 $\pm$ 12.62 & 161.58 $\pm$ 13.83 & 122.47 $\pm$ 11.80 \\
+        \makecell{Signal-\\ matched MC} & 230.63 $\pm$ 6.42 & 165.72 $\pm$ 5.40 & 192.03 $\pm$ 5.73 & 149.24 $\pm$ 4.96 \\
         \hline
-        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.10 & 1.04 $\pm$ 0.11 & 1.03 $\pm$ 0.10 & 1.00 $\pm$ 0.11 \\
+        \makecell{Normalized \\ Ratio} & 1.00 & 1.04 $\pm$ 0.10 & 1.03 $\pm$ 0.09 & 1.00 $\pm$ 0.10 \\
         \hline
       \end{tabular}
     }

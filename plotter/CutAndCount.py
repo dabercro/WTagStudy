@@ -76,7 +76,7 @@ if __name__ == "__main__":
         histAnalysis.ChangeBackground(1.0)
         GetTables()
         print('\nBackground Down\n')
-        histAnalysis.ChangeBackground(-1.0)
+        histAnalysis.ChangeBackground(-0.5)
         doBoth()
         histAnalysis.ChangeBackground(0.0)
 

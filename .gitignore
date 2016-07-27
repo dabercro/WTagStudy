@@ -19,3 +19,4 @@ OutTree.cc
 *.snm
 *.png
 */files/*.txt
+*.pages
