@@ -15,12 +15,21 @@ histAnalysis.SetSignalName('Signal')
 histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.environ.get('CrombieLuminosity') + ')')
 
 
-def doBoth(addToRegion=''):
+def doBoth(addToRegion='', **kwargs):
     print('All mass')
-    histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion))
+    if addToRegion = '_nopt':
+        histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion) + ' && fatjetPtSmeared' + kwargs['which'] + ' > 250)',
+                                cuts.cut('semilep','full' + addToRegion) + ' && fatjetPt > 250')
+    else:
+        histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion))
     histAnalysis.DoScaleFactors('n_tightlep',1,0,2)
     print('No low mass')
-    histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion))
+
+    if addToRegion = '_nopt':
+        histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion) + ' && fatjetPtSmeared' + kwargs['which'] + ' > 250)',
+                                cuts.cut('nolowmass','full' + addToRegion) + ' && fatjetPt > 250')
+    else:
+        histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion))
     histAnalysis.DoScaleFactors('n_tightlep',1,0,2)
 
 
@@ -33,7 +42,7 @@ def doSmear(whichDir, addToRegion=''):
         mccut = '(' + cut.replace('L2L3','L2L3Smeared' + whichDir) + ' && fatjetPtSmeared' + whichDir + '  > 250)'
         histAnalysis.AddScaleFactorCut(name, mccut, datacut)
 
-    doBoth(addToRegion + '_nopt')
+    doBoth(addToRegion + '_nopt', which=whichDir)
 
 
 def GetTables(addToRegion=''):
