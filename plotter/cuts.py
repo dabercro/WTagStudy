@@ -67,7 +67,7 @@ def cut(category,inRegions):
     holdRegions = inRegions.split('_')
     if holdRegions[-1] == 'nopt':
         holdRegions.pop(-1)
-        theCuts = Nminus1Cut(theCuts,'jetPt')
+        theCuts = Nminus1Cut(theCuts,'fatjetPt')
     elif holdRegions[-1] == 'highpt':
         holdRegions.pop(-1)
         theCuts = theCuts.replace('fatjetPt > 250','fatjetPt > 350')
