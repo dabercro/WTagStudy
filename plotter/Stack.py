@@ -68,11 +68,15 @@ def RunPlots(categories):
     MakePlots(categories,cutList,SetupArgs())
 
     plotter.SetDefaultWeight(cuts.cut('semilep','full_nopt'))
-    plotter.SetMCWeights('(fatjetPtSmearedDown > 250) * (' + cuts.defaultMCWeight + ')')
+    plotter.SetMCWeights('(fatjetPtSmearedUp > 250) * (' + cuts.defaultMCWeight + ')')
     plotter.SetDataWeights('(fatjetPt > 250)')
     plotter.SetDataExpression('fatjetPrunedML2L3')
-    plotter.SetDefaultExpr('fatjetPrunedML2L3SmearedDown')
-    plotter.MakeCanvas('smeareddown_mass',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0')
+    plotter.SetDefaultExpr('fatjetPrunedML2L3SmearedUp')
+    plotter.MakeCanvas('smearedup_mass',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0')
+
+    plotter.SetDataExpression('')
+    plotter.SetDefaultExpr('fatjettau21')
+    plotter.MakeCanvas('smearedup_tau21',25,0,1.5,'#tau_{2}/#tau_{1}','Events/1.0')
 
     plotter.SetMakeRatio(False)
     MakePlots(categories,cutList,[['fatjetDRGenW',25,0,5,'#Delta R from Gen W','Events/1.0']])
