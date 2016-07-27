@@ -17,16 +17,16 @@ histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.envir
 
 def doBoth(addToRegion='', **kwargs):
     print('All mass')
-    if addToRegion = '_nopt':
-        histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion) + ' && fatjetPtSmeared' + kwargs['which'] + ' > 250)',
+    if addToRegion == '_nopt':
+        histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion) + ' && fatjetPtSmeared' + kwargs['which'] + ' > 250',
                                 cuts.cut('semilep','full' + addToRegion) + ' && fatjetPt > 250')
     else:
         histAnalysis.SetBaseCut(cuts.cut('semilep','full' + addToRegion))
     histAnalysis.DoScaleFactors('n_tightlep',1,0,2)
     print('No low mass')
 
-    if addToRegion = '_nopt':
-        histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion) + ' && fatjetPtSmeared' + kwargs['which'] + ' > 250)',
+    if addToRegion == '_nopt':
+        histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion) + ' && fatjetPtSmeared' + kwargs['which'] + ' > 250',
                                 cuts.cut('nolowmass','full' + addToRegion) + ' && fatjetPt > 250')
     else:
         histAnalysis.SetBaseCut(cuts.cut('nolowmass','full' + addToRegion))
