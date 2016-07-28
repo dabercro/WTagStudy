@@ -6,7 +6,7 @@ import os, sys
 
 SetupFromEnv()
 
-#histAnalysis.SetIsPresentation(False)
+histAnalysis.SetIsPresentation(False)
 
 histAnalysis.ResetConfig()
 histAnalysis.ReadMCConfig('MCBackground.txt')

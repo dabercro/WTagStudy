@@ -87,7 +87,7 @@ if __name__ == '__main__':
     RunPlots(['semilep'])
     if len(sys.argv) > 1 and sys.argv[1] == 'full':
         outbase = plotter.GetOutDirectory().Data().rstrip('/')
-        for ending in ['_background', '_morebackground', '_midbackground', '_up', '_down']:
+        for ending in ['_background', '_morebackground', '_midbackground', '_up', '_down', '_topoff', '_topsquared']:
             if not os.path.exists(outbase + ending):
                 os.makedirs(outbase + ending)
 
@@ -96,6 +96,14 @@ if __name__ == '__main__':
         plotter.ReadMCConfig('MCBackground.txt')
         plotter.SetOutDirectory(outbase + '_background')
         RunPlots(['semilep'])
+
+        cuts.defaultMCWeight = 'mcFactors'
+        plotter.SetOutDirectory(outbase + '_topoff')
+        RunPlots(['semilep'])
+        cuts.defaultMCWeight = 'mcFactors * topPtReweighting * topPtReweighting'
+        plotter.SetOutDirectory(outbase + '_topsquared')
+        RunPlots(['semilep'])
+        cuts.defaultMCWeight = 'mcFactors * topPtReweighting'
 
         plotter.ResetConfig()
         plotter.AddDataFile('wscale_Data.root')
