@@ -10,7 +10,7 @@ SetupFromEnv()
 #plotter.SetDebug(True)
 
 plotter.SetStackLineWidth(2)
-plotter.SetIsCMSPrelim(True)
+plotter.SetCMSLabelType(plotter.kPreliminary)
 plotter.SetTreeName('events')
 plotter.SetAllHistName('htotal')
 plotter.SetLegendLocation(plotter.kUpper,plotter.kRight,0.25,0.5)
