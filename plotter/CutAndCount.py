@@ -6,13 +6,13 @@ import os, sys
 
 SetupFromEnv()
 
-histAnalysis.SetIsPresentation(False)
+histAnalysis.SetPrintingMethod(histAnalysis.kPresentation)
 
 histAnalysis.ResetConfig()
 histAnalysis.ReadMCConfig('MCBackground.txt')
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
-histAnalysis.SetMCWeight('(' + cuts.defaultMCWeight + ' * xsec_v1 * ' + os.environ.get('CrombieLuminosity') + ')')
+histAnalysis.SetMCWeight(cuts.defaultMCWeight)
 
 
 def doBoth(addToRegion='', **kwargs):
