@@ -1,5 +1,5 @@
-export CrombieMCConfig=MCTruthMatch.txt
-#export CrombieMCConfig=MCBackground.txt
+#export CrombieMCConfig=MCTruthMatch.txt
+export CrombieMCConfig=MCBackground.txt
 #export CrombieMCConfig=MCBackground_mid.txt
 export CrombieExcept_herwig=MCBackgroundHerwig.txt
 

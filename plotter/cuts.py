@@ -1,3 +1,9 @@
+# A weight applied to all MC
+
+#defaultMCWeight = 'mcFactors/topPtReweighting'
+defaultMCWeight = 'mcFactors'
+#defaultMCWeight = 'mcFactors * topPtReweighting'
+
 # Used in full region
 
 from CrombieTools import Nminus1Cut
@@ -47,10 +53,6 @@ fullhadCuts = {
     'boostedt' : 'fatjet1tau32 < 0.5',
     'ht' : 'jet_ht > 800',
     }
-
-# A weight applied to all MC
-
-defaultMCWeight = 'mcFactors * topPtReweighting'
 
 # Additional weights applied to certain control regions
 
