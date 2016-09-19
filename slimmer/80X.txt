@@ -1,5 +1,0 @@
-/store/user/dabercro/Nero/80X
-/store/user/zdemirag/setup80x/Nero/zey_base
-/eos/user/d/dabercro/80X
-/eos/user/d/dabercro/forDylan
-/store/caf/user/dmytro/zdemirag/setup80x/Nero/v1.4

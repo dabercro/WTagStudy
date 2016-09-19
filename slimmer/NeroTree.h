@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Mon Jun 20 15:51:28 2016 by ROOT version 6.06/01
+// Wed Sep 14 19:06:05 2016 by ROOT version 6.02/13
 // from TTree events/events
-// found on file: root://eoscms.cern.ch//store/user/zdemirag/setup80x/Nero/zey_base/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/160611_193847/0000/NeroNtuples_70.root
+// found on file: root://eoscms//store/user/dabercro/Nero/80X/SingleMuon/SingleMuon_0/160907_133042/0000/NeroNtuples_90.root
 //////////////////////////////////////////////////////////
 
 #ifndef NeroTree_h
@@ -68,6 +68,7 @@ public :
    vector<float>   *fatjetAK8CHSTau1;
    vector<float>   *fatjetAK8CHSTau2;
    vector<float>   *fatjetAK8CHSTau3;
+   vector<float>   *fatjetAK8CHSQJetVol;
    vector<float>   *fatjetAK8CHSTrimmedMass;
    vector<float>   *fatjetAK8CHSPrunedMass;
    vector<float>   *fatjetAK8CHSCorrectedPrunedMass;
@@ -101,6 +102,10 @@ public :
    vector<float>   *lepPhoIso;
    vector<float>   *lepPuIso;
    vector<float>   *lepEtaSC;
+   vector<float>   *lepSieie;
+   vector<float>   *lepSipip;
+   vector<float>   *lepSieip;
+   vector<float>   *lepR9;
    TClonesArray    *metP4;
    Float_t         metSumEtRaw;
    vector<float>   *metPtJESUP;
@@ -124,6 +129,7 @@ public :
    Float_t         rawMet_Pt;
    Float_t         rawMet_Phi;
    TClonesArray    *photonP4;
+   vector<int>     *photonMatch;
    vector<float>   *photonIso;
    vector<float>   *photonSieie;
    vector<unsigned int> *photonSelBits;
@@ -132,10 +138,14 @@ public :
    vector<float>   *photonPhoIso;
    vector<float>   *photonPuIso;
    vector<float>   *photonRawPt;
-   vector<float>   *photonE55;
+   vector<float>   *photonRawScEnergy;
    vector<float>   *photonHOverE;
    vector<float>   *photonChWorstIso;
    vector<float>   *photonChIsoMax;
+   vector<float>   *photonEmax;
+   vector<float>   *photonE2nd;
+   vector<float>   *photonE33;
+   vector<float>   *photonE55;
    vector<float>   *photonSipip;
    vector<float>   *photonSieip;
    vector<float>   *photonR9;
@@ -218,6 +228,7 @@ public :
    TBranch        *b_fatjetAK8CHSTau1;   //!
    TBranch        *b_fatjetAK8CHSTau2;   //!
    TBranch        *b_fatjetAK8CHSTau3;   //!
+   TBranch        *b_fatjetAK8CHSQJetVol;   //!
    TBranch        *b_fatjetAK8CHSTrimmedMass;   //!
    TBranch        *b_fatjetAK8CHSPrunedMass;   //!
    TBranch        *b_fatjetAK8CHSCorrectedPrunedMass;   //!
@@ -251,6 +262,10 @@ public :
    TBranch        *b_lepPhoIso;   //!
    TBranch        *b_lepPuIso;   //!
    TBranch        *b_lepEtaSC;   //!
+   TBranch        *b_lepSieie;   //!
+   TBranch        *b_lepSipip;   //!
+   TBranch        *b_lepSieip;   //!
+   TBranch        *b_lepR9;   //!
    TBranch        *b_metP4;   //!
    TBranch        *b_metSumEtRaw;   //!
    TBranch        *b_metPtJESUP;   //!
@@ -274,6 +289,7 @@ public :
    TBranch        *b_rawMet_Pt;   //!
    TBranch        *b_rawMet_Phi;   //!
    TBranch        *b_photonP4;   //!
+   TBranch        *b_photonMatch;   //!
    TBranch        *b_photonIso;   //!
    TBranch        *b_photonSieie;   //!
    TBranch        *b_photonSelBits;   //!
@@ -282,10 +298,14 @@ public :
    TBranch        *b_photonPhoIso;   //!
    TBranch        *b_photonPuIso;   //!
    TBranch        *b_photonRawPt;   //!
-   TBranch        *b_photonE55;   //!
+   TBranch        *b_photonRawScEnergy;   //!
    TBranch        *b_photonHOverE;   //!
    TBranch        *b_photonChWorstIso;   //!
    TBranch        *b_photonChIsoMax;   //!
+   TBranch        *b_photonEmax;   //!
+   TBranch        *b_photonE2nd;   //!
+   TBranch        *b_photonE33;   //!
+   TBranch        *b_photonE55;   //!
    TBranch        *b_photonSipip;   //!
    TBranch        *b_photonSieip;   //!
    TBranch        *b_photonR9;   //!

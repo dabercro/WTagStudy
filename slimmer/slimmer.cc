@@ -474,6 +474,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet1tau3  = (*(inTree->fatjetAK8CHSTau3))[iFatJet];
         outTree->fatjet1tau21 = outTree->fatjet1tau2/outTree->fatjet1tau1;
         outTree->fatjet1tau32 = outTree->fatjet1tau3/outTree->fatjet1tau2;
+        outTree->fatjet1QJetVol = (*(inTree->fatjetAK8CHSQJetVol))[iFatJet];
 
         outTree->fatjet1MaxBTag = GetMaxBTag(iFatJet,inTree);
 
@@ -578,6 +579,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet2tau3  = (*(inTree->fatjetAK8CHSTau3))[iFatJet];
         outTree->fatjet2tau21 = outTree->fatjet2tau2/outTree->fatjet2tau1;
         outTree->fatjet2tau32 = outTree->fatjet2tau3/outTree->fatjet2tau2;
+        outTree->fatjet2QJetVol = (*(inTree->fatjetAK8CHSQJetVol))[iFatJet];
 
         outTree->fatjet2MaxBTag = GetMaxBTag(iFatJet,inTree);
 
@@ -748,6 +750,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjettau1 = outTree->fatjet1tau1;
         outTree->fatjettau21 = outTree->fatjet1tau21;
         outTree->fatjettau32 = outTree->fatjet1tau32;
+        outTree->fatjetQJetVol = outTree->fatjet1QJetVol;
         outTree->fatjetDRGenW = outTree->fatjet1DRGenW;
         outTree->fatjetGenWPt = outTree->fatjet1GenWPt;
         outTree->fatjetGenWMass = outTree->fatjet1GenWMass;
@@ -799,6 +802,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjettau1 = outTree->fatjet2tau1;
         outTree->fatjettau21 = outTree->fatjet2tau21;
         outTree->fatjettau32 = outTree->fatjet2tau32;
+        outTree->fatjetQJetVol = outTree->fatjet2QJetVol;
         outTree->fatjetDRGenW = outTree->fatjet2DRGenW;
         outTree->fatjetGenWPt = outTree->fatjet2GenWPt;
         outTree->fatjetGenWMass = outTree->fatjet2GenWMass;
