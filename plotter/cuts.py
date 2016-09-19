@@ -1,8 +1,8 @@
 # A weight applied to all MC
 
 #defaultMCWeight = 'mcFactors/topPtReweighting'
-defaultMCWeight = 'mcFactors'
-#defaultMCWeight = 'mcFactors * topPtReweighting'
+#defaultMCWeight = 'mcFactors'
+defaultMCWeight = 'mcFactors * topPtReweighting'
 
 # Used in full region
 
