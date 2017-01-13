@@ -12,6 +12,7 @@ histAnalysis.ResetConfig()
 histAnalysis.ReadMCConfig('MCBackground.txt')
 histAnalysis.AddDataFile('wscale_Data.root')
 histAnalysis.SetSignalName('Signal')
+histAnalysis.SetSearchBy(histAnalysis.kLegendEntry)
 histAnalysis.SetMCWeight(cuts.defaultMCWeight)
 
 
