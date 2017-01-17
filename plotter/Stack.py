@@ -9,11 +9,12 @@ SetupFromEnv()
 
 #plotter.SetDebug(True)
 
+plotter.AddDataFile('wscale_Data.root')
 plotter.SetStackLineWidth(2)
-plotter.SetCMSLabelType(plotter.kPreliminary)
+plotter.SetCMSLabel('Preliminary')
 plotter.SetTreeName('events')
 plotter.SetAllHistName('htotal')
-plotter.SetLegendLocation(plotter.kUpper,plotter.kRight,0.25,0.5)
+plotter.SetLegendLocation(plotter.kUpper, plotter.kRight, 0.25, 0.5)
 plotter.SetEventsPer(1.0)
 plotter.SetMinLegendFrac(0.0)
 plotter.SetIgnoreInLinear(0.005)
@@ -68,8 +69,8 @@ def RunPlots(categories):
     MakePlots(categories,cutList,SetupArgs())
 
     plotter.SetDefaultWeight(cuts.cut('semilep','full_nopt'))
-    plotter.SetMCWeights('(fatjetPtSmearedUp > 250) * (' + cuts.defaultMCWeight + ')')
-    plotter.SetDataWeights('(fatjetPt > 250)')
+    plotter.SetMCWeight('(fatjetPtSmearedUp > 250) * (' + cuts.defaultMCWeight + ')')
+    plotter.SetDataWeight('(fatjetPt > 250)')
     plotter.SetDataExpression('fatjetPrunedML2L3')
     plotter.SetDefaultExpr('fatjetPrunedML2L3SmearedUp')
     plotter.MakeCanvas('smearedup_mass',25,0,250,'Fat Jet Pruned Mass [GeV]','Events/1.0')
@@ -83,7 +84,6 @@ def RunPlots(categories):
     plotter.SetMakeRatio(True)
 
 if __name__ == '__main__':
-    plotter.AddDataFile('wscale_Data.root')
     RunPlots(['semilep'])
     if len(sys.argv) > 1 and sys.argv[1] == 'full':
         outbase = plotter.GetOutDirectory().Data().rstrip('/')

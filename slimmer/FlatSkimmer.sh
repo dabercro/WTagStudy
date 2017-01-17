@@ -27,6 +27,11 @@ hadd -f /afs/cern.ch/work/d/dabercro/public/Summer16/Data/wscale_Data.root $Crom
 
 crombie skim  --cut '1' --tree 'events' --copy 'htotal' --run 'runNum' --lumi 'lumiNum' --freq 100000 --numproc 1 --indir /afs/cern.ch/work/d/dabercro/public/Summer16/Data --outdir $CrombieSkimDir --json $CrombieGoodRuns -d
 
+if [ "$fresh" = "data" ]
+then
+    exit 0
+fi
+
 ## tt stuff
 
 mv $CrombieSkimDir/wscale_TT*.root /afs/cern.ch/work/d/dabercro/public/Summer16/TT_80X/.

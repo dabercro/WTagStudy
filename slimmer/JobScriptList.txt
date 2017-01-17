@@ -2,6 +2,8 @@ slimmer.cc
 OutTree.txt
 NeroTree.h
 NeroTree.C
+Nero_30fb.h
+Nero_30fb.C
 JetSmearer.h
 files/Spring16_25nsV6_MC_PtResolution_AK8PFchs.txt
 files/Spring16_25nsV6_MC_SF_AK8PFchs.txt

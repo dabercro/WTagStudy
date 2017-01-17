@@ -12,9 +12,8 @@ fi
 
 source ../slimmer/CrombieSlimmingConfig.sh
 
-#export CrombieLuminosity=7647.6
-export CrombieLuminosity=12918.14
-export CrombieInFilesDir=../../Skim_160726
+export CrombieLuminosity=34100.0
+export CrombieInFilesDir=../../Skim_170117
 
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 
