@@ -31,7 +31,9 @@ rm */*n_bjetsLoose.pdf
 rm */*highpt*Pt.pdf
 
 mv 160707/WPt_comparison.pdf 160707/WPt_comparisonx.pdf
-rename -s 0. 0_ */*0.*
+
+test "$(hostname)" = "dabercro-MacBookAir" && flag=" -s" || flag=""
+rename$flag 0. 0_ */*0.*
 
 if [ "$(hostname)" = "dabercro-MacBookAir" ]
 then
