@@ -5,7 +5,7 @@ if [ "$(hostname)" = "dabercro-MacBookAir" ]
 then
     export CrombieNLocalProcs=2
 else
-    export CrombieNLocalProcs=6
+    export CrombieNLocalProcs=12
 fi
 
 export CrombieEosDir=/store/group/phys_higgs/ceballos/setup80x_ichep/Data/Nero/v2.0/
