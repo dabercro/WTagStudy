@@ -1,0 +1,363 @@
+\documentclass{beamer}
+
+\author[D. Abercrombie]{
+  Daniel Abercrombie
+}
+
+\title{\bf \sffamily Updated W Tag Scale Factors}
+\date{\today}
+
+\usecolortheme{dove}
+
+\usepackage[absolute,overlay]{textpos}
+\usefonttheme{serif}
+\usepackage{appendixnumberbeamer}
+\usepackage{isotope}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\setbeamerfont{frametitle}{size=\Large,series=\bf\sffamily}
+\setbeamertemplate{frametitle}[default][center]
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{makecell}
+
+\setbeamertemplate{navigation symbols}{}
+\usepackage{graphicx}
+\usepackage{color}
+\setbeamertemplate{footline}[text line]{\parbox{1.083\linewidth}{\footnotesize \hfill \insertshortauthor \hfill \insertpagenumber /\inserttotalframenumber}}
+\setbeamertemplate{headline}[text line]{\parbox{1.083\linewidth}{\footnotesize \hspace{-0.083\linewidth} \textcolor{blue}{\sffamily \insertsection \hfill \insertsubsection}}}
+
+\usepackage{changepage}
+
+\newcommand{\beginbackup}{
+  \newcounter{framenumbervorappendix}
+  \setcounter{framenumbervorappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+}
+
+\graphicspath{{figs/}{../160727/figs/}}
+
+\begin{document}
+
+\begin{frame}[nonumbering]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Introduction}
+  Using the same methods, samples, and selections as before,
+  outlined in
+  \href{http://t3serv001.mit.edu/~dabercro/dabercro_WTagStudy_160727.pdf}
+       {\textcolor{blue}{these slides}},
+  the data used is updated from 12.9/fb to 34.1/fb, and I remeasured the scale factors.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Updating luminosity}
+
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Old Lumi} \\
+      \includegraphics[width=\linewidth]
+                      {160726/semilep_nocut_nsmalljets_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{New Lumi} \\
+      \includegraphics[width=\linewidth]
+                      {170118/semilep_nocut_nsmalljets_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Adding the Purity Cuts}
+  As before, we have the purity cuts $0.8 < \Delta R(j_b,j_\text{fat}) < 1.2$ and
+  $\Delta\phi(\ell,j_\text{fat}) > 2.0$
+
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]
+                      {170118/semilep_nocut_nsmalljets_fatjetDRLooseB.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \includegraphics[width=\linewidth]
+                      {170118/semilep_nocut_nsmalljets_fatjetDPhiLep1.pdf}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{V-tagging variables}
+
+  This is the selection we use to get clean, hadronic Ws without biasing the tagging variables
+  \vspace{12pt}
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{Pruned Mass}
+      \includegraphics[width=\linewidth]
+                      {170118/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \textcolor{blue}{N-subjettiness ($\tau_2/\tau_1$)}
+      \includegraphics[width=\linewidth]
+                      {170118/semilep_full_fatjettau21.pdf}
+    \end{column}
+  \end{columns}
+  Cut on $m_\text{pruned}$ and $\tau_2/\tau_1$ for V-tagging
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scale Factors}
+
+  Statistical uncertainties only, syst. unc. explored later \\
+  \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\ \vspace{-12pt}
+  }
+
+  \begin{adjustwidth}{-2.5em}{-2.5em}
+    \centering
+    \vspace{6pt}
+    \textcolor{blue}{All mass}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+      \hline
+      & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+      \hline
+      \makecell{Background \\ Subtracted \\ Data} & 3848.70 $\pm$ 78.00 & 2273.51 $\pm$ 51.97 & 2642.50 $\pm$ 56.32 & 2065.17 $\pm$ 49.22 \\
+      \makecell{Signal-\\ matched MC} & 4145.96 $\pm$ 50.33 & 2600.86 $\pm$ 39.26 & 3020.91 $\pm$ 42.23 & 2398.43 $\pm$ 37.54 \\
+      \hline
+      \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.02 & 0.94 $\pm$ 0.03 & 0.94 $\pm$ 0.02 & \fcolorbox{red}{yellow}{0.93 $\pm$ 0.03} \\
+      \hline
+      \end{tabular}
+    }
+
+    \vspace{6pt}
+    \textcolor{blue}{$m_\text{pruned} > \SI{25}{GeV}$}
+    \vspace{6pt}
+
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 3155.91 $\pm$ 62.96 & 2275.69 $\pm$ 51.77 & 2619.29 $\pm$ 55.82 & 2066.92 $\pm$ 49.05 \\
+        \makecell{Signal-\\ matched MC} & 3502.06 $\pm$ 45.99 & 2600.86 $\pm$ 39.26 & 2992.99 $\pm$ 42.08 & 2398.43 $\pm$ 37.54 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.02 & 0.97 $\pm$ 0.03 & 0.97 $\pm$ 0.02 & 0.96 $\pm$ 0.03 \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jet Smearing}
+  Used the hybrid smearing procedure changes the MC's mass and $p_T$ with
+  ``Smeared Up'' giving the most different SF
+
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_background/smearedup_mass.pdf}
+    \end{column}
+  \end{columns}
+
+  \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\
+  }
+
+  \begin{adjustwidth}{-2.5em}{-2.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 3854.58 $\pm$ 77.84 & 2116.53 $\pm$ 50.49 & 2458.80 $\pm$ 54.53 & 1924.07 $\pm$ 47.70 \\
+        \makecell{Signal-\\ matched MC} & 4263.99 $\pm$ 51.40 & 2630.25 $\pm$ 39.85 & 3067.29 $\pm$ 42.99 & 2420.34 $\pm$ 38.14 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.02 & 0.89 $\pm$ 0.03 & 0.89 $\pm$ 0.02 & \fcolorbox{red}{yellow}{0.88 $\pm$ 0.03} \\
+        \hline
+      \end{tabular}
+    }
+
+  \end{adjustwidth}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background Scaling}
+  Scaling the background up by a factor of two gives the following result
+
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_up/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+
+  \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\
+  }
+
+  \begin{adjustwidth}{-2.5em}{-2.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 3529.40 $\pm$ 108.79 & 2199.03 $\pm$ 61.31 & 2534.01 $\pm$ 66.58 & 2005.35 $\pm$ 57.59 \\
+        \makecell{Signal-\\ matched MC} & 4145.96 $\pm$ 50.33 & 2600.86 $\pm$ 39.26 & 3020.91 $\pm$ 42.23 & 2398.43 $\pm$ 37.54 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 0.99 $\pm$ 0.03 & 0.99 $\pm$ 0.03 & \fcolorbox{red}{yellow}{0.98 $\pm$ 0.03} \\
+        \hline
+      \end{tabular}
+    }
+
+  \end{adjustwidth}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background Selection}
+  If we require the jet to be matched to the W (both daughters inside, no b)
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_morebackground/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\
+  }
+  \begin{adjustwidth}{-2.5em}{-2.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 2518.32 $\pm$ 83.34 & 1899.26 $\pm$ 54.37 & 2119.93 $\pm$ 59.20 & 1783.20 $\pm$ 51.09 \\
+        \makecell{Signal-\\ matched MC} & 2712.82 $\pm$ 39.17 & 2197.70 $\pm$ 35.28 & 2457.98 $\pm$ 37.38 & 2094.68 $\pm$ 34.53 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.04 & 0.93 $\pm$ 0.03 & 0.93 $\pm$ 0.03 & \fcolorbox{red}{yellow}{0.92 $\pm$ 0.03} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shower effect}
+  Compare $0.8 < \Delta R < 1.2$ to $1.0 < \Delta R < 1.4$
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_background/semilep_full_0_3_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170118_background/semilep_full_0_5_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\
+  }
+  \begin{adjustwidth}{-2.5em}{-2.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 3335.24 $\pm$ 77.35 & 2008.81 $\pm$ 47.10 & 2281.15 $\pm$ 54.32 & 1842.46 $\pm$ 44.56 \\
+        \makecell{Signal-\\ matched MC} & 3552.55 $\pm$ 47.14 & 2175.98 $\pm$ 35.87 & 2573.09 $\pm$ 39.04 & 2021.68 $\pm$ 34.49 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.03 & 0.98 $\pm$ 0.03 & 0.94 $\pm$ 0.03 & \fcolorbox{red}{yellow}{0.97 $\pm$ 0.03} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Systematic Uncertainties}
+  We assume systematic uncertainties are symmetric for now
+  \begin{center}
+  \begin{tabular}{l|c}
+    Source & All Mass \\
+    \hline
+    Jet Smearing & 5\% \\
+    Background Subtraction & 5\% \\
+    Which background is subtracted & 1\% \\
+    Shower effect on purity cuts & 4\% \\
+  \end{tabular}
+  \end{center}
+  Adding in Quadrature for All Mass column: \boxed{$\pm 8\%$}
+  \vspace{12pt}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+
+  With updated luminosity, we get
+
+  \begin{center}
+  \boxed{$0.93 \pm 0.03 \text{(stat.)} \pm 0.08 \text{(sys.)}$}
+  \end{center}
+
+  The previous measurement was
+  $0.97 \pm 0.04 \text{(stat.)} \pm 0.08 \text{(sys.)}$
+
+\end{frame}
+
+\beginbackup
+
+\begin{frame}
+  \frametitle{Backup Slides}
+\end{frame}
+
+\input{backup_slides.tex}
+
+\backupend
+
+\end{document}

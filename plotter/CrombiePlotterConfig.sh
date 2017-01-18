@@ -13,7 +13,13 @@ fi
 source ../slimmer/CrombieSlimmingConfig.sh
 
 export CrombieLuminosity=34100.0
-export CrombieInFilesDir=../../Skim_170117
+
+if [ "$(hostname)" = "t3desk003.mit.edu" ]
+then
+    export CrombieInFilesDir=/scratch/dabercro/WTagStudy/Skim_170117
+else
+    export CrombieInFilesDir=../../Skim_170117
+fi
 
 export CrombieOutLimitTreeDir=limits/$CROMBIEDATE
 
