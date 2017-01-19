@@ -7,7 +7,7 @@ import ROOT
 OutTreeName = 'OutTree'
 
 os.system('crombie maketree ' + OutTreeName)
-ROOT.gROOT.LoadMacro('Nero_30fb.C+')
+ROOT.gROOT.LoadMacro('NeroTree.C+')
 ROOT.gROOT.LoadMacro(OutTreeName + '.cc+')
 ROOT.gROOT.LoadMacro('slimmer.cc+')
 
@@ -17,8 +17,9 @@ if len(sys.argv) == 1:
     exit()
 if sys.argv[1] == 'test':
     ROOT.slimmer(
-#        'root://eoscms//store/user/dabercro/Nero/80X/SingleMuon/SingleMuon_0/160907_133042/0000/NeroNtuples_90.root',
-        'root://eoscms.cern.ch//store/group/phys_higgs/ceballos/setup80x_ichep/Data/Nero/v2.0/SingleMuon/SingleMuon-Run2016E-23Sep2016/161208_212714/0000/NeroNtuples_10.root',
+#        'root://eoscms//eos/cms/store/user/zdemirag/setup80x/Nero/v1.4/JetHT/JetHT-Run2016B-v2/160606_232337/0000/NeroNtuples_70.root',
+#        'root://eoscms//eos/cms/store/user/zdemirag/setup80x/Nero/v1.4/TT_TuneCUETP8M1_13TeV-powheg-pythia8/TT_TuneCUETP8M1_13TeV-powheg/160606_230204/0000/NeroNtuples_70.root',
+        'root://eoscms.cern.ch//store/user/zdemirag/setup80x/Nero/zey_base/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/TTJets_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/160611_193847/0000/NeroNtuples_70.root',
         'test.root')
 
 if len(sys.argv) < 3:

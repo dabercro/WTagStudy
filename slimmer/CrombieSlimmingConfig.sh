@@ -1,4 +1,4 @@
-export CrombieFilesPerJob=60
+export CrombieFilesPerJob=10
 export CrombieQueue=8nh
 
 if [ "$(hostname)" = "dabercro-MacBookAir" ]
@@ -8,14 +8,14 @@ else
     export CrombieNLocalProcs=12
 fi
 
-export CrombieEosDir=/store/group/phys_higgs/ceballos/setup80x_ichep/Data/Nero/v2.0/
+export CrombieEosDir=80X.txt
 export CrombieFileBase=wscale
 export CrombieRegDir=/afs/cern.ch/work/d/dabercro/eosuser/user/d/dabercro/80X
 #export CrombieFullDir=/tmp/dabercro/Full_$CROMBIEDATE
 export CrombieTempDir=/afs/cern.ch/work/d/dabercro/public/Fall16/Temp
-export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Fall16/Full_160726
+export CrombieFullDir=/afs/cern.ch/work/d/dabercro/public/Fall16/Full_$(CROMBIEDATE)
 export CrombieSkimDir=/afs/cern.ch/work/d/dabercro/public/Fall16/Skim_$(CROMBIEDATE)
-export CrombieDirList=Data.txt
+export CrombieDirList=MC.txt
 
 export CrombieSlimmerScript=runSlimmer.py
 export CrombieJobScriptList=JobScriptList.txt

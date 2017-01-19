@@ -13,7 +13,7 @@
 
 #include "KinematicFunctions.h"
 #include "OutTree.h"
-#include "Nero_30fb.h"
+#include "NeroTree.h"
 #include "JetSmearer.h"
 
 enum TauSelection{
@@ -69,7 +69,7 @@ Bool_t PassIso(Float_t lepPt, Float_t lepEta, Float_t lepIso, Int_t lepPdgId, Is
   return (lepIso/lepPt) < isoCut;
 }
 
-float GetMaxBTag(Int_t iFatjet, Nero_30fb *inTree) {
+float GetMaxBTag(Int_t iFatjet, NeroTree *inTree) {
   Int_t nSubjets = (*(inTree->fatjetAK8CHSnSubjets))[iFatjet];
   Int_t firstSubjet = (*(inTree->fatjetAK8CHSfirstSubjet))[iFatjet];
   float maxsjbtag = -1.0;
@@ -93,7 +93,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
 
   TFile *inFile           = TFile::Open(inFileName);
   TTree *inTreeFetch      = (TTree*) inFile->Get("nero/events");
-  Nero_30fb *inTree  = new Nero_30fb(inTreeFetch);
+  NeroTree *inTree  = new NeroTree(inTreeFetch);
   TTree *allTree          = (TTree*) inFile->Get("nero/all");
   Float_t mcWeight        = 0.;
   TBranch *mcWeightBranch = allTree->GetBranch("mcWeight");
@@ -162,7 +162,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     outTree->met    = ((TLorentzVector*)((*(inTree->metP4))[0]))->Pt();
     outTree->metPhi = ((TLorentzVector*)((*(inTree->metP4))[0]))->Phi();
 
-    outTree->pfovercaloMet = outTree->met/inTree->CaloMet->Pt();
+    outTree->pfovercaloMet = outTree->met/inTree->caloMet_Pt;
 
     outTree->triggerFired = inTree->triggerFired;
     
@@ -474,7 +474,6 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet1tau3  = (*(inTree->fatjetAK8CHSTau3))[iFatJet];
         outTree->fatjet1tau21 = outTree->fatjet1tau2/outTree->fatjet1tau1;
         outTree->fatjet1tau32 = outTree->fatjet1tau3/outTree->fatjet1tau2;
-        // outTree->fatjet1QJetVol = (*(inTree->fatjetAK8CHSQJetVol))[iFatJet];
 
         outTree->fatjet1MaxBTag = GetMaxBTag(iFatJet,inTree);
 
@@ -579,7 +578,6 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjet2tau3  = (*(inTree->fatjetAK8CHSTau3))[iFatJet];
         outTree->fatjet2tau21 = outTree->fatjet2tau2/outTree->fatjet2tau1;
         outTree->fatjet2tau32 = outTree->fatjet2tau3/outTree->fatjet2tau2;
-        // outTree->fatjet2QJetVol = (*(inTree->fatjetAK8CHSQJetVol))[iFatJet];
 
         outTree->fatjet2MaxBTag = GetMaxBTag(iFatJet,inTree);
 
@@ -664,7 +662,7 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
     if (outTree->fatjet1Pt < 0)
       continue;
 
-    outTree->fatjet1DPhiMet = deltaPhi(outTree->fatjet1Phi,outTree->metPhi);
+    outTree->fatjet1DPhiMet = deltaPhi(outTree->fatjet1Phi, outTree->metPhi);
 
     float pt1 = -0.5;
     float pt2 = -0.5;
@@ -674,36 +672,36 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         Int_t checkPdgId = (*(inTree->genPdgId))[iGen];
         if (abs(checkPdgId) == 6){
           if (checkPdgId > 0)
-            pt1 = ((TLorentzVector*) inTree->genP4->At(iGen))->Pt();
+            pt1 = TMath::Max((float) ((TLorentzVector*) inTree->genP4->At(iGen))->Pt(), pt1);
           else
-            pt2 = ((TLorentzVector*) inTree->genP4->At(iGen))->Pt();
+            pt2 = TMath::Max((float) ((TLorentzVector*) inTree->genP4->At(iGen))->Pt(), pt2);
         }
       }
       if (pt1 > 0.0 && pt2 > 0.0)
-        outTree->topPtReweighting = sqrt(exp(0.156 - 0.00137*min(pt1,float(400.0))) * 
-                                         exp(0.156 - 0.00137*min(pt2,float(400.0)))) / 0.88;
+        outTree->topPtReweighting = sqrt(exp(0.0615 - 0.0005 * min(pt1, float(400.0))) * 
+                                         exp(0.0615 - 0.0005 * min(pt2, float(400.0))));
     }
 
     if (outTree->bjet2Pt > 0) {
       if (outTree->fatjet1Pt > 0) {
-        outTree->topMass_11 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1Mass,
-                                            outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
-        outTree->topMass_12 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1Mass,
-                                            outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
-        outTree->topPrunedM_11 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1PrunedM,
-                                               outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
-        outTree->topPrunedM_12 = vectorSumMass(outTree->fatjet1Pt,outTree->fatjet1Eta,outTree->fatjet1Phi,outTree->fatjet1PrunedM,
-                                               outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
+        outTree->topMass_11 = vectorSumMass(outTree->fatjet1Pt, outTree->fatjet1Eta, outTree->fatjet1Phi, outTree->fatjet1Mass, 
+                                            outTree->bjet1Pt, outTree->bjet1Eta, outTree->bjet1Phi, outTree->bjet1M);
+        outTree->topMass_12 = vectorSumMass(outTree->fatjet1Pt, outTree->fatjet1Eta, outTree->fatjet1Phi, outTree->fatjet1Mass, 
+                                            outTree->bjet2Pt, outTree->bjet2Eta, outTree->bjet2Phi, outTree->bjet2M);
+        outTree->topPrunedM_11 = vectorSumMass(outTree->fatjet1Pt, outTree->fatjet1Eta, outTree->fatjet1Phi, outTree->fatjet1PrunedM, 
+                                               outTree->bjet1Pt, outTree->bjet1Eta, outTree->bjet1Phi, outTree->bjet1M);
+        outTree->topPrunedM_12 = vectorSumMass(outTree->fatjet1Pt, outTree->fatjet1Eta, outTree->fatjet1Phi, outTree->fatjet1PrunedM, 
+                                               outTree->bjet2Pt, outTree->bjet2Eta, outTree->bjet2Phi, outTree->bjet2M);
       }
       if (outTree->fatjet2Pt > 0) {
-        outTree->topMass_21 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2Mass,
-                                            outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
-        outTree->topMass_22 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2Mass,
-                                            outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
-        outTree->topPrunedM_21 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2PrunedM,
-                                               outTree->bjet1Pt,outTree->bjet1Eta,outTree->bjet1Phi,outTree->bjet1M);
-        outTree->topPrunedM_22 = vectorSumMass(outTree->fatjet2Pt,outTree->fatjet2Eta,outTree->fatjet2Phi,outTree->fatjet2PrunedM,
-                                               outTree->bjet2Pt,outTree->bjet2Eta,outTree->bjet2Phi,outTree->bjet2M);
+        outTree->topMass_21 = vectorSumMass(outTree->fatjet2Pt, outTree->fatjet2Eta, outTree->fatjet2Phi, outTree->fatjet2Mass, 
+                                            outTree->bjet1Pt, outTree->bjet1Eta, outTree->bjet1Phi, outTree->bjet1M);
+        outTree->topMass_22 = vectorSumMass(outTree->fatjet2Pt, outTree->fatjet2Eta, outTree->fatjet2Phi, outTree->fatjet2Mass, 
+                                            outTree->bjet2Pt, outTree->bjet2Eta, outTree->bjet2Phi, outTree->bjet2M);
+        outTree->topPrunedM_21 = vectorSumMass(outTree->fatjet2Pt, outTree->fatjet2Eta, outTree->fatjet2Phi, outTree->fatjet2PrunedM, 
+                                               outTree->bjet1Pt, outTree->bjet1Eta, outTree->bjet1Phi, outTree->bjet1M);
+        outTree->topPrunedM_22 = vectorSumMass(outTree->fatjet2Pt, outTree->fatjet2Eta, outTree->fatjet2Phi, outTree->fatjet2PrunedM, 
+                                               outTree->bjet2Pt, outTree->bjet2Eta, outTree->bjet2Phi, outTree->bjet2M);
       }
     }
 
@@ -750,7 +748,6 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjettau1 = outTree->fatjet1tau1;
         outTree->fatjettau21 = outTree->fatjet1tau21;
         outTree->fatjettau32 = outTree->fatjet1tau32;
-        outTree->fatjetQJetVol = outTree->fatjet1QJetVol;
         outTree->fatjetDRGenW = outTree->fatjet1DRGenW;
         outTree->fatjetGenWPt = outTree->fatjet1GenWPt;
         outTree->fatjetGenWMass = outTree->fatjet1GenWMass;
@@ -802,7 +799,6 @@ void slimmer(TString inFileName, TString outFileName, Bool_t isSig = false) {
         outTree->fatjettau1 = outTree->fatjet2tau1;
         outTree->fatjettau21 = outTree->fatjet2tau21;
         outTree->fatjettau32 = outTree->fatjet2tau32;
-        outTree->fatjetQJetVol = outTree->fatjet2QJetVol;
         outTree->fatjetDRGenW = outTree->fatjet2DRGenW;
         outTree->fatjetGenWPt = outTree->fatjet2GenWPt;
         outTree->fatjetGenWMass = outTree->fatjet2GenWMass;

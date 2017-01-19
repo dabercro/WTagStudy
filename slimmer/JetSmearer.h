@@ -11,14 +11,14 @@
 #include "TMath.h"
 #include "TRandom2.h"
 
-#include "Nero_30fb.h"
+#include "NeroTree.h"
 #include "KinematicFunctions.h"
 
 enum SmearType { kCentral = 0, kUp, kDown };
 
 class JetSmearer {
  public:
-  JetSmearer (Nero_30fb* thisTree) { fNero_30fb = thisTree; }
+  JetSmearer (NeroTree* thisTree) { fNeroTree = thisTree; }
   virtual ~JetSmearer() {}
 
   void ReadSFConfig   ( TString configName );
@@ -28,7 +28,7 @@ class JetSmearer {
 
  private:
 
-  Nero_30fb *fNero_30fb;
+  NeroTree *fNeroTree;
 
   std::vector<Float_t> SFDownEta;
   std::vector<Float_t> SFUpEta;
@@ -155,8 +155,8 @@ Float_t JetSmearer::GetSmeared(Float_t rho, Float_t jetPt, Float_t jetEta, Float
   else
     return toSmear;
 
-  for (Int_t iGenJet = 0; iGenJet < fNero_30fb->genjetP4->GetEntries(); iGenJet++) {
-    TLorentzVector *tempGenJet = (TLorentzVector*) fNero_30fb->genjetP4->At(iGenJet);
+  for (Int_t iGenJet = 0; iGenJet < fNeroTree->genjetP4->GetEntries(); iGenJet++) {
+    TLorentzVector *tempGenJet = (TLorentzVector*) fNeroTree->genjetP4->At(iGenJet);
 
     if (deltaR(tempGenJet->Eta(), tempGenJet->Phi(), jetEta, jetPhi) < 0.4 &&
         fabs(tempGenJet->Pt() - jetPt) < (3 * res * jetPt)) {
