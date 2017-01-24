@@ -323,6 +323,43 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Top $p_T$ Reweighting}
+  We can compare turning off the reweighting and squaring it.
+  A larger difference comes from turning it off.
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170124_background/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.7\linewidth]
+                      {170124_topoff/semilep_full_fatjetPrunedML2L3.pdf}
+    \end{column}
+  \end{columns}
+      \textcolor{red}{\scriptsize
+    Pruned Mass Cut: $\SI{65}{GeV} < m_\text{pruned} < \SI{105}{GeV}$ -- 
+    $\tau_2/\tau_1$ Cut: $\tau_2/\tau_1 < 0.6$ \\
+  }
+  \begin{adjustwidth}{-2.5em}{-2.5em}
+    \centering
+    {\scriptsize
+      \begin{tabular}{| c | c | c | c | c |}
+        \hline
+        & No Cut & Pruned Mass Cut & $\tau_2/\tau_1$ Cut & Full V-tag Cut \\
+        \hline
+        \makecell{Background \\ Subtracted \\ Data} & 3885.19 $\pm$ 74.88 & 2282.28 $\pm$ 51.12 & 2653.55 $\pm$ 55.38 & 2072.05 $\pm$ 48.46 \\
+        \makecell{Signal-\\ matched MC} & 4832.28 $\pm$ 58.05 & 3070.54 $\pm$ 46.02 & 3561.07 $\pm$ 49.44 & 2837.18 $\pm$ 44.17 \\
+        \hline
+        \makecell{Normalized \\ Ratio} & 1.00 $\pm$ 0.02 & 0.92 $\pm$ 0.02 & 0.93 $\pm$ 0.02 & \highlight{0.91 $\pm$ 0.03} \\
+        \hline
+      \end{tabular}
+    }
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}
   \frametitle{Systematic Uncertainties}
   We assume systematic uncertainties are symmetric for now
   \begin{center}
@@ -333,6 +370,7 @@
     Background Subtraction & 5\% \\
     Which background is subtracted & 2\% \\
     Shower effect on purity cuts & 4\% \\
+    Top $p_T$ reweighting & 1\% \\
   \end{tabular}
   \end{center}
   Adding in Quadrature for All Mass column: \boxed{$\pm 8.4\%$}

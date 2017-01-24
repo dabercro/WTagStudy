@@ -58,7 +58,7 @@ fullhadCuts = {
 # Additional weights applied to certain control regions
 
 additions    = { # key: [Data, MC]
-    'default': ['1', defaultMCWeight]
+    'default': ['1', '1']
     }
 
 # Do not change the names of these functions or required parameters
@@ -120,7 +120,7 @@ def dataMCCuts(region, isData):
     if isData:
         index = 0
 
-    if key == 'default' or index == 0:
+    if index == 0:
         return '(' + additions[key][index] + ')'
     else:
         return '((' + additions[key][index] + ')*(' + defaultMCWeight + '))'

@@ -96,10 +96,10 @@ if __name__ == '__main__':
         plotter.SetOutDirectory(outbase + '_background')
         RunPlots(['semilep'])
 
-        cuts.defaultMCWeight = 'mcFactors'
+        cuts.defaultMCWeight = 'mcFactors/topPtReweighting'
         plotter.SetOutDirectory(outbase + '_topoff')
         RunPlots(['semilep'])
-        cuts.defaultMCWeight = 'mcFactors * topPtReweighting * topPtReweighting'
+        cuts.defaultMCWeight = 'mcFactors * topPtReweighting'
         plotter.SetOutDirectory(outbase + '_topsquared')
         RunPlots(['semilep'])
         cuts.defaultMCWeight = 'mcFactors * topPtReweighting'

@@ -62,14 +62,23 @@ def printBig(printThis):
     print('# {0} #'.format(printThis))
     print('#' * (chars + 4) + '\n')
 
-def main():
-    GetTables()
 
 
 if __name__ == "__main__":
     GetTables()
 
     if len(sys.argv) > 1 and sys.argv[1] == 'full':
+
+        printBig('TOP WEIGHT')
+
+        print('\nNo Top\n')
+        histAnalysis.SetMCWeight('%s/topPtReweighting' % cuts.defaultMCWeight)
+        GetTables()
+        print('\nTop Squared\n')
+        histAnalysis.SetMCWeight('%s*topPtReweighting' % cuts.defaultMCWeight)
+        GetTables()
+
+        histAnalysis.SetMCWeight(cuts.defaultMCWeight)
 
         printBig('SMEARING')
 
